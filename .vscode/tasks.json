@@ -6,9 +6,7 @@
         {
             "label": "Make & run",
             "type": "shell",
-            //"command": "g++ server.cpp -o server.exe -lws2_32 -static-libgcc -static-libstdc++ -lpthread && start cmd.exe /K server.exe",
-            //"command": "g++ -Iinclude src/*.cpp -o SDL.exe -lmingw32 -lSDL2main -lSDL2 -lSDL2_Image -lSDL2_ttf -lws2_32 -lpthread && start cmd.exe /K SDL.exe",
-            "command": "cd build && make && cd.. && start cmd.exe /K bin\\app.exe",
+            "command": "cd build && make && cd../bin && start cmd.exe /K app.exe",
             "problemMatcher":"$gcc",
             "presentation": {
                 "echo": false,
@@ -26,7 +24,6 @@
         {
             "label": "Remake all & run",
             "type": "shell",
-            //"command": "g++ client.cpp -o client.exe -lws2_32 -static-libgcc -static-libstdc++ -lpthread && start cmd.exe /K client.exe",
             "command": "cd Build && make clean && make && cd.. && cd bin && cls && app",
             "problemMatcher":"$gcc",
             "presentation": {
