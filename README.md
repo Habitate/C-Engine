@@ -9,4 +9,5 @@ A simple concept C++/SDL graphics engine that I occassionally work on.
 
 
 P.S. The **compiler**, **CMake** and **MAKE** all should be accessible from the command line (A.K.A Added to the **%PATH%**).
+
 P.S.P.S If you can't run the **.exe**, please copy all of the **.dlls** from the */lib/* folder to the */bin/* folder.
