@@ -1,0 +1,10 @@
+D:/Programing/C++/Cpp/Poker/V7/build/CMakeFiles/texture.dir
+D:/Programing/C++/Cpp/Poker/V7/build/CMakeFiles/app.dir
+D:/Programing/C++/Cpp/Poker/V7/build/CMakeFiles/myInternet.dir
+D:/Programing/C++/Cpp/Poker/V7/build/CMakeFiles/functions.dir
+D:/Programing/C++/Cpp/Poker/V7/build/CMakeFiles/text.dir
+D:/Programing/C++/Cpp/Poker/V7/build/CMakeFiles/game.dir
+D:/Programing/C++/Cpp/Poker/V7/build/CMakeFiles/object.dir
+D:/Programing/C++/Cpp/Poker/V7/build/CMakeFiles/edit_cache.dir
+D:/Programing/C++/Cpp/Poker/V7/build/CMakeFiles/color.dir
+D:/Programing/C++/Cpp/Poker/V7/build/CMakeFiles/rebuild_cache.dir

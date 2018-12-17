@@ -1,0 +1,2 @@
+C:\mingw-w64\mingw32\bin\ar.exe qc libobject.a  CMakeFiles/object.dir/D_/Programing/C++/Cpp/Poker/V7/src/Object.cpp.obj
+C:\mingw-w64\mingw32\bin\ranlib.exe libobject.a

@@ -1,0 +1,2 @@
+C:\mingw-w64\mingw32\bin\ar.exe qc libcolor.a  CMakeFiles/color.dir/D_/Programing/C++/Cpp/Poker/V7/src/color.cpp.obj
+C:\mingw-w64\mingw32\bin\ranlib.exe libcolor.a

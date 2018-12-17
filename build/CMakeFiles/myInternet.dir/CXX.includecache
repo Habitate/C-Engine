@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/myInternet.h
+iostream
+-
+ws2tcpip.h
+-
+thread
+-
+
+D:/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp
+ws2tcpip.h
+-
+iostream
+-
+myInternet.h
+D:/Programing/C++/Cpp/Poker/V7/src/myInternet.h
+

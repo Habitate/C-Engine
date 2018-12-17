@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/Functions.h
+myInternet.h
+../include/myInternet.h
+Windows.h
+-
+SDL2/SDL.h
+-
+SDL2/SDL_ttf.h
+-
+
+../include/Object.h
+myInternet.h
+../include/myInternet.h
+Texture.h
+../include/Texture.h
+
+../include/Texture.h
+SDL2/SDL.h
+-
+
+../include/myInternet.h
+iostream
+-
+ws2tcpip.h
+-
+thread
+-
+
+D:/Programing/C++/Cpp/Poker/V7/src/Object.cpp
+Object.h
+D:/Programing/C++/Cpp/Poker/V7/src/Object.h
+myInternet.h
+D:/Programing/C++/Cpp/Poker/V7/src/myInternet.h
+Functions.h
+D:/Programing/C++/Cpp/Poker/V7/src/Functions.h
+Texture.h
+D:/Programing/C++/Cpp/Poker/V7/src/Texture.h
+

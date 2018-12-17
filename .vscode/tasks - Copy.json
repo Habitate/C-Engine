@@ -1,0 +1,29 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Server",
+            "type": "shell",
+            //"command": "g++ server.cpp -o server.exe -lws2_32 -static-libgcc -static-libstdc++ -lpthread && start cmd.exe /K server.exe",
+            //"command": "g++ -IIncludes Source/*.cpp -o SDL.exe -lmingw32 -lSDL2main -lSDL2 -lSDL2_Image -lSDL2_ttf -lws2_32 -lpthread && start cmd.exe /K SDL.exe",
+            "command": "cd Build && make && cls && cd .. && start cmd.exe /K app",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher":"$gcc"
+        },
+        {
+            "label": "Client",
+            "type": "shell",
+            "command": "g++ client.cpp -o client.exe -lws2_32 -static-libgcc -static-libstdc++ -lpthread && start cmd.exe /K client.exe",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher":"$gcc"
+        }
+    ]
+}
