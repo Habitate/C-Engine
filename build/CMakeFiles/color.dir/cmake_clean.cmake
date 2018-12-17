@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/color.dir/D_/Programing/C++/Cpp/Poker/V7/src/color.cpp.obj"
+  "CMakeFiles/color.dir/D_/Programing/C++/Cpp/C++_Engine/src/color.cpp.obj"
   "libcolor.pdb"
   "libcolor.a"
 )

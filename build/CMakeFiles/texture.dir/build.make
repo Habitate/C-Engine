@@ -42,10 +42,10 @@ RM = C:\cmake\bin\cmake.exe -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\Programing\C++\Cpp\Poker\V7\build
+CMAKE_SOURCE_DIR = "D:\Programing\C++\Cpp\C++ Engine\build"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\Programing\C++\Cpp\Poker\V7\build
+CMAKE_BINARY_DIR = "D:\Programing\C++\Cpp\C++ Engine\build"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/texture.dir/depend.make
@@ -56,31 +56,31 @@ include CMakeFiles/texture.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/texture.dir/flags.make
 
-CMakeFiles/texture.dir/D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.obj: CMakeFiles/texture.dir/flags.make
-CMakeFiles/texture.dir/D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.obj: CMakeFiles/texture.dir/includes_CXX.rsp
-CMakeFiles/texture.dir/D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.obj: D:/Programing/C++/Cpp/Poker/V7/src/Texture.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/texture.dir/D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.obj"
-	C:\mingw-w64\mingw32\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\texture.dir\D_\Programing\C++\Cpp\Poker\V7\src\Texture.cpp.obj -c D:\Programing\C++\Cpp\Poker\V7\src\Texture.cpp
+CMakeFiles/texture.dir/D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.obj: CMakeFiles/texture.dir/flags.make
+CMakeFiles/texture.dir/D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.obj: CMakeFiles/texture.dir/includes_CXX.rsp
+CMakeFiles/texture.dir/D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.obj: D:/Programing/C++/Cpp/C++\ Engine/src/Texture.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/texture.dir/D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.obj"
+	C:\mingw-w64\mingw32\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\texture.dir\D_\Programing\C++\Cpp\C++_Engine\src\Texture.cpp.obj -c "D:\Programing\C++\Cpp\C++ Engine\src\Texture.cpp"
 
-CMakeFiles/texture.dir/D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/texture.dir/D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.i"
-	C:\mingw-w64\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Programing\C++\Cpp\Poker\V7\src\Texture.cpp > CMakeFiles\texture.dir\D_\Programing\C++\Cpp\Poker\V7\src\Texture.cpp.i
+CMakeFiles/texture.dir/D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/texture.dir/D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.i"
+	C:\mingw-w64\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Programing\C++\Cpp\C++ Engine\src\Texture.cpp" > CMakeFiles\texture.dir\D_\Programing\C++\Cpp\C++_Engine\src\Texture.cpp.i
 
-CMakeFiles/texture.dir/D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/texture.dir/D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.s"
-	C:\mingw-w64\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Programing\C++\Cpp\Poker\V7\src\Texture.cpp -o CMakeFiles\texture.dir\D_\Programing\C++\Cpp\Poker\V7\src\Texture.cpp.s
+CMakeFiles/texture.dir/D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/texture.dir/D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.s"
+	C:\mingw-w64\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Programing\C++\Cpp\C++ Engine\src\Texture.cpp" -o CMakeFiles\texture.dir\D_\Programing\C++\Cpp\C++_Engine\src\Texture.cpp.s
 
 # Object files for target texture
 texture_OBJECTS = \
-"CMakeFiles/texture.dir/D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.obj"
+"CMakeFiles/texture.dir/D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.obj"
 
 # External object files for target texture
 texture_EXTERNAL_OBJECTS =
 
-libtexture.a: CMakeFiles/texture.dir/D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.obj
+libtexture.a: CMakeFiles/texture.dir/D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.obj
 libtexture.a: CMakeFiles/texture.dir/build.make
 libtexture.a: CMakeFiles/texture.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libtexture.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libtexture.a"
 	$(CMAKE_COMMAND) -P CMakeFiles\texture.dir\cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\texture.dir\link.txt --verbose=$(VERBOSE)
 
@@ -94,6 +94,6 @@ CMakeFiles/texture.dir/clean:
 .PHONY : CMakeFiles/texture.dir/clean
 
 CMakeFiles/texture.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\Programing\C++\Cpp\Poker\V7\build D:\Programing\C++\Cpp\Poker\V7\build D:\Programing\C++\Cpp\Poker\V7\build D:\Programing\C++\Cpp\Poker\V7\build D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles\texture.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "D:\Programing\C++\Cpp\C++ Engine\build" "D:\Programing\C++\Cpp\C++ Engine\build" "D:\Programing\C++\Cpp\C++ Engine\build" "D:\Programing\C++\Cpp\C++ Engine\build" "D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles\texture.dir\DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/texture.dir/depend
 

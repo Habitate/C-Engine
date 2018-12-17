@@ -28,9 +28,9 @@ ws2tcpip.h
 thread
 -
 
-D:/Programing/C++/Cpp/Poker/V7/src/Functions.cpp
+D:/Programing/C++/Cpp/C++ Engine/src/Functions.cpp
 Functions.h
-D:/Programing/C++/Cpp/Poker/V7/src/Functions.h
+D:/Programing/C++/Cpp/C++ Engine/src/Functions.h
 SDL2/SDL.h
 -
 SDL2/SDL_ttf.h
@@ -38,11 +38,11 @@ SDL2/SDL_ttf.h
 SDL2/SDL_image.h
 -
 myInternet.h
-D:/Programing/C++/Cpp/Poker/V7/src/myInternet.h
+D:/Programing/C++/Cpp/C++ Engine/src/myInternet.h
 Windows.h
 -
 color.h
-D:/Programing/C++/Cpp/Poker/V7/src/color.h
+D:/Programing/C++/Cpp/C++ Engine/src/color.h
 thread
 -
 

@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "D:/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp" "D:/Programing/C++/Cpp/Poker/V7/build/CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.obj"
+  "D:/Programing/C++/Cpp/C++ Engine/src/myInternet.cpp" "D:/Programing/C++/Cpp/C++ Engine/build/CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

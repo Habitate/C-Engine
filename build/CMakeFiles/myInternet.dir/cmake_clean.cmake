@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.obj"
+  "CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.obj"
   "libmyInternet.pdb"
   "libmyInternet.a"
 )

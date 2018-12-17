@@ -42,10 +42,10 @@ RM = C:\cmake\bin\cmake.exe -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\Programing\C++\Cpp\Poker\V7\build
+CMAKE_SOURCE_DIR = "D:\Programing\C++\Cpp\C++ Engine\build"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\Programing\C++\Cpp\Poker\V7\build
+CMAKE_BINARY_DIR = "D:\Programing\C++\Cpp\C++ Engine\build"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/myInternet.dir/depend.make
@@ -56,31 +56,31 @@ include CMakeFiles/myInternet.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/myInternet.dir/flags.make
 
-CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.obj: CMakeFiles/myInternet.dir/flags.make
-CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.obj: CMakeFiles/myInternet.dir/includes_CXX.rsp
-CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.obj: D:/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.obj"
-	C:\mingw-w64\mingw32\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\myInternet.dir\D_\Programing\C++\Cpp\Poker\V7\src\myInternet.cpp.obj -c D:\Programing\C++\Cpp\Poker\V7\src\myInternet.cpp
+CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.obj: CMakeFiles/myInternet.dir/flags.make
+CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.obj: CMakeFiles/myInternet.dir/includes_CXX.rsp
+CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.obj: D:/Programing/C++/Cpp/C++\ Engine/src/myInternet.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.obj"
+	C:\mingw-w64\mingw32\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\myInternet.dir\D_\Programing\C++\Cpp\C++_Engine\src\myInternet.cpp.obj -c "D:\Programing\C++\Cpp\C++ Engine\src\myInternet.cpp"
 
-CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.i"
-	C:\mingw-w64\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Programing\C++\Cpp\Poker\V7\src\myInternet.cpp > CMakeFiles\myInternet.dir\D_\Programing\C++\Cpp\Poker\V7\src\myInternet.cpp.i
+CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.i"
+	C:\mingw-w64\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Programing\C++\Cpp\C++ Engine\src\myInternet.cpp" > CMakeFiles\myInternet.dir\D_\Programing\C++\Cpp\C++_Engine\src\myInternet.cpp.i
 
-CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.s"
-	C:\mingw-w64\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Programing\C++\Cpp\Poker\V7\src\myInternet.cpp -o CMakeFiles\myInternet.dir\D_\Programing\C++\Cpp\Poker\V7\src\myInternet.cpp.s
+CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.s"
+	C:\mingw-w64\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Programing\C++\Cpp\C++ Engine\src\myInternet.cpp" -o CMakeFiles\myInternet.dir\D_\Programing\C++\Cpp\C++_Engine\src\myInternet.cpp.s
 
 # Object files for target myInternet
 myInternet_OBJECTS = \
-"CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.obj"
+"CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.obj"
 
 # External object files for target myInternet
 myInternet_EXTERNAL_OBJECTS =
 
-libmyInternet.a: CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.obj
+libmyInternet.a: CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.obj
 libmyInternet.a: CMakeFiles/myInternet.dir/build.make
 libmyInternet.a: CMakeFiles/myInternet.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libmyInternet.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libmyInternet.a"
 	$(CMAKE_COMMAND) -P CMakeFiles\myInternet.dir\cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\myInternet.dir\link.txt --verbose=$(VERBOSE)
 
@@ -94,6 +94,6 @@ CMakeFiles/myInternet.dir/clean:
 .PHONY : CMakeFiles/myInternet.dir/clean
 
 CMakeFiles/myInternet.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\Programing\C++\Cpp\Poker\V7\build D:\Programing\C++\Cpp\Poker\V7\build D:\Programing\C++\Cpp\Poker\V7\build D:\Programing\C++\Cpp\Poker\V7\build D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles\myInternet.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "D:\Programing\C++\Cpp\C++ Engine\build" "D:\Programing\C++\Cpp\C++ Engine\build" "D:\Programing\C++\Cpp\C++ Engine\build" "D:\Programing\C++\Cpp\C++ Engine\build" "D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles\myInternet.dir\DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/myInternet.dir/depend
 

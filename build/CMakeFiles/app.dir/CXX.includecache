@@ -6,3 +6,39 @@
 
 #IncludeRegexTransform: 
 
+../include/Game.h
+SDL2/SDL.h
+-
+Text.h
+../include/Text.h
+Object.h
+../include/Object.h
+
+../include/Object.h
+myInternet.h
+../include/myInternet.h
+Texture.h
+../include/Texture.h
+
+../include/Text.h
+SDL2/SDL.h
+-
+SDL2/SDL_ttf.h
+-
+
+../include/Texture.h
+SDL2/SDL.h
+-
+
+../include/myInternet.h
+iostream
+-
+ws2tcpip.h
+-
+thread
+-
+
+D:/Programing/C++/Cpp/C++ Engine/src/app.cpp
+Game.h
+D:/Programing/C++/Cpp/C++ Engine/src/Game.h
+

@@ -58,10 +58,10 @@ RM = C:\cmake\bin\cmake.exe -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\Programing\C++\Cpp\Poker\V7\build
+CMAKE_SOURCE_DIR = "D:\Programing\C++\Cpp\C++ Engine\build"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\Programing\C++\Cpp\Poker\V7\build
+CMAKE_BINARY_DIR = "D:\Programing\C++\Cpp\C++ Engine\build"
 
 #=============================================================================
 # Target rules for target CMakeFiles/texture.dir
@@ -70,7 +70,7 @@ CMAKE_BINARY_DIR = D:\Programing\C++\Cpp\Poker\V7\build
 CMakeFiles/texture.dir/all:
 	$(MAKE) -f CMakeFiles\texture.dir\build.make CMakeFiles/texture.dir/depend
 	$(MAKE) -f CMakeFiles\texture.dir\build.make CMakeFiles/texture.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles --progress-num=16,17 "Built target texture"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" --progress-num=16,17 "Built target texture"
 .PHONY : CMakeFiles/texture.dir/all
 
 # Include target in all.
@@ -80,9 +80,9 @@ all: CMakeFiles/texture.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/texture.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" 2
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/texture.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" 0
 .PHONY : CMakeFiles/texture.dir/rule
 
 # Convenience name for target.
@@ -105,15 +105,15 @@ clean: CMakeFiles/texture.dir/clean
 
 # All Build rule for target.
 CMakeFiles/app.dir/all: CMakeFiles/color.dir/all
-CMakeFiles/app.dir/all: CMakeFiles/texture.dir/all
 CMakeFiles/app.dir/all: CMakeFiles/myInternet.dir/all
-CMakeFiles/app.dir/all: CMakeFiles/functions.dir/all
-CMakeFiles/app.dir/all: CMakeFiles/text.dir/all
 CMakeFiles/app.dir/all: CMakeFiles/game.dir/all
 CMakeFiles/app.dir/all: CMakeFiles/object.dir/all
+CMakeFiles/app.dir/all: CMakeFiles/texture.dir/all
+CMakeFiles/app.dir/all: CMakeFiles/text.dir/all
+CMakeFiles/app.dir/all: CMakeFiles/functions.dir/all
 	$(MAKE) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/depend
 	$(MAKE) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles --progress-num=1,2,3 "Built target app"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" --progress-num=1,2,3 "Built target app"
 .PHONY : CMakeFiles/app.dir/all
 
 # Include target in all.
@@ -123,9 +123,9 @@ all: CMakeFiles/app.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/app.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" 17
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/app.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" 0
 .PHONY : CMakeFiles/app.dir/rule
 
 # Convenience name for target.
@@ -150,7 +150,7 @@ clean: CMakeFiles/app.dir/clean
 CMakeFiles/myInternet.dir/all:
 	$(MAKE) -f CMakeFiles\myInternet.dir\build.make CMakeFiles/myInternet.dir/depend
 	$(MAKE) -f CMakeFiles\myInternet.dir\build.make CMakeFiles/myInternet.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles --progress-num=10,11 "Built target myInternet"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" --progress-num=10,11 "Built target myInternet"
 .PHONY : CMakeFiles/myInternet.dir/all
 
 # Include target in all.
@@ -160,9 +160,9 @@ all: CMakeFiles/myInternet.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/myInternet.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" 2
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/myInternet.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" 0
 .PHONY : CMakeFiles/myInternet.dir/rule
 
 # Convenience name for target.
@@ -187,7 +187,7 @@ clean: CMakeFiles/myInternet.dir/clean
 CMakeFiles/functions.dir/all:
 	$(MAKE) -f CMakeFiles\functions.dir\build.make CMakeFiles/functions.dir/depend
 	$(MAKE) -f CMakeFiles\functions.dir\build.make CMakeFiles/functions.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles --progress-num=6,7 "Built target functions"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" --progress-num=6,7 "Built target functions"
 .PHONY : CMakeFiles/functions.dir/all
 
 # Include target in all.
@@ -197,9 +197,9 @@ all: CMakeFiles/functions.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/functions.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" 2
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/functions.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" 0
 .PHONY : CMakeFiles/functions.dir/rule
 
 # Convenience name for target.
@@ -224,7 +224,7 @@ clean: CMakeFiles/functions.dir/clean
 CMakeFiles/text.dir/all:
 	$(MAKE) -f CMakeFiles\text.dir\build.make CMakeFiles/text.dir/depend
 	$(MAKE) -f CMakeFiles\text.dir\build.make CMakeFiles/text.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles --progress-num=14,15 "Built target text"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" --progress-num=14,15 "Built target text"
 .PHONY : CMakeFiles/text.dir/all
 
 # Include target in all.
@@ -234,9 +234,9 @@ all: CMakeFiles/text.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/text.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" 2
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/text.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" 0
 .PHONY : CMakeFiles/text.dir/rule
 
 # Convenience name for target.
@@ -261,7 +261,7 @@ clean: CMakeFiles/text.dir/clean
 CMakeFiles/game.dir/all:
 	$(MAKE) -f CMakeFiles\game.dir\build.make CMakeFiles/game.dir/depend
 	$(MAKE) -f CMakeFiles\game.dir\build.make CMakeFiles/game.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles --progress-num=8,9 "Built target game"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" --progress-num=8,9 "Built target game"
 .PHONY : CMakeFiles/game.dir/all
 
 # Include target in all.
@@ -271,9 +271,9 @@ all: CMakeFiles/game.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/game.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" 2
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/game.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" 0
 .PHONY : CMakeFiles/game.dir/rule
 
 # Convenience name for target.
@@ -298,7 +298,7 @@ clean: CMakeFiles/game.dir/clean
 CMakeFiles/object.dir/all:
 	$(MAKE) -f CMakeFiles\object.dir\build.make CMakeFiles/object.dir/depend
 	$(MAKE) -f CMakeFiles\object.dir\build.make CMakeFiles/object.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles --progress-num=12,13 "Built target object"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" --progress-num=12,13 "Built target object"
 .PHONY : CMakeFiles/object.dir/all
 
 # Include target in all.
@@ -308,9 +308,9 @@ all: CMakeFiles/object.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/object.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" 2
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/object.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" 0
 .PHONY : CMakeFiles/object.dir/rule
 
 # Convenience name for target.
@@ -335,7 +335,7 @@ clean: CMakeFiles/object.dir/clean
 CMakeFiles/color.dir/all:
 	$(MAKE) -f CMakeFiles\color.dir\build.make CMakeFiles/color.dir/depend
 	$(MAKE) -f CMakeFiles\color.dir\build.make CMakeFiles/color.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles --progress-num=4,5 "Built target color"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" --progress-num=4,5 "Built target color"
 .PHONY : CMakeFiles/color.dir/all
 
 # Include target in all.
@@ -345,9 +345,9 @@ all: CMakeFiles/color.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/color.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" 2
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/color.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" 0
 .PHONY : CMakeFiles/color.dir/rule
 
 # Convenience name for target.

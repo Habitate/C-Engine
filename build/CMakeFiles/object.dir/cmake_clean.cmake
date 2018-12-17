@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/object.dir/D_/Programing/C++/Cpp/Poker/V7/src/Object.cpp.obj"
+  "CMakeFiles/object.dir/D_/Programing/C++/Cpp/C++_Engine/src/Object.cpp.obj"
   "libobject.pdb"
   "libobject.a"
 )

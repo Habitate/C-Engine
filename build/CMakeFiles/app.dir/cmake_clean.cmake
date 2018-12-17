@@ -1,9 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/app.dir/D_/Programing/C++/Cpp/Poker/V7/src/app.cpp.obj"
-  "CMakeFiles/app.dir/D_/Programing/C++/Cpp/Poker/V7/src/info.rc.obj"
-  "D:/Programing/C++/Cpp/Poker/V7/bin/app.pdb"
-  "D:/Programing/C++/Cpp/Poker/V7/bin/app.exe"
-  "D:/Programing/C++/Cpp/Poker/V7/bin/app.exe.manifest"
+  "CMakeFiles/app.dir/D_/Programing/C++/Cpp/C++_Engine/src/app.cpp.obj"
+  "CMakeFiles/app.dir/D_/Programing/C++/Cpp/C++_Engine/src/info.rc.obj"
+  "D:/Programing/C++/Cpp/C++ Engine/bin/app.pdb"
+  "D:/Programing/C++/Cpp/C++ Engine/bin/app.exe"
+  "D:/Programing/C++/Cpp/C++ Engine/bin/app.exe.manifest"
   "libapp.dll.a"
 )
 

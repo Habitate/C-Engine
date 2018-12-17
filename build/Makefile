@@ -47,10 +47,10 @@ RM = C:\cmake\bin\cmake.exe -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\Programing\C++\Cpp\Poker\V7\build
+CMAKE_SOURCE_DIR = "D:\Programing\C++\Cpp\C++ Engine\build"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\Programing\C++\Cpp\Poker\V7\build
+CMAKE_BINARY_DIR = "D:\Programing\C++\Cpp\C++ Engine\build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -79,9 +79,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" "D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles\progress.marks"
 	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -213,230 +213,230 @@ color/fast:
 	$(MAKE) -f CMakeFiles\color.dir\build.make CMakeFiles/color.dir/build
 .PHONY : color/fast
 
-D_/Programing/C++/Cpp/Poker/V7/src/Functions.obj: D_/Programing/C++/Cpp/Poker/V7/src/Functions.cpp.obj
+D_/Programing/C++/Cpp/C++_Engine/src/Functions.obj: D_/Programing/C++/Cpp/C++_Engine/src/Functions.cpp.obj
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Functions.obj
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Functions.obj
 
 # target to build an object file
-D_/Programing/C++/Cpp/Poker/V7/src/Functions.cpp.obj:
-	$(MAKE) -f CMakeFiles\functions.dir\build.make CMakeFiles/functions.dir/D_/Programing/C++/Cpp/Poker/V7/src/Functions.cpp.obj
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Functions.cpp.obj
+D_/Programing/C++/Cpp/C++_Engine/src/Functions.cpp.obj:
+	$(MAKE) -f CMakeFiles\functions.dir\build.make CMakeFiles/functions.dir/D_/Programing/C++/Cpp/C++_Engine/src/Functions.cpp.obj
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Functions.cpp.obj
 
-D_/Programing/C++/Cpp/Poker/V7/src/Functions.i: D_/Programing/C++/Cpp/Poker/V7/src/Functions.cpp.i
+D_/Programing/C++/Cpp/C++_Engine/src/Functions.i: D_/Programing/C++/Cpp/C++_Engine/src/Functions.cpp.i
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Functions.i
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Functions.i
 
 # target to preprocess a source file
-D_/Programing/C++/Cpp/Poker/V7/src/Functions.cpp.i:
-	$(MAKE) -f CMakeFiles\functions.dir\build.make CMakeFiles/functions.dir/D_/Programing/C++/Cpp/Poker/V7/src/Functions.cpp.i
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Functions.cpp.i
+D_/Programing/C++/Cpp/C++_Engine/src/Functions.cpp.i:
+	$(MAKE) -f CMakeFiles\functions.dir\build.make CMakeFiles/functions.dir/D_/Programing/C++/Cpp/C++_Engine/src/Functions.cpp.i
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Functions.cpp.i
 
-D_/Programing/C++/Cpp/Poker/V7/src/Functions.s: D_/Programing/C++/Cpp/Poker/V7/src/Functions.cpp.s
+D_/Programing/C++/Cpp/C++_Engine/src/Functions.s: D_/Programing/C++/Cpp/C++_Engine/src/Functions.cpp.s
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Functions.s
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Functions.s
 
 # target to generate assembly for a file
-D_/Programing/C++/Cpp/Poker/V7/src/Functions.cpp.s:
-	$(MAKE) -f CMakeFiles\functions.dir\build.make CMakeFiles/functions.dir/D_/Programing/C++/Cpp/Poker/V7/src/Functions.cpp.s
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Functions.cpp.s
+D_/Programing/C++/Cpp/C++_Engine/src/Functions.cpp.s:
+	$(MAKE) -f CMakeFiles\functions.dir\build.make CMakeFiles/functions.dir/D_/Programing/C++/Cpp/C++_Engine/src/Functions.cpp.s
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Functions.cpp.s
 
-D_/Programing/C++/Cpp/Poker/V7/src/Game.obj: D_/Programing/C++/Cpp/Poker/V7/src/Game.cpp.obj
+D_/Programing/C++/Cpp/C++_Engine/src/Game.obj: D_/Programing/C++/Cpp/C++_Engine/src/Game.cpp.obj
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Game.obj
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Game.obj
 
 # target to build an object file
-D_/Programing/C++/Cpp/Poker/V7/src/Game.cpp.obj:
-	$(MAKE) -f CMakeFiles\game.dir\build.make CMakeFiles/game.dir/D_/Programing/C++/Cpp/Poker/V7/src/Game.cpp.obj
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Game.cpp.obj
+D_/Programing/C++/Cpp/C++_Engine/src/Game.cpp.obj:
+	$(MAKE) -f CMakeFiles\game.dir\build.make CMakeFiles/game.dir/D_/Programing/C++/Cpp/C++_Engine/src/Game.cpp.obj
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Game.cpp.obj
 
-D_/Programing/C++/Cpp/Poker/V7/src/Game.i: D_/Programing/C++/Cpp/Poker/V7/src/Game.cpp.i
+D_/Programing/C++/Cpp/C++_Engine/src/Game.i: D_/Programing/C++/Cpp/C++_Engine/src/Game.cpp.i
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Game.i
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Game.i
 
 # target to preprocess a source file
-D_/Programing/C++/Cpp/Poker/V7/src/Game.cpp.i:
-	$(MAKE) -f CMakeFiles\game.dir\build.make CMakeFiles/game.dir/D_/Programing/C++/Cpp/Poker/V7/src/Game.cpp.i
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Game.cpp.i
+D_/Programing/C++/Cpp/C++_Engine/src/Game.cpp.i:
+	$(MAKE) -f CMakeFiles\game.dir\build.make CMakeFiles/game.dir/D_/Programing/C++/Cpp/C++_Engine/src/Game.cpp.i
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Game.cpp.i
 
-D_/Programing/C++/Cpp/Poker/V7/src/Game.s: D_/Programing/C++/Cpp/Poker/V7/src/Game.cpp.s
+D_/Programing/C++/Cpp/C++_Engine/src/Game.s: D_/Programing/C++/Cpp/C++_Engine/src/Game.cpp.s
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Game.s
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Game.s
 
 # target to generate assembly for a file
-D_/Programing/C++/Cpp/Poker/V7/src/Game.cpp.s:
-	$(MAKE) -f CMakeFiles\game.dir\build.make CMakeFiles/game.dir/D_/Programing/C++/Cpp/Poker/V7/src/Game.cpp.s
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Game.cpp.s
+D_/Programing/C++/Cpp/C++_Engine/src/Game.cpp.s:
+	$(MAKE) -f CMakeFiles\game.dir\build.make CMakeFiles/game.dir/D_/Programing/C++/Cpp/C++_Engine/src/Game.cpp.s
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Game.cpp.s
 
-D_/Programing/C++/Cpp/Poker/V7/src/Object.obj: D_/Programing/C++/Cpp/Poker/V7/src/Object.cpp.obj
+D_/Programing/C++/Cpp/C++_Engine/src/Object.obj: D_/Programing/C++/Cpp/C++_Engine/src/Object.cpp.obj
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Object.obj
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Object.obj
 
 # target to build an object file
-D_/Programing/C++/Cpp/Poker/V7/src/Object.cpp.obj:
-	$(MAKE) -f CMakeFiles\object.dir\build.make CMakeFiles/object.dir/D_/Programing/C++/Cpp/Poker/V7/src/Object.cpp.obj
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Object.cpp.obj
+D_/Programing/C++/Cpp/C++_Engine/src/Object.cpp.obj:
+	$(MAKE) -f CMakeFiles\object.dir\build.make CMakeFiles/object.dir/D_/Programing/C++/Cpp/C++_Engine/src/Object.cpp.obj
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Object.cpp.obj
 
-D_/Programing/C++/Cpp/Poker/V7/src/Object.i: D_/Programing/C++/Cpp/Poker/V7/src/Object.cpp.i
+D_/Programing/C++/Cpp/C++_Engine/src/Object.i: D_/Programing/C++/Cpp/C++_Engine/src/Object.cpp.i
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Object.i
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Object.i
 
 # target to preprocess a source file
-D_/Programing/C++/Cpp/Poker/V7/src/Object.cpp.i:
-	$(MAKE) -f CMakeFiles\object.dir\build.make CMakeFiles/object.dir/D_/Programing/C++/Cpp/Poker/V7/src/Object.cpp.i
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Object.cpp.i
+D_/Programing/C++/Cpp/C++_Engine/src/Object.cpp.i:
+	$(MAKE) -f CMakeFiles\object.dir\build.make CMakeFiles/object.dir/D_/Programing/C++/Cpp/C++_Engine/src/Object.cpp.i
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Object.cpp.i
 
-D_/Programing/C++/Cpp/Poker/V7/src/Object.s: D_/Programing/C++/Cpp/Poker/V7/src/Object.cpp.s
+D_/Programing/C++/Cpp/C++_Engine/src/Object.s: D_/Programing/C++/Cpp/C++_Engine/src/Object.cpp.s
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Object.s
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Object.s
 
 # target to generate assembly for a file
-D_/Programing/C++/Cpp/Poker/V7/src/Object.cpp.s:
-	$(MAKE) -f CMakeFiles\object.dir\build.make CMakeFiles/object.dir/D_/Programing/C++/Cpp/Poker/V7/src/Object.cpp.s
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Object.cpp.s
+D_/Programing/C++/Cpp/C++_Engine/src/Object.cpp.s:
+	$(MAKE) -f CMakeFiles\object.dir\build.make CMakeFiles/object.dir/D_/Programing/C++/Cpp/C++_Engine/src/Object.cpp.s
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Object.cpp.s
 
-D_/Programing/C++/Cpp/Poker/V7/src/Text.obj: D_/Programing/C++/Cpp/Poker/V7/src/Text.cpp.obj
+D_/Programing/C++/Cpp/C++_Engine/src/Text.obj: D_/Programing/C++/Cpp/C++_Engine/src/Text.cpp.obj
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Text.obj
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Text.obj
 
 # target to build an object file
-D_/Programing/C++/Cpp/Poker/V7/src/Text.cpp.obj:
-	$(MAKE) -f CMakeFiles\text.dir\build.make CMakeFiles/text.dir/D_/Programing/C++/Cpp/Poker/V7/src/Text.cpp.obj
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Text.cpp.obj
+D_/Programing/C++/Cpp/C++_Engine/src/Text.cpp.obj:
+	$(MAKE) -f CMakeFiles\text.dir\build.make CMakeFiles/text.dir/D_/Programing/C++/Cpp/C++_Engine/src/Text.cpp.obj
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Text.cpp.obj
 
-D_/Programing/C++/Cpp/Poker/V7/src/Text.i: D_/Programing/C++/Cpp/Poker/V7/src/Text.cpp.i
+D_/Programing/C++/Cpp/C++_Engine/src/Text.i: D_/Programing/C++/Cpp/C++_Engine/src/Text.cpp.i
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Text.i
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Text.i
 
 # target to preprocess a source file
-D_/Programing/C++/Cpp/Poker/V7/src/Text.cpp.i:
-	$(MAKE) -f CMakeFiles\text.dir\build.make CMakeFiles/text.dir/D_/Programing/C++/Cpp/Poker/V7/src/Text.cpp.i
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Text.cpp.i
+D_/Programing/C++/Cpp/C++_Engine/src/Text.cpp.i:
+	$(MAKE) -f CMakeFiles\text.dir\build.make CMakeFiles/text.dir/D_/Programing/C++/Cpp/C++_Engine/src/Text.cpp.i
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Text.cpp.i
 
-D_/Programing/C++/Cpp/Poker/V7/src/Text.s: D_/Programing/C++/Cpp/Poker/V7/src/Text.cpp.s
+D_/Programing/C++/Cpp/C++_Engine/src/Text.s: D_/Programing/C++/Cpp/C++_Engine/src/Text.cpp.s
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Text.s
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Text.s
 
 # target to generate assembly for a file
-D_/Programing/C++/Cpp/Poker/V7/src/Text.cpp.s:
-	$(MAKE) -f CMakeFiles\text.dir\build.make CMakeFiles/text.dir/D_/Programing/C++/Cpp/Poker/V7/src/Text.cpp.s
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Text.cpp.s
+D_/Programing/C++/Cpp/C++_Engine/src/Text.cpp.s:
+	$(MAKE) -f CMakeFiles\text.dir\build.make CMakeFiles/text.dir/D_/Programing/C++/Cpp/C++_Engine/src/Text.cpp.s
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Text.cpp.s
 
-D_/Programing/C++/Cpp/Poker/V7/src/Texture.obj: D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.obj
+D_/Programing/C++/Cpp/C++_Engine/src/Texture.obj: D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.obj
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Texture.obj
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Texture.obj
 
 # target to build an object file
-D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.obj:
-	$(MAKE) -f CMakeFiles\texture.dir\build.make CMakeFiles/texture.dir/D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.obj
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.obj
+D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.obj:
+	$(MAKE) -f CMakeFiles\texture.dir\build.make CMakeFiles/texture.dir/D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.obj
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.obj
 
-D_/Programing/C++/Cpp/Poker/V7/src/Texture.i: D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.i
+D_/Programing/C++/Cpp/C++_Engine/src/Texture.i: D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.i
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Texture.i
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Texture.i
 
 # target to preprocess a source file
-D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.i:
-	$(MAKE) -f CMakeFiles\texture.dir\build.make CMakeFiles/texture.dir/D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.i
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.i
+D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.i:
+	$(MAKE) -f CMakeFiles\texture.dir\build.make CMakeFiles/texture.dir/D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.i
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.i
 
-D_/Programing/C++/Cpp/Poker/V7/src/Texture.s: D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.s
+D_/Programing/C++/Cpp/C++_Engine/src/Texture.s: D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.s
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Texture.s
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Texture.s
 
 # target to generate assembly for a file
-D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.s:
-	$(MAKE) -f CMakeFiles\texture.dir\build.make CMakeFiles/texture.dir/D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.s
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.s
+D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.s:
+	$(MAKE) -f CMakeFiles\texture.dir\build.make CMakeFiles/texture.dir/D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.s
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.s
 
-D_/Programing/C++/Cpp/Poker/V7/src/app.obj: D_/Programing/C++/Cpp/Poker/V7/src/app.cpp.obj
+D_/Programing/C++/Cpp/C++_Engine/src/app.obj: D_/Programing/C++/Cpp/C++_Engine/src/app.cpp.obj
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/app.obj
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/app.obj
 
 # target to build an object file
-D_/Programing/C++/Cpp/Poker/V7/src/app.cpp.obj:
-	$(MAKE) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/D_/Programing/C++/Cpp/Poker/V7/src/app.cpp.obj
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/app.cpp.obj
+D_/Programing/C++/Cpp/C++_Engine/src/app.cpp.obj:
+	$(MAKE) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/D_/Programing/C++/Cpp/C++_Engine/src/app.cpp.obj
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/app.cpp.obj
 
-D_/Programing/C++/Cpp/Poker/V7/src/app.i: D_/Programing/C++/Cpp/Poker/V7/src/app.cpp.i
+D_/Programing/C++/Cpp/C++_Engine/src/app.i: D_/Programing/C++/Cpp/C++_Engine/src/app.cpp.i
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/app.i
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/app.i
 
 # target to preprocess a source file
-D_/Programing/C++/Cpp/Poker/V7/src/app.cpp.i:
-	$(MAKE) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/D_/Programing/C++/Cpp/Poker/V7/src/app.cpp.i
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/app.cpp.i
+D_/Programing/C++/Cpp/C++_Engine/src/app.cpp.i:
+	$(MAKE) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/D_/Programing/C++/Cpp/C++_Engine/src/app.cpp.i
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/app.cpp.i
 
-D_/Programing/C++/Cpp/Poker/V7/src/app.s: D_/Programing/C++/Cpp/Poker/V7/src/app.cpp.s
+D_/Programing/C++/Cpp/C++_Engine/src/app.s: D_/Programing/C++/Cpp/C++_Engine/src/app.cpp.s
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/app.s
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/app.s
 
 # target to generate assembly for a file
-D_/Programing/C++/Cpp/Poker/V7/src/app.cpp.s:
-	$(MAKE) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/D_/Programing/C++/Cpp/Poker/V7/src/app.cpp.s
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/app.cpp.s
+D_/Programing/C++/Cpp/C++_Engine/src/app.cpp.s:
+	$(MAKE) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/D_/Programing/C++/Cpp/C++_Engine/src/app.cpp.s
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/app.cpp.s
 
-D_/Programing/C++/Cpp/Poker/V7/src/color.obj: D_/Programing/C++/Cpp/Poker/V7/src/color.cpp.obj
+D_/Programing/C++/Cpp/C++_Engine/src/color.obj: D_/Programing/C++/Cpp/C++_Engine/src/color.cpp.obj
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/color.obj
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/color.obj
 
 # target to build an object file
-D_/Programing/C++/Cpp/Poker/V7/src/color.cpp.obj:
-	$(MAKE) -f CMakeFiles\color.dir\build.make CMakeFiles/color.dir/D_/Programing/C++/Cpp/Poker/V7/src/color.cpp.obj
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/color.cpp.obj
+D_/Programing/C++/Cpp/C++_Engine/src/color.cpp.obj:
+	$(MAKE) -f CMakeFiles\color.dir\build.make CMakeFiles/color.dir/D_/Programing/C++/Cpp/C++_Engine/src/color.cpp.obj
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/color.cpp.obj
 
-D_/Programing/C++/Cpp/Poker/V7/src/color.i: D_/Programing/C++/Cpp/Poker/V7/src/color.cpp.i
+D_/Programing/C++/Cpp/C++_Engine/src/color.i: D_/Programing/C++/Cpp/C++_Engine/src/color.cpp.i
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/color.i
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/color.i
 
 # target to preprocess a source file
-D_/Programing/C++/Cpp/Poker/V7/src/color.cpp.i:
-	$(MAKE) -f CMakeFiles\color.dir\build.make CMakeFiles/color.dir/D_/Programing/C++/Cpp/Poker/V7/src/color.cpp.i
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/color.cpp.i
+D_/Programing/C++/Cpp/C++_Engine/src/color.cpp.i:
+	$(MAKE) -f CMakeFiles\color.dir\build.make CMakeFiles/color.dir/D_/Programing/C++/Cpp/C++_Engine/src/color.cpp.i
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/color.cpp.i
 
-D_/Programing/C++/Cpp/Poker/V7/src/color.s: D_/Programing/C++/Cpp/Poker/V7/src/color.cpp.s
+D_/Programing/C++/Cpp/C++_Engine/src/color.s: D_/Programing/C++/Cpp/C++_Engine/src/color.cpp.s
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/color.s
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/color.s
 
 # target to generate assembly for a file
-D_/Programing/C++/Cpp/Poker/V7/src/color.cpp.s:
-	$(MAKE) -f CMakeFiles\color.dir\build.make CMakeFiles/color.dir/D_/Programing/C++/Cpp/Poker/V7/src/color.cpp.s
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/color.cpp.s
+D_/Programing/C++/Cpp/C++_Engine/src/color.cpp.s:
+	$(MAKE) -f CMakeFiles\color.dir\build.make CMakeFiles/color.dir/D_/Programing/C++/Cpp/C++_Engine/src/color.cpp.s
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/color.cpp.s
 
-D_/Programing/C++/Cpp/Poker/V7/src/info.obj: D_/Programing/C++/Cpp/Poker/V7/src/info.rc.obj
+D_/Programing/C++/Cpp/C++_Engine/src/info.obj: D_/Programing/C++/Cpp/C++_Engine/src/info.rc.obj
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/info.obj
-
-# target to build an object file
-D_/Programing/C++/Cpp/Poker/V7/src/info.rc.obj:
-	$(MAKE) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/D_/Programing/C++/Cpp/Poker/V7/src/info.rc.obj
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/info.rc.obj
-
-D_/Programing/C++/Cpp/Poker/V7/src/myInternet.obj: D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.obj
-
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/myInternet.obj
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/info.obj
 
 # target to build an object file
-D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.obj:
-	$(MAKE) -f CMakeFiles\myInternet.dir\build.make CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.obj
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.obj
+D_/Programing/C++/Cpp/C++_Engine/src/info.rc.obj:
+	$(MAKE) -f CMakeFiles\app.dir\build.make CMakeFiles/app.dir/D_/Programing/C++/Cpp/C++_Engine/src/info.rc.obj
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/info.rc.obj
 
-D_/Programing/C++/Cpp/Poker/V7/src/myInternet.i: D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.i
+D_/Programing/C++/Cpp/C++_Engine/src/myInternet.obj: D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.obj
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/myInternet.i
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/myInternet.obj
+
+# target to build an object file
+D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.obj:
+	$(MAKE) -f CMakeFiles\myInternet.dir\build.make CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.obj
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.obj
+
+D_/Programing/C++/Cpp/C++_Engine/src/myInternet.i: D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.i
+
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/myInternet.i
 
 # target to preprocess a source file
-D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.i:
-	$(MAKE) -f CMakeFiles\myInternet.dir\build.make CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.i
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.i
+D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.i:
+	$(MAKE) -f CMakeFiles\myInternet.dir\build.make CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.i
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.i
 
-D_/Programing/C++/Cpp/Poker/V7/src/myInternet.s: D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.s
+D_/Programing/C++/Cpp/C++_Engine/src/myInternet.s: D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.s
 
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/myInternet.s
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/myInternet.s
 
 # target to generate assembly for a file
-D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.s:
-	$(MAKE) -f CMakeFiles\myInternet.dir\build.make CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.s
-.PHONY : D_/Programing/C++/Cpp/Poker/V7/src/myInternet.cpp.s
+D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.s:
+	$(MAKE) -f CMakeFiles\myInternet.dir\build.make CMakeFiles/myInternet.dir/D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.s
+.PHONY : D_/Programing/C++/Cpp/C++_Engine/src/myInternet.cpp.s
 
 # Help Target
 help:
@@ -454,31 +454,31 @@ help:
 	@echo ... edit_cache
 	@echo ... color
 	@echo ... rebuild_cache
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/Functions.obj
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/Functions.i
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/Functions.s
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/Game.obj
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/Game.i
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/Game.s
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/Object.obj
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/Object.i
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/Object.s
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/Text.obj
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/Text.i
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/Text.s
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/Texture.obj
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/Texture.i
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/Texture.s
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/app.obj
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/app.i
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/app.s
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/color.obj
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/color.i
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/color.s
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/info.obj
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/myInternet.obj
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/myInternet.i
-	@echo ... D_/Programing/C++/Cpp/Poker/V7/src/myInternet.s
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/Functions.obj
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/Functions.i
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/Functions.s
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/Game.obj
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/Game.i
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/Game.s
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/Object.obj
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/Object.i
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/Object.s
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/Text.obj
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/Text.i
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/Text.s
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/Texture.obj
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/Texture.i
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/Texture.s
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/app.obj
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/app.i
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/app.s
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/color.obj
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/color.i
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/color.s
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/info.obj
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/myInternet.obj
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/myInternet.i
+	@echo ... D_/Programing/C++/Cpp/C++_Engine/src/myInternet.s
 .PHONY : help
 
 

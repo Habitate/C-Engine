@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/functions.dir/D_/Programing/C++/Cpp/Poker/V7/src/Functions.cpp.obj"
+  "CMakeFiles/functions.dir/D_/Programing/C++/Cpp/C++_Engine/src/Functions.cpp.obj"
   "libfunctions.pdb"
   "libfunctions.a"
 )

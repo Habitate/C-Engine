@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/texture.dir/D_/Programing/C++/Cpp/Poker/V7/src/Texture.cpp.obj"
+  "CMakeFiles/texture.dir/D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.obj"
   "libtexture.pdb"
   "libtexture.a"
 )

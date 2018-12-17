@@ -32,11 +32,11 @@ ws2tcpip.h
 thread
 -
 
-D:/Programing/C++/Cpp/Poker/V7/src/Texture.cpp
+D:/Programing/C++/Cpp/C++ Engine/src/Texture.cpp
 Texture.h
-D:/Programing/C++/Cpp/Poker/V7/src/Texture.h
+D:/Programing/C++/Cpp/C++ Engine/src/Texture.h
 Functions.h
-D:/Programing/C++/Cpp/Poker/V7/src/Functions.h
+D:/Programing/C++/Cpp/C++ Engine/src/Functions.h
 iostream
 -
 windows.h
@@ -48,5 +48,5 @@ SDL2/SDL_image.h
 SDL2/SDL_ttf.h
 -
 color.h
-D:/Programing/C++/Cpp/Poker/V7/src/color.h
+D:/Programing/C++/Cpp/C++ Engine/src/color.h
 

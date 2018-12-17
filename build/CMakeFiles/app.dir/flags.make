@@ -13,5 +13,5 @@ RC_FLAGS =
 
 RC_DEFINES = 
 
-RC_INCLUDES = -ID:\Programing\C++\Cpp\Poker\V7\build\..\include 
+RC_INCLUDES = -ID:\PROGRA~3\C__~1\Cpp\C__ENG~1\build\..\include 
 

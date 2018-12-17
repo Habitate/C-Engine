@@ -42,10 +42,10 @@ RM = C:\cmake\bin\cmake.exe -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\Programing\C++\Cpp\Poker\V7\build
+CMAKE_SOURCE_DIR = "D:\Programing\C++\Cpp\C++ Engine\build"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\Programing\C++\Cpp\Poker\V7\build
+CMAKE_BINARY_DIR = "D:\Programing\C++\Cpp\C++ Engine\build"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/game.dir/depend.make
@@ -56,31 +56,31 @@ include CMakeFiles/game.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/game.dir/flags.make
 
-CMakeFiles/game.dir/D_/Programing/C++/Cpp/Poker/V7/src/Game.cpp.obj: CMakeFiles/game.dir/flags.make
-CMakeFiles/game.dir/D_/Programing/C++/Cpp/Poker/V7/src/Game.cpp.obj: CMakeFiles/game.dir/includes_CXX.rsp
-CMakeFiles/game.dir/D_/Programing/C++/Cpp/Poker/V7/src/Game.cpp.obj: D:/Programing/C++/Cpp/Poker/V7/src/Game.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/game.dir/D_/Programing/C++/Cpp/Poker/V7/src/Game.cpp.obj"
-	C:\mingw-w64\mingw32\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\game.dir\D_\Programing\C++\Cpp\Poker\V7\src\Game.cpp.obj -c D:\Programing\C++\Cpp\Poker\V7\src\Game.cpp
+CMakeFiles/game.dir/D_/Programing/C++/Cpp/C++_Engine/src/Game.cpp.obj: CMakeFiles/game.dir/flags.make
+CMakeFiles/game.dir/D_/Programing/C++/Cpp/C++_Engine/src/Game.cpp.obj: CMakeFiles/game.dir/includes_CXX.rsp
+CMakeFiles/game.dir/D_/Programing/C++/Cpp/C++_Engine/src/Game.cpp.obj: D:/Programing/C++/Cpp/C++\ Engine/src/Game.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/game.dir/D_/Programing/C++/Cpp/C++_Engine/src/Game.cpp.obj"
+	C:\mingw-w64\mingw32\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\game.dir\D_\Programing\C++\Cpp\C++_Engine\src\Game.cpp.obj -c "D:\Programing\C++\Cpp\C++ Engine\src\Game.cpp"
 
-CMakeFiles/game.dir/D_/Programing/C++/Cpp/Poker/V7/src/Game.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/game.dir/D_/Programing/C++/Cpp/Poker/V7/src/Game.cpp.i"
-	C:\mingw-w64\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Programing\C++\Cpp\Poker\V7\src\Game.cpp > CMakeFiles\game.dir\D_\Programing\C++\Cpp\Poker\V7\src\Game.cpp.i
+CMakeFiles/game.dir/D_/Programing/C++/Cpp/C++_Engine/src/Game.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/game.dir/D_/Programing/C++/Cpp/C++_Engine/src/Game.cpp.i"
+	C:\mingw-w64\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Programing\C++\Cpp\C++ Engine\src\Game.cpp" > CMakeFiles\game.dir\D_\Programing\C++\Cpp\C++_Engine\src\Game.cpp.i
 
-CMakeFiles/game.dir/D_/Programing/C++/Cpp/Poker/V7/src/Game.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/game.dir/D_/Programing/C++/Cpp/Poker/V7/src/Game.cpp.s"
-	C:\mingw-w64\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Programing\C++\Cpp\Poker\V7\src\Game.cpp -o CMakeFiles\game.dir\D_\Programing\C++\Cpp\Poker\V7\src\Game.cpp.s
+CMakeFiles/game.dir/D_/Programing/C++/Cpp/C++_Engine/src/Game.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/game.dir/D_/Programing/C++/Cpp/C++_Engine/src/Game.cpp.s"
+	C:\mingw-w64\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Programing\C++\Cpp\C++ Engine\src\Game.cpp" -o CMakeFiles\game.dir\D_\Programing\C++\Cpp\C++_Engine\src\Game.cpp.s
 
 # Object files for target game
 game_OBJECTS = \
-"CMakeFiles/game.dir/D_/Programing/C++/Cpp/Poker/V7/src/Game.cpp.obj"
+"CMakeFiles/game.dir/D_/Programing/C++/Cpp/C++_Engine/src/Game.cpp.obj"
 
 # External object files for target game
 game_EXTERNAL_OBJECTS =
 
-libgame.a: CMakeFiles/game.dir/D_/Programing/C++/Cpp/Poker/V7/src/Game.cpp.obj
+libgame.a: CMakeFiles/game.dir/D_/Programing/C++/Cpp/C++_Engine/src/Game.cpp.obj
 libgame.a: CMakeFiles/game.dir/build.make
 libgame.a: CMakeFiles/game.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libgame.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libgame.a"
 	$(CMAKE_COMMAND) -P CMakeFiles\game.dir\cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\game.dir\link.txt --verbose=$(VERBOSE)
 
@@ -94,6 +94,6 @@ CMakeFiles/game.dir/clean:
 .PHONY : CMakeFiles/game.dir/clean
 
 CMakeFiles/game.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\Programing\C++\Cpp\Poker\V7\build D:\Programing\C++\Cpp\Poker\V7\build D:\Programing\C++\Cpp\Poker\V7\build D:\Programing\C++\Cpp\Poker\V7\build D:\Programing\C++\Cpp\Poker\V7\build\CMakeFiles\game.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "D:\Programing\C++\Cpp\C++ Engine\build" "D:\Programing\C++\Cpp\C++ Engine\build" "D:\Programing\C++\Cpp\C++ Engine\build" "D:\Programing\C++\Cpp\C++ Engine\build" "D:\Programing\C++\Cpp\C++ Engine\build\CMakeFiles\game.dir\DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/game.dir/depend
 

@@ -52,9 +52,9 @@ ws2tcpip.h
 thread
 -
 
-D:/Programing/C++/Cpp/Poker/V7/src/Game.cpp
+D:/Programing/C++/Cpp/C++ Engine/src/Game.cpp
 Game.h
-D:/Programing/C++/Cpp/Poker/V7/src/Game.h
+D:/Programing/C++/Cpp/C++ Engine/src/Game.h
 SDL2/SDL.h
 -
 SDL2/SDL_ttf.h
@@ -64,7 +64,7 @@ SDL2/SDL_image.h
 iostream
 -
 Functions.h
-D:/Programing/C++/Cpp/Poker/V7/src/Functions.h
+D:/Programing/C++/Cpp/C++ Engine/src/Functions.h
 color.h
-D:/Programing/C++/Cpp/Poker/V7/src/color.h
+D:/Programing/C++/Cpp/C++ Engine/src/color.h
 
