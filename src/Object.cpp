@@ -33,7 +33,6 @@ void Object::Update(bool connectedToServer, SOCKET DataSocket){
     h = sprite.dstRect.h;
 
     // Update animations
-    sprite.updateAnimation();
 
     // Send over your position
     if(connectedToServer && !serverObject) sendPosition(&x, &y, DataSocket);

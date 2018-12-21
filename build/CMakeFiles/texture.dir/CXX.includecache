@@ -6,47 +6,29 @@
 
 #IncludeRegexTransform: 
 
-../include/Functions.h
-myInternet.h
-../include/myInternet.h
-Windows.h
--
-SDL2/SDL.h
--
-SDL2/SDL_ttf.h
--
-
-../include/Texture.h
-SDL2/SDL.h
--
-
 ../include/color.h
 ostream
 -
 
-../include/myInternet.h
-iostream
+../include/texture.h
+SDL2/SDL.h
 -
-ws2tcpip.h
+vector
 -
-thread
+string
 -
 
 D:/Programing/C++/Cpp/C++ Engine/src/Texture.cpp
-Texture.h
-D:/Programing/C++/Cpp/C++ Engine/src/Texture.h
-Functions.h
-D:/Programing/C++/Cpp/C++ Engine/src/Functions.h
+texture.h
+D:/Programing/C++/Cpp/C++ Engine/src/texture.h
 iostream
--
-windows.h
 -
 SDL2/SDL.h
 -
 SDL2/SDL_image.h
 -
-SDL2/SDL_ttf.h
--
 color.h
 D:/Programing/C++/Cpp/C++ Engine/src/color.h
+sys/stat.h
+-
 

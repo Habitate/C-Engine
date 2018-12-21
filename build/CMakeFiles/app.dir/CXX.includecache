@@ -29,6 +29,10 @@ SDL2/SDL_ttf.h
 ../include/Texture.h
 SDL2/SDL.h
 -
+vector
+-
+string
+-
 
 ../include/myInternet.h
 iostream

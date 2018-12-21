@@ -53,10 +53,12 @@ void Game::InitializeObjects(){
     // Put all object initialization here
 
     object1.Initialize(100, 100, false);
-    object1.sprite.loadAsSingle(renderer, "../assets/anim/test2/frame_25.png", 100, 100, 100, 100);
+    object1.sprite.Load(renderer, "../assets/anim/test2/frame_0.png");
+    object1.sprite.ChangeSize(100, 100);
 
-    object2.Initialize(200, 200, false);
-    object2.sprite.loadAsSingle(renderer, "../assets/anim/test2/frame_1.png", 200, 200, 100, 100);
+    object2.Initialize(300, 300, false);
+    object2.sprite.Load(renderer, "../assets/anim/test2/frame_25.png");
+    object2.sprite.ChangeSize(100, 100);
             
 }
 void Game::DoThingsBasedOnInputObjects(char input){
@@ -81,8 +83,8 @@ void Game::UpdateObjects(){
 void Game::RenderObjects(){
     // Put all objects here
 
-    object1.sprite.draw(renderer);
-    object2.sprite.draw(renderer);
+    object1.sprite.Draw(renderer, object1.x, object1.y);
+    object2.sprite.Draw(renderer, object2.x, object2.y);
 }
         
 // -------------- //

@@ -24,7 +24,6 @@ int main(int argc, char* argv[])
                      0
                     );
 
-
     while( game->isRunning() )
     {
         frameStart = SDL_GetTicks();
