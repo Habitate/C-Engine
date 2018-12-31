@@ -1,2 +1,0 @@
-C:\mingw-w64\mingw32\bin\ar.exe qc libtext.a  CMakeFiles/text.dir/D_/Programing/C++/Cpp/C++_Engine/src/Text.cpp.obj
-C:\mingw-w64\mingw32\bin\ranlib.exe libtext.a

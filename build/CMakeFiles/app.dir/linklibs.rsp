@@ -1,1 +1,0 @@
-libgame.a libtext.a libfunctions.a libmyInternet.a libobject.a libtexture.a libcolor.a -lmingw32 -lSDL2main -lSDL2 -lSDL2_Image -lSDL2_ttf -lws2_32 -lpthread -static-libgcc -static-libstdc++ -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

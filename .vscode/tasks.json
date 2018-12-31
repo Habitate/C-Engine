@@ -6,7 +6,7 @@
         {
             "label": "Make & run",
             "type": "shell",
-            "command": "cd build && make && cd../bin && start cmd.exe /K app.exe",
+            "command": "cd build && make -j && cd../bin && start cmd.exe /K app.exe",
             "problemMatcher":"$gcc",
             "presentation": {
                 "echo": false,
