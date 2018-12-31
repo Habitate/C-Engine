@@ -29,6 +29,8 @@ vector
 -
 string
 -
+memory
+-
 
 ../include/myInternet.h
 iostream

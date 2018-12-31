@@ -4,11 +4,11 @@
 #include <SDL2/SDL.h>
 #include <vector>
 #include <string>
+#include <memory>
 
-class Texture{
+class TextureData{
 	public:
-		Texture();
-		~Texture();
+		TextureData();
 
 		//* Only supports paths like "assets/myImage.png"
 		void Load(SDL_Renderer* renderer, std::string path);
@@ -17,35 +17,38 @@ class Texture{
 		//* Pass -1 to w or h to retain the current size
 		void ChangeSize(int w, int h);
 
-		SDL_Texture* sprite;
+		bool Good();
+
+		//SDL_Texture* sprite;
+		std::unique_ptr<SDL_Texture, void(*)(SDL_Texture*)> sprite;
+
 		SDL_Rect srcRect;
 		SDL_Rect dstRect;
 
-		bool good;
 		bool visable;
 };
 
-class MultiTexture{
+class Texture{
 	public:
-		MultiTexture();
-		~MultiTexture();
+		Texture();
 
-		//* Only supports paths like "assets/myImage"
-		void Load(SDL_Renderer*, std::string path);
-		void Draw(SDL_Renderer*, int x, int y);
+		void Load       (SDL_Renderer* renderer, std::string path                           );
+		void SingleLoad (SDL_Renderer* renderer, std::string fileName                       );
+		void MultiLoad  (SDL_Renderer* renderer, std::string fileName, std::string extension);
+
+		int getSpriteCount();
+
+		//! Returns good if, atleast, the first sprite is valid
+		bool Good();
 
 		//* Pass -1 to w or h to retain the current size
 		//* Pass -1 to index to change all sprites
 		void ChangeSize(int index, int w, int h);
+		void Draw(SDL_Renderer* renderer, int x, int y);
 
-		std::vector<Texture*> sprites;
-		SDL_Rect srcRect;
-		SDL_Rect dstRect;
+		std::vector<std::shared_ptr<TextureData>> sprites;
 
 		int spriteIndex;
-		int spriteCount;
-		int timeFrame;
-
 		bool visable;
 };
 

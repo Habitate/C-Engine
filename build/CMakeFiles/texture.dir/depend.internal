@@ -3,5 +3,7 @@
 
 CMakeFiles/texture.dir/D_/Programing/C++/Cpp/C++_Engine/src/Texture.cpp.obj
  ../include/color.h
+ ../include/functions.h
+ ../include/myInternet.h
  ../include/texture.h
  D:/Programing/C++/Cpp/C++ Engine/src/Texture.cpp

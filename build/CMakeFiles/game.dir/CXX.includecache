@@ -43,6 +43,8 @@ vector
 -
 string
 -
+memory
+-
 
 ../include/color.h
 ostream

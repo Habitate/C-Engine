@@ -54,11 +54,11 @@ void Game::InitializeObjects(){
 
     object1.Initialize(100, 100, false);
     object1.sprite.Load(renderer, "../assets/anim/test2/frame_0.png");
-    object1.sprite.ChangeSize(100, 100);
+    object1.sprite.ChangeSize(-1, 100, 100);
 
     object2.Initialize(300, 300, false);
     object2.sprite.Load(renderer, "../assets/anim/test2/frame_25.png");
-    object2.sprite.ChangeSize(100, 100);
+    object2.sprite.ChangeSize(-1, 100, 100);
             
 }
 void Game::DoThingsBasedOnInputObjects(char input){
@@ -78,7 +78,7 @@ void Game::UpdateObjects(){
     object1.Update(false);
     object2.Update(false);
 
-    object1.checkMoreCollision(object2);    
+    //object1.checkMoreCollision(object2);    
 }
 void Game::RenderObjects(){
     // Put all objects here

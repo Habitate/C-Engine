@@ -16,7 +16,7 @@ class Object
 
         bool checkCollision(Object&);
 
-        bool checkMoreCollision(Object&);
+        //bool checkMoreCollision(Object&);
 
         Texture sprite;
 

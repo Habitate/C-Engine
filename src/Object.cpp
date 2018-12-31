@@ -27,10 +27,10 @@ void Object::Initialize(int x, int y, bool serverObject){
 
 void Object::Update(bool connectedToServer, SOCKET DataSocket){
     // Sync the sprite
-    sprite.dstRect.x = x;
-    sprite.dstRect.y = y;
-    w = sprite.dstRect.w;
-    h = sprite.dstRect.h;
+    sprite.sprites[sprite.spriteIndex]->dstRect.x = x;
+    sprite.sprites[sprite.spriteIndex]->dstRect.y = y;
+    w = sprite.sprites[sprite.spriteIndex]->dstRect.w;
+    h = sprite.sprites[sprite.spriteIndex]->dstRect.h;
 
     // Update animations
 
@@ -42,8 +42,8 @@ void Object::Update(bool connectedToServer, SOCKET DataSocket){
 bool Object::checkCollision(Object& obj){
     return (abs(x - obj.x) * 2 < (w + obj.w )) && (abs(y - obj.y) * 2 < (h + obj.h));
 }
-
+/*
 bool Object::checkMoreCollision(Object& obj){
     if(SDL_TRUE != SDL_HasIntersection(&this->sprite.dstRect, &obj.sprite.dstRect)) return true;
     return false;
-}
+}*/

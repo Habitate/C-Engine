@@ -3,125 +3,122 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <vector>
+
 #include "color.h"
+#include "functions.h"
 
-#include <sys/stat.h> //* Used for file checking
+//? Data types supported by the SDL_Image library
+std::vector<std::string> SUPPORTED_DATA_TYPES = {
+	".png", ".jpg", ".jpeg",
+    ".bmp", ".gif", ".tga",
+    ".pnm", ".pbm", ".pgm",
+    ".ppm", ".xpm", ".xcf",
+    ".pcx", ".tif", ".tiff",
+    ".lbm", ".iff"
+};
 
-// -- Texture -- //
-Texture::Texture() : sprite(nullptr), good(false), visable(true), srcRect({0, 0, 0, 0}), dstRect({0, 0, 0, 0}) {}
+// *************************************
+// ***    ---- Texture data ----     ***
+// *************************************
+TextureData::TextureData() : sprite(nullptr, SDL_DestroyTexture), visable(true), srcRect({0, 0, 0, 0}), dstRect({0, 0, 0, 0}) {}
 
-Texture::~Texture(){
-    if(sprite) SDL_DestroyTexture(sprite);
-    good = false;
-}
+void TextureData::Load(SDL_Renderer* renderer, std::string path){
+    if(Good()) sprite.reset();
 
-void Texture::Load(SDL_Renderer* renderer, std::string path){
-    if(sprite) SDL_DestroyTexture(sprite);
+    sprite = std::unique_ptr<SDL_Texture, void(*)(SDL_Texture*)>(IMG_LoadTexture(renderer, path.c_str()), SDL_DestroyTexture);
 
-    sprite = IMG_LoadTexture(renderer, path.c_str());
-
-    if(!sprite){
+    if(!Good()){
         std::cout << Color(12) << "Error loading: \"" << Color(14) << path << Color(12) << "\"\n" << Color(7);
         std::cout << "\t-> " << IMG_GetError() << '\n';
         
         return;
     }
 
-    SDL_QueryTexture(sprite, nullptr, nullptr, &srcRect.w, &srcRect.h);
-    dstRect.w = srcRect.w; dstRect.h = srcRect.h;
+    SDL_QueryTexture(sprite.get(), nullptr, nullptr, &srcRect.w, &srcRect.h);
+    dstRect = srcRect;
 
     std::cout << Color(10) << "Successfully loaded: \"" << Color(14) << path << Color(10) << "\"\n" << Color(7);
-    good = true;
 }
 
-void Texture::Draw(SDL_Renderer* renderer, int x, int y){
-    if(!good && !visable) return;
+void TextureData::Draw(SDL_Renderer* renderer, int x, int y){
+    if(!Good() || !visable) return;
 
     dstRect.x = x;
     dstRect.y = y;
 
-    SDL_RenderCopy(renderer, sprite, &srcRect, &dstRect);
+    SDL_RenderCopy(renderer, sprite.get(), &srcRect, &dstRect);
 }
 
-//* Pass -1 to keep the same value
-void Texture::ChangeSize(int w, int h){
+void TextureData::ChangeSize(int w, int h){
     if(w >= 0) dstRect.w = w;
     if(h >= 0) dstRect.h = h;
 }
 
-inline bool fileExists(std::string path) {
-    struct stat buffer;  
-    return (stat(path.c_str(), &buffer) == 0);
+bool TextureData::Good(){
+    return (bool)sprite;
 }
 
-// TODO: Add support for paths like "assets/myImage.png"
-std::string resolveExtension(std::string path){
-    const char* fileTypes[17] = {
-        "png", "jpg", "jpeg",
-        "bmp", "gif", "tga",
-        "pnm", "pbm", "pgm",
-        "ppm", "xpm", "xcf",
-        "pcx", "tif", "tiff",
-        "lbm", "iff"
-    };
 
-    // Test for all supported file types
-    for(std::string ext : fileTypes){
-        if(fileExists(path + "_0." + ext)){
-            return ext;
-            break;
-        }
-    }
 
-    std::string ext;
-    return ext;
+
+// *************************************
+// ***   ---- Texture handler ----   ***
+// *************************************
+Texture::Texture() : spriteIndex(0), visable(true) {}
+
+void Texture::Load(SDL_Renderer* renderer, std::string fileName){
+    std::vector<std::string>* DATA_TYPES = &SUPPORTED_DATA_TYPES;
+    std::vector<std::string> singleType(1);
+
+    if(cutExtension(fileName, singleType[0])) DATA_TYPES = &singleType;
+
+    for(std::string ext : *DATA_TYPES){
+		if(fileExists(fileName        + ext)){ SingleLoad(renderer, fileName + ext); return; } //? Loads single   file
+		if(fileExists(fileName + "_0" + ext)){  MultiLoad(renderer, fileName,  ext); return; } //? Loads multiple files
+	}
+    
+    std::cout << "Unable to find a suitable file for: " << fileName + singleType[0] << '\n';  
 }
 
-// -- Multi-Texture -- //
-MultiTexture::MultiTexture() : spriteIndex(0), spriteCount(0), timeFrame(0), visable(true) {}
+void Texture::SingleLoad(SDL_Renderer* renderer, std::string fileName){
+    sprites.emplace_back(new TextureData);
+    sprites[sprites.size() - 1]->Load(renderer, fileName);
+}
 
-MultiTexture::~MultiTexture(){}
-
-// !: Currently only works with paths like "../myImage"
-void MultiTexture::Load(SDL_Renderer* renderer, std::string path){
-    std::string ext = resolveExtension(path);
-    if(ext.empty()){
-        std::cout << Color(12) << "Error loading sprites for: \"" << Color(14) << path << Color(12) << "\"\n" << Color(7);
-        return;
+void Texture::MultiLoad(SDL_Renderer* renderer, std::string fileName, std::string extension){
+    while(fileExists(fileName + '_' + std::to_string(sprites.size()) + extension)){
+        sprites.emplace_back(new TextureData);
+        sprites[sprites.size() - 1]->Load(renderer, fileName + '_' + std::to_string(sprites.size() - 1) + extension);
     }
+}
 
-    while(fileExists(path + '_' + std::to_string(spriteCount) + '.' + ext)){
-        sprites.push_back(new Texture);
-        sprites[spriteCount]->Load(renderer, path + '_' + std::to_string(spriteCount) + '.' + ext);
-        
-        ++spriteCount;
-    }
+int Texture::getSpriteCount(){
+    return sprites.size();
+}
 
-    std::cout << Color(10) << "Loaded " << Color(13) << spriteCount << Color(10) << " sprites for \""
-    << Color(14) << path << Color(10) << "\"\n" << Color(7);
+//! Returns good if, atleast, the first sprite is valid
+bool Texture::Good(){
+    if(getSpriteCount()) return sprites[0]->Good();
+    return false;
 }
 
 // TODO: Add time frame implementation
-void MultiTexture::Draw(SDL_Renderer* renderer, int x, int y){
-    if(!spriteCount) return;
+void Texture::Draw(SDL_Renderer* renderer, int x, int y){
+    if(!sprites.size()) return;
 
-    if(sprites[spriteIndex]->good) sprites[spriteIndex]->Draw(renderer, x, y);
+    if(sprites[spriteIndex]->Good()) sprites[spriteIndex]->Draw(renderer, x, y);
 
     ++spriteIndex;
-    if(spriteIndex == spriteCount) spriteIndex = 0;
+    if(spriteIndex == sprites.size()) spriteIndex = 0;
 }
 
-//* Pass -1 to w or h to keep the same value
-//* Pass -1 to change all sprites
-void MultiTexture::ChangeSize(int index, int w, int h){
-    if(index == spriteCount) return;
+void Texture::ChangeSize(int index, int w, int h){
+    if(index == sprites.size()) return;
     
-    if(index == -1){
-        for(int i = 0; i < spriteCount; ++i){
+    if(index == -1)
+        for(int i = 0; i < sprites.size(); ++i)
             sprites[i]->ChangeSize(w, h);
-        }
-    }
-    else{
+    else
         sprites[index]->ChangeSize(w, h);
-    }
 }

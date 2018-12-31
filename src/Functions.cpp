@@ -4,10 +4,13 @@
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
 
-#include "myInternet.h"
-#include <Windows.h>
-#include "color.h"
+#include <windows.h>
 #include <thread>
+#include <sys/stat.h> //* Used for file checking
+
+#include "color.h"
+#include "string"
+#include "myInternet.h"
 
 void sendPosition(int* x, int* y, SOCKET DataSocket){
     static char positions[5] = {0};
@@ -64,13 +67,6 @@ char getInput(){
     if(state[SDL_SCANCODE_M]) return 'm';
 
     else return 0;
-}
-
-bool fileExists(const char* name){
-    if (FILE* file = fopen(name, "r")){
-        fclose(file);
-        return true;
-    } else return false;  
 }
 
 // Loader functions
@@ -137,4 +133,32 @@ bool LoadSDLTexture(SDL_Renderer* renderer, SDL_Surface** loader, SDL_Texture** 
     std::cout << Color(10) << "Successfully loaded texture: \"" << Color(14) << path << Color(10) << "\"\n" << Color(7);
 
     return true;
+}
+
+bool fileExists(std::string path){
+    struct stat buffer;
+    return (stat(path.c_str(), &buffer) == 0);
+}
+
+//? Both return false if the file does not contain an extension
+bool getExtensionStart(std::string fileName, int& pos){
+    for(int i = fileName.size() - 1; i > 0; --i)
+    if(fileName[i] == '.'){
+        pos = i;
+        return fileName[i + 1] != '\0' && fileName[i + 1] != '\\' && fileName[i + 1] != '/';
+    }
+    
+    return false;
+}
+bool cutExtension(std::string& file, std::string& ext){
+    int extPos(0);
+
+    if(getExtensionStart(file, extPos)){
+        ext.insert(0, file, extPos, file.size() - extPos);
+        file.erase(extPos);
+
+        return true;
+    }
+
+    return false;
 }
