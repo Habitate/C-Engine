@@ -1,41 +1,36 @@
-// Game defines
+#include "Game.h"
+#include <iostream>
+
 #define W 640
 #define H 480
-
-#include "Game.h"
-
-using namespace std;
+#define CENTER SDL_WINDOWPOS_CENTERED
 
 int main(int argc, char* argv[])
 {
-    int fpsCap = 60;
-    int frameDelay = 1000 / fpsCap;
-    int frameTime;
+    const int fpsCap = 60;
+    const int frameDelay = 1000 / fpsCap;
 
+    int frameTime;
     Uint32 frameStart;
 
-    Game* game = new Game("Engine",
-                        SDL_WINDOWPOS_CENTERED,
-                        SDL_WINDOWPOS_CENTERED,
-                        W, H, 0);
+    Game* game = new Game("Engine", CENTER, CENTER, W, H, SDL_WINDOW_RESIZABLE);
+    std::cout << "Initialized framework!\n\n";
 
     game->Initialize();
+    std::cout << "\nInitialized all objects!\n\n";
 
-    while( game->isRunning() ){
+    while(game->isRunning()){
         frameStart = SDL_GetTicks();
 
-        // Actual game loop
-        
+        //!----------------------
         game->HandleSDLEvents();
         game->Update();
         game->Render();
-
-        // Etc
+        //!----------------------
 
         frameTime = SDL_GetTicks() - frameStart; 
         if(frameDelay > frameTime) SDL_Delay(frameDelay - frameTime);  
-
-    } game->Quit();
-
+    } delete game;
+    
     return 0;
 }

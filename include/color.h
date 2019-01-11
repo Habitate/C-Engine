@@ -8,7 +8,7 @@ class Color{
         Color(int color) : color(color) {}
         ~Color() {}
 
-        friend std::ostream& operator<<(std::ostream&, Color);
+        friend std::ostream& operator<<(std::ostream& ss, Color color);
 
         int color;
 };

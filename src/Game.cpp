@@ -8,79 +8,64 @@
 #include <iostream>
 #include "Functions.h"
 #include "color.h"
+#include <memory>
 
-Game::Game(const char* name, int x, int y, int w, int h, int flags) : running(false), WREZ(w), HREZ(h) {
-    // Error check and init
+Game::Game(const char* name, int x, int y, int w, int h, int flags) : running(false), WREZ(w), HREZ(h), input(0), renderer(nullptr, SDL_DestroyRenderer), window(nullptr, SDL_DestroyWindow), Sans(nullptr, TTF_CloseFont) {
     SDL_Init(SDL_INIT_EVERYTHING);
     IMG_Init(0);
     TTF_Init();
 
-    window = SDL_CreateWindow  (name, x, y, w, h, flags);
-    if(!window) { std::cout << SDL_GetError() << "\n\n"; throw; }
+    window   = std::unique_ptr<SDL_Window  , void(*)(SDL_Window  *)>(SDL_CreateWindow(name, x, y, w, h, flags), SDL_DestroyWindow);
+    if(!window  ) { std::cout << SDL_GetError() << "\n\n"; throw; }
 
-    renderer = SDL_CreateRenderer(window, -1, 0);
+    renderer = std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer*)>(SDL_CreateRenderer(window.get(), -1, 0) ,SDL_DestroyRenderer);
     if(!renderer) { std::cout << SDL_GetError() << "\n\n"; throw; }
 
     changeIcon("../assets/icont.png");
-
-    running = true;
-    std::cout << "Initialized framework!\n\n";
+}
+Game::~Game(){
+    SDL_Quit();
 }
 
 void Game::Initialize(){
-    t.Load(renderer, "../assets/icont");
+    t.Load(renderer.get(), "../assets/icont");
 
-    std::cout << "\nInitialized all objects!\n\n";
+    running = true;
 }
-
 void Game::HandleSDLEvents(){
     SDL_PollEvent(&event);
 
     switch(event.type){
-        case SDL_QUIT: Quit(); break;
+        case SDL_QUIT: running = false; break;
     }
 }
-
 void Game::Update(){
     // Do input stuff
     switch(getInput()){    
     }
 }
-
 void Game::Render(){
     // Clear the screen
-    SDL_RenderClear(renderer);
+    SDL_RenderClear(renderer.get());
 
-    t.Draw(renderer, 0, 0);
+    t.Draw(renderer.get(), 0, 0);
     t.ChangeSize(-1, 640, 480);
 
     // Draw the screen
-    SDL_RenderPresent(renderer);
-}
-
-void Game::Quit(){
-    SDL_DestroyWindow(window);
-    SDL_DestroyRenderer(renderer);
-    SDL_Quit();
-    exit(0);
+    SDL_RenderPresent(renderer.get());
 }
 
 void Game::changeIcon(const char* path){
-    // Load the surface
-    SDL_Surface* icon = IMG_Load(path);
+    std::unique_ptr<SDL_Surface, void(*)(SDL_Surface*)> icon(IMG_Load(path), SDL_FreeSurface);
 
     //Error check
     if(!icon){
         std::cout << Color(12) << "Failed loading icon: " << Color(7) << path << "\n";
-        SDL_FreeSurface(icon);
-
         return;
     }
 
-    SDL_SetWindowIcon(window, icon);
-    SDL_FreeSurface(icon);
+    SDL_SetWindowIcon(window.get(), icon.get());
 }
-
 bool Game::isRunning(){
     return running;
 }

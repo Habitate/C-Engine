@@ -5,24 +5,20 @@
 #include "Text.h"
 #include "Object.h"
 #include "texture.h"
+#include <memory>
 
 class Game
 {
     public:
         Game(const char* name, int x, int y, int w, int h, int flags);
+        ~Game();
 
         void Initialize();
-
         void HandleSDLEvents();
-
         void Update();
-
         void Render();
-
-        void Quit();
-
+        
         void changeIcon(const char* path);
-
         bool isRunning();
 
     private:
@@ -34,11 +30,12 @@ class Game
 
         // SDL
         SDL_Event event;
-        SDL_Window* window;
-        SDL_Renderer* renderer;
+        //SDL_Window* window;
+        std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer*)> renderer;
+        std::unique_ptr<SDL_Window  , void(*)(SDL_Window  *)> window;
 
         // Text options
-        TTF_Font* Sans;
+        std::unique_ptr<TTF_Font, void(*)(TTF_Font*)> Sans;
         SDL_Color White;
 
         // Textures
