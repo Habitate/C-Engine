@@ -1,49 +1,20 @@
 #include "Object.h"
 
-#include "myInternet.h"
 #include "Functions.h"
 #include "Texture.h"
 
-Object::Object(){
-    this->x = 0;
-    this->y = 0;
-    this->w = 0;
-    this->h = 0;
-    this->serverObject = false;
-}
-Object::~Object(){
-    // Something
-}
+Object::Object() : x(0), y(0), w(0), h(0) {}
+Object::Object(int x, int y, int w, int h) : x(x), y(y), w(w), h(h) {}
 
-void Object::Initialize(int x, int y, bool serverObject){
-    // Construct
-    Object();
-
-    // Initialize
-    this->x = x;
-    this->y = y;
-    this->serverObject = serverObject;
-}
-
-void Object::Update(bool connectedToServer, SOCKET DataSocket){
+void Object::Update(){
     // Sync the sprite
-    sprite.sprites[sprite.spriteIndex]->dstRect.x = x;
-    sprite.sprites[sprite.spriteIndex]->dstRect.y = y;
-    w = sprite.sprites[sprite.spriteIndex]->dstRect.w;
-    h = sprite.sprites[sprite.spriteIndex]->dstRect.h;
-
-    // Update animations
-
-    // Send over your position
-    if(connectedToServer && !serverObject) sendPosition(&x, &y, DataSocket);
-    if(connectedToServer && serverObject ) recievePosition(&x, &y, DataSocket);
+    sprite.GetRect(true).x = x;
+    sprite.GetRect(true).y = y;
+    w = sprite.GetRect(true).w;
+    h = sprite.GetRect(true).h;
 }
 
 bool Object::checkCollision(Object& obj){
-    return (abs(x - obj.x) * 2 < (w + obj.w )) && (abs(y - obj.y) * 2 < (h + obj.h));
-}
-/*
-bool Object::checkMoreCollision(Object& obj){
-    if(SDL_TRUE != SDL_HasIntersection(&this->sprite.dstRect, &obj.sprite.dstRect)) return true;
+    if(SDL_TRUE != SDL_HasIntersection(&this->sprite.GetRect(false), &obj.sprite.GetRect(true))) return true;
     return false;
-}*/
+}

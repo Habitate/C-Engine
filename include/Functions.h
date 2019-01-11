@@ -1,10 +1,11 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-#include "myInternet.h"
 #include <Windows.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
+#include <string>
+#include <iostream>
 
 /// --- Internet --- ///
 void sendPosition(int*, int*, SOCKET);

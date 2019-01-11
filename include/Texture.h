@@ -8,15 +8,12 @@
 
 class TextureData{
 	public:
-		TextureData();
-
 		//* Only supports paths like "assets/myImage.png"
-		void Load(SDL_Renderer* renderer, std::string path);
+		TextureData(SDL_Renderer* renderer, std::string path);
 		void Draw(SDL_Renderer* renderer, int x, int y);
-
+		
 		//* Pass -1 to w or h to retain the current size
 		void ChangeSize(int w, int h);
-
 		bool Good();
 
 		//SDL_Texture* sprite;
@@ -45,6 +42,9 @@ class Texture{
 		//* Pass -1 to index to change all sprites
 		void ChangeSize(int index, int w, int h);
 		void Draw(SDL_Renderer* renderer, int x, int y);
+
+		//* Negative values will set the current sprite @ spriteIndex
+		SDL_Rect& GetRect(bool dst, int index = -1);
 
 		std::vector<std::shared_ptr<TextureData>> sprites;
 

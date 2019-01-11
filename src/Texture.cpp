@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <vector>
+#include <string>
 
 #include "color.h"
 #include "functions.h"
@@ -21,9 +22,7 @@ std::vector<std::string> SUPPORTED_DATA_TYPES = {
 // *************************************
 // ***    ---- Texture data ----     ***
 // *************************************
-TextureData::TextureData() : sprite(nullptr, SDL_DestroyTexture), visable(true), srcRect({0, 0, 0, 0}), dstRect({0, 0, 0, 0}) {}
-
-void TextureData::Load(SDL_Renderer* renderer, std::string path){
+TextureData::TextureData(SDL_Renderer* renderer, std::string path) : sprite(nullptr, SDL_DestroyTexture), visable(true), srcRect({0, 0, 0, 0}), dstRect({0, 0, 0, 0}){
     if(Good()) sprite.reset();
 
     sprite = std::unique_ptr<SDL_Texture, void(*)(SDL_Texture*)>(IMG_LoadTexture(renderer, path.c_str()), SDL_DestroyTexture);
@@ -61,7 +60,6 @@ bool TextureData::Good(){
 
 
 
-
 // *************************************
 // ***   ---- Texture handler ----   ***
 // *************************************
@@ -82,15 +80,12 @@ void Texture::Load(SDL_Renderer* renderer, std::string fileName){
 }
 
 void Texture::SingleLoad(SDL_Renderer* renderer, std::string fileName){
-    sprites.emplace_back(new TextureData);
-    sprites[sprites.size() - 1]->Load(renderer, fileName);
+    sprites.emplace_back(new TextureData(renderer, fileName));
 }
 
 void Texture::MultiLoad(SDL_Renderer* renderer, std::string fileName, std::string extension){
-    while(fileExists(fileName + '_' + std::to_string(sprites.size()) + extension)){
-        sprites.emplace_back(new TextureData);
-        sprites[sprites.size() - 1]->Load(renderer, fileName + '_' + std::to_string(sprites.size() - 1) + extension);
-    }
+    while(fileExists(fileName + '_' + std::to_string(sprites.size()) + extension))
+        sprites.emplace_back(new TextureData(renderer, fileName + '_' + std::to_string(sprites.size()) + extension));
 }
 
 int Texture::getSpriteCount(){
@@ -99,8 +94,7 @@ int Texture::getSpriteCount(){
 
 //! Returns good if, atleast, the first sprite is valid
 bool Texture::Good(){
-    if(getSpriteCount()) return sprites[0]->Good();
-    return false;
+    return getSpriteCount() ? sprites[0]->Good() : false;
 }
 
 // TODO: Add time frame implementation
@@ -114,11 +108,21 @@ void Texture::Draw(SDL_Renderer* renderer, int x, int y){
 }
 
 void Texture::ChangeSize(int index, int w, int h){
-    if(index == sprites.size()) return;
+    if(index == sprites.size())
+        return;
     
     if(index == -1)
         for(int i = 0; i < sprites.size(); ++i)
             sprites[i]->ChangeSize(w, h);
     else
         sprites[index]->ChangeSize(w, h);
+}
+
+SDL_Rect& Texture::GetRect(bool dst, int index){
+	if(index < 0 || index >= getSpriteCount())
+        if(dst) return sprites[spriteIndex]->dstRect;
+        else    return sprites[spriteIndex]->srcRect;
+    else
+        if(dst) return sprites[index]->dstRect;
+	    else    return sprites[index]->dstRect;
 }

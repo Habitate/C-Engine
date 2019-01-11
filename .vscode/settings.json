@@ -33,7 +33,11 @@
         "string_view": "cpp",
         "thread": "cpp",
         "tuple": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "optional": "cpp",
+        "sstream": "cpp"
     },
     "C_Cpp.dimInactiveRegions": false
 }

@@ -1,6 +1,6 @@
 // Game defines
-#define WREZ 640
-#define HREZ 480
+#define W 640
+#define H 480
 
 #include "Game.h"
 
@@ -14,18 +14,14 @@ int main(int argc, char* argv[])
 
     Uint32 frameStart;
 
-    Game* game = new Game();
+    Game* game = new Game("Engine",
+                        SDL_WINDOWPOS_CENTERED,
+                        SDL_WINDOWPOS_CENTERED,
+                        W, H, 0);
 
-    game->Initialize("Engine",
-                     SDL_WINDOWPOS_CENTERED,
-                     SDL_WINDOWPOS_CENTERED,
-                     WREZ,
-                     HREZ,
-                     0
-                    );
+    game->Initialize();
 
-    while( game->isRunning() )
-    {
+    while( game->isRunning() ){
         frameStart = SDL_GetTicks();
 
         // Actual game loop

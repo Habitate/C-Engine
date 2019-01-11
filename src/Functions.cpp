@@ -10,7 +10,6 @@
 
 #include "color.h"
 #include "string"
-#include "myInternet.h"
 
 void sendPosition(int* x, int* y, SOCKET DataSocket){
     static char positions[5] = {0};

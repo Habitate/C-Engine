@@ -24,7 +24,7 @@
         {
             "label": "Remake all & run",
             "type": "shell",
-            "command": "cd Build && make clean && make && cd.. && cd bin && cls && app",
+            "command": "cd Build && make clean && make && cd../bin && cls && start cmd.exe /K app.exe",
             "problemMatcher":"$gcc",
             "presentation": {
                 "echo": false,

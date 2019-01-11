@@ -1,30 +1,20 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-#include "myInternet.h"
 #include "Texture.h"
 
 class Object
 {
     public:
         Object();
-        ~Object();
+        Object(int x, int y, int w, int h);
 
-        void Initialize(int, int, bool);
-
-        void Update(bool, SOCKET = 0);
-
-        bool checkCollision(Object&);
-
-        //bool checkMoreCollision(Object&);
+        void Update();
+        bool checkCollision(Object& object);
 
         Texture sprite;
-
-        bool serverObject;
-        int x;
-        int y;
-        int w;
-        int h;
+        int x, y;
+        int w, h;
 };
 
 #endif // OBJECT_H
