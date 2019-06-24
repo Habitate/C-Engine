@@ -25,8 +25,6 @@ std::vector<std::string> SUPPORTED_DATA_TYPES = {
 // ***    ---- Texture data ----     ***
 // *************************************
 TextureData::TextureData(SDL_Renderer* renderer, std::string path) : sprite(nullptr, SDL_DestroyTexture), visable(true), srcRect({0, 0, 0, 0}), dstRect({0, 0, 0, 0}){
-    if(good()) sprite.reset();
-
     sprite = std::unique_ptr<SDL_Texture, void(*)(SDL_Texture*)>(IMG_LoadTexture(renderer, path.c_str()), SDL_DestroyTexture);
 
     if(!good()){
@@ -132,30 +130,34 @@ void Texture::setSize(int index, int w, int h){
 }
 
 SDL_Rect& Texture::getSrcRect(int index){
-    if(index < 0 || index >= count()){//? Is betwen bounds
+    if(index == -1){
         return sprites[spriteIndex]->srcRect;
     }
+
+    if(index < count() && index >= 0){
+        return sprites[index]->srcRect;
+    }
     else{
         throw std::out_of_range("Attempted to access non-existent sprite!");
     }
-
 }
 SDL_Rect& Texture::getDstRect(int index){
-    if(index < 0 || index >= count()){//? Is betwen bounds
+    if(index == -1){
         return sprites[spriteIndex]->dstRect;
+    }
+
+    if(index < count() && index >= 0){
+        return sprites[index]->dstRect;
     }
     else{
         throw std::out_of_range("Attempted to access non-existent sprite!");
     }
 }
 
-//! Private
-// Loads the given extension
+
 void Texture::SingleLoad(SDL_Renderer* renderer, const std::string& fileName){
     sprites.emplace_back(new TextureData(renderer, fileName));
 }
-
-// Loops and loads all extensions starting with x_0.ext to x_n.ext
 void Texture::MultiLoad(SDL_Renderer* renderer, const std::string& fileName, const std::string& extension){
     while(fileExists(fileName + '_' + std::to_string(sprites.size()) + extension)){
         sprites.emplace_back(new TextureData(renderer, fileName + '_' + std::to_string(sprites.size()) + extension));

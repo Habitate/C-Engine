@@ -42,13 +42,17 @@ class Texture{
 
 		void draw(SDL_Renderer* renderer, int x, int y);
 
-		//* Negative values will return the current sprite @ spriteIndex
+		//* Pass -1 to the index to get rect @ spriteIndex
 		SDL_Rect& getSrcRect(int index = -1);
+
+		//* Pass -1 to the index to get rect @ spriteIndex
 		SDL_Rect& getDstRect(int index = -1);
 
 
 	private:
+		//* Loads the file with the given extension
 		void SingleLoad (SDL_Renderer* renderer, const std::string& fileName                       );
+		//* Loops and loads all files with the given extension starting with x_0.ext to x_n.ext
 		void MultiLoad  (SDL_Renderer* renderer, const std::string& fileName, const std::string& extension);
 
 		std::vector<std::shared_ptr<TextureData>> sprites;

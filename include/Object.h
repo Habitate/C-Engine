@@ -9,8 +9,10 @@ class Object
         Object();
         Object(const SDL_Rect& body);
 
-        void Update();
+        void update();
+        void draw(SDL_Renderer* renderer);
         bool checkCollision(Object& object);
+
 
         Texture sprite;
         SDL_Rect body;

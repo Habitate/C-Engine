@@ -30,6 +30,9 @@ Game::~Game(){
 void Game::Initialize(){
     player.sprite.load(renderer.get(), "../assets/anim/test/test");
     player.sprite.setSize(-1, 100, 100);
+    player.body = player.sprite.getDstRect();
+    player.body.x = 320;
+    player.body.y = 316;
 
     wallpaper.load(renderer.get(), "../assets/wallpaper");
 
@@ -47,8 +50,14 @@ void Game::HandleSDLEvents(){
 }
 void Game::Update(){
     // Do input stuff
-    switch(getInput()){    
+    switch(getInput()){
+        case 'a': player.body.x -= 3; break;
+        case 'd': player.body.x += 3; break;
+
+        case 'w': break;
     }
+
+    player.update();
 }
 void Game::Render(){
     // Clear the screen
@@ -61,7 +70,8 @@ void Game::Render(){
         ground.draw(renderer.get(), x, 416);
     }
 
-    player.sprite.draw(renderer.get(), 320, 316);
+    //player.sprite.draw(renderer.get(), 320, 316);
+    player.draw(renderer.get());
 
     // Draw the screen
     SDL_RenderPresent(renderer.get());

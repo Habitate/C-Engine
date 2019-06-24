@@ -6,9 +6,13 @@
 Object::Object() : body{0, 0 , 0, 0} {}
 Object::Object(const SDL_Rect& body) : body(body) {}
 
-void Object::Update(){
+void Object::update(){
     // Sync the sprite
     sprite.getDstRect() = body;
+}
+
+void Object::draw(SDL_Renderer* renderer){
+    sprite.draw(renderer, body.x, body.y);
 }
 
 bool Object::checkCollision(Object& obj){
