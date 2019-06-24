@@ -63,7 +63,7 @@ bool TextureData::good(){
 // *************************************
 // ***   ---- Texture handler ----   ***
 // *************************************
-Texture::Texture() : spriteIndex(0), visable(true){}
+Texture::Texture() : spriteIndex(0), visable(true), animating(true), animatingOnce(false){}
 
 void Texture::load(SDL_Renderer* renderer, std::string fileName){
     std::vector<std::string>* DATA_TYPES = &SUPPORTED_DATA_TYPES;
@@ -88,6 +88,19 @@ void Texture::load(SDL_Renderer* renderer, std::string fileName){
     std::cout << "Unable to find a suitable file for: " << fileName + singleType[0] << '\n';  
 }
 
+int Texture::getIndex(){
+    return spriteIndex;
+}
+
+void Texture::setIndex(const int index){
+    if(index < count() && index >= 0){
+        spriteIndex = index;
+    }
+    else{
+        throw std::out_of_range("Attempted to set an invalid sprite index!");
+    }
+}
+
 int Texture::count() const{
     return sprites.size();
 }
@@ -107,10 +120,19 @@ void Texture::draw(SDL_Renderer* renderer, int x, int y){
         sprites[spriteIndex]->draw(renderer, x, y);
     }
 
-    ++spriteIndex;
+    if(animating){
+        ++spriteIndex;
     
-    if(spriteIndex == sprites.size()){
-        spriteIndex = 0;
+        if(spriteIndex == sprites.size()){
+            spriteIndex = 0;
+        }
+    }
+
+    if(animatingOnce){
+        if(spriteIndex == animationStartIndex){
+            animatingOnce = false;
+            animating     = false;
+        }
     }
 }
 
@@ -154,6 +176,20 @@ SDL_Rect& Texture::getDstRect(int index){
     }
 }
 
+void Texture::startAnimation(){
+	animating = true;
+}
+void Texture::stopAnimation(){
+	animating = false;
+}
+void Texture::resetAnimation(){
+	setIndex(animationStartIndex);
+}
+void Texture::runAnimationOnce(){
+    animatingOnce = true;
+    resetAnimation();
+    startAnimation();
+}
 
 void Texture::SingleLoad(SDL_Renderer* renderer, const std::string& fileName){
     sprites.emplace_back(new TextureData(renderer, fileName));

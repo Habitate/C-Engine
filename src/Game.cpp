@@ -10,7 +10,8 @@
 #include "color.h"
 #include <memory>
 
-Game::Game(const char* name, int x, int y, int w, int h, int flags) : running(false), WREZ(w), HREZ(h), input(0), renderer(nullptr, SDL_DestroyRenderer), window(nullptr, SDL_DestroyWindow), Sans(nullptr, TTF_CloseFont) {
+Game::Game(const char* name, int x, int y, int w, int h, int flags)
+: running(false), WREZ(w), HREZ(h), input(0), renderer(nullptr, SDL_DestroyRenderer), window(nullptr, SDL_DestroyWindow), Sans(nullptr, TTF_CloseFont){
     SDL_Init(SDL_INIT_EVERYTHING);
     IMG_Init(0);
     TTF_Init();
@@ -33,6 +34,9 @@ void Game::Initialize(){
     player.body = player.sprite.getDstRect();
     player.body.x = 320;
     player.body.y = 316;
+    player.sprite.setIndex(34);
+    player.sprite.animating = false;
+    player.sprite.animationStartIndex = 34;
 
     wallpaper.load(renderer.get(), "../assets/wallpaper");
 
@@ -54,7 +58,10 @@ void Game::Update(){
         case 'a': player.body.x -= 3; break;
         case 'd': player.body.x += 3; break;
 
-        case 'w': break;
+        case 'w':   if(!player.sprite.animatingOnce){
+                        player.sprite.setIndex(34);
+                        player.sprite.runAnimationOnce();
+                    }
     }
 
     player.update();

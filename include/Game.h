@@ -44,6 +44,8 @@ class Game
 
         // Objects
         Object player;
+
+        // Temp
 };
 
 #endif // GAME_H
