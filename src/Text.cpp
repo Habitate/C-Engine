@@ -1,8 +1,5 @@
 // *********************************************************
-// This class's objects hugely rely on the constructor!
-// Make sure it's allways called when dealing with dynamic
-// memory! Also, every intance of the object must first be
-// Initialized with the functions
+//! Be sure to run TTF_Init() before using!
 // *********************************************************
 
 #include "Text.h"
