@@ -39,7 +39,11 @@ class Game
         SDL_Color White;
 
         // Textures
-        Texture t;
+        Texture wallpaper;
+        Texture ground;
+
+        // Objects
+        Object player;
 };
 
 #endif // GAME_H

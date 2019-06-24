@@ -1,0 +1,7 @@
+/.vscode
+/build/*
+
+Texture.cpp
+texture.h
+
+!/build/CMakeLists.txt

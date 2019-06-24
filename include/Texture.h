@@ -10,13 +10,12 @@ class TextureData{
 	public:
 		//* Only supports paths like "assets/myImage.png"
 		TextureData(SDL_Renderer* renderer, std::string path);
-		void Draw(SDL_Renderer* renderer, int x, int y);
+		void draw(SDL_Renderer* renderer, int x, int y);
 		
 		//* Pass -1 to w or h to retain the current size
-		void ChangeSize(int w, int h);
-		bool Good();
+		void setSize(int w, int h);
+		bool good();
 
-		//SDL_Texture* sprite;
 		std::unique_ptr<SDL_Texture, void(*)(SDL_Texture*)> sprite;
 
 		SDL_Rect srcRect;
@@ -29,25 +28,30 @@ class Texture{
 	public:
 		Texture();
 
-		void Load       (SDL_Renderer* renderer, std::string path                           );
-		void SingleLoad (SDL_Renderer* renderer, std::string fileName                       );
-		void MultiLoad  (SDL_Renderer* renderer, std::string fileName, std::string extension);
+		void load(SDL_Renderer* renderer, std::string path);
+		
+		void getIndex();
+		void setIndex();
 
-		int getSpriteCount();
-
-		//! Returns good if, atleast, the first sprite is valid
-		bool Good();
+		int count() const;
+		bool good() const; //! Good if first sprite is valid
 
 		//* Pass -1 to w or h to retain the current size
 		//* Pass -1 to index to change all sprites
-		void ChangeSize(int index, int w, int h);
-		void Draw(SDL_Renderer* renderer, int x, int y);
+		void setSize(int index, int w, int h);
 
-		//* Negative values will set the current sprite @ spriteIndex
-		SDL_Rect& GetRect(bool dst, int index = -1);
+		void draw(SDL_Renderer* renderer, int x, int y);
+
+		//* Negative values will return the current sprite @ spriteIndex
+		SDL_Rect& getSrcRect(int index = -1);
+		SDL_Rect& getDstRect(int index = -1);
+
+
+	private:
+		void SingleLoad (SDL_Renderer* renderer, const std::string& fileName                       );
+		void MultiLoad  (SDL_Renderer* renderer, const std::string& fileName, const std::string& extension);
 
 		std::vector<std::shared_ptr<TextureData>> sprites;
-
 		int spriteIndex;
 		bool visable;
 };

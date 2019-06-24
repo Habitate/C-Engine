@@ -18,7 +18,7 @@ Game::Game(const char* name, int x, int y, int w, int h, int flags) : running(fa
     window   = std::unique_ptr<SDL_Window  , void(*)(SDL_Window  *)>(SDL_CreateWindow(name, x, y, w, h, flags), SDL_DestroyWindow);
     if(!window  ) { std::cout << SDL_GetError() << "\n\n"; throw; }
 
-    renderer = std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer*)>(SDL_CreateRenderer(window.get(), -1, 0) ,SDL_DestroyRenderer);
+    renderer = std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer*)>(SDL_CreateRenderer(window.get(), -1, 0) , SDL_DestroyRenderer);
     if(!renderer) { std::cout << SDL_GetError() << "\n\n"; throw; }
 
     changeIcon("../assets/icont.png");
@@ -28,7 +28,13 @@ Game::~Game(){
 }
 
 void Game::Initialize(){
-    t.Load(renderer.get(), "../assets/icont");
+    player.sprite.load(renderer.get(), "../assets/anim/test/test");
+    player.sprite.setSize(-1, 100, 100);
+
+    wallpaper.load(renderer.get(), "../assets/wallpaper");
+
+    ground.load(renderer.get(), "../assets/tilee");
+    ground.setSize(0, 64, 64);
 
     running = true;
 }
@@ -48,8 +54,14 @@ void Game::Render(){
     // Clear the screen
     SDL_RenderClear(renderer.get());
 
-    t.Draw(renderer.get(), 0, 0);
-    t.ChangeSize(-1, 640, 480);
+    wallpaper.draw(renderer.get(), 0, 0);
+
+    // Draw the ground
+    for(int x = 0; x < 640; x += 64){
+        ground.draw(renderer.get(), x, 416);
+    }
+
+    player.sprite.draw(renderer.get(), 320, 316);
 
     // Draw the screen
     SDL_RenderPresent(renderer.get());

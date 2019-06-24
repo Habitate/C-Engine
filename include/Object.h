@@ -7,14 +7,13 @@ class Object
 {
     public:
         Object();
-        Object(int x, int y, int w, int h);
+        Object(const SDL_Rect& body);
 
         void Update();
         bool checkCollision(Object& object);
 
         Texture sprite;
-        int x, y;
-        int w, h;
+        SDL_Rect body;
 };
 
 #endif // OBJECT_H

@@ -37,7 +37,8 @@
         "unordered_map": "cpp",
         "vector": "cpp",
         "optional": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "cstddef": "cpp"
     },
     "C_Cpp.dimInactiveRegions": false
 }
