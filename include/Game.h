@@ -43,7 +43,7 @@ class Game
         Texture ground;
 
         // Objects
-        Object player;
+        std::vector<std::unique_ptr<Object>> objects;
 
         // Temp
 };

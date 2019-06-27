@@ -16,6 +16,8 @@ add_library(object     ../src/Object.cpp)
 add_library(texture    ../src/Texture.cpp)
 add_library(color      ../src/color.cpp)
 
+add_library(object_player ../src/objects/player.cpp)
+
 target_compile_options(app PUBLIC -g)
 target_compile_options(text PUBLIC -g)
 target_compile_options(functions PUBLIC -g)
@@ -23,6 +25,8 @@ target_compile_options(game PUBLIC -g)
 target_compile_options(object PUBLIC -g)
 target_compile_options(texture PUBLIC -g)
 target_compile_options(color PUBLIC -g)
+
+target_compile_options(object_player PUBLIC -g)
 
 target_link_libraries(app
 	game
@@ -39,6 +43,8 @@ target_link_libraries(app
 	SDL2_ttf
 	ws2_32
 	pthread
+
+	object_player
 
 	-static-libgcc
 	-static-libstdc++

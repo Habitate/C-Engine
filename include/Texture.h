@@ -58,7 +58,7 @@ class Texture{
 		bool animating;
 		bool animatingOnce;
 
-	private:
+	//private:
 		//* Loads the file with the given extension
 		void SingleLoad (SDL_Renderer* renderer, const std::string& fileName                       );
 		

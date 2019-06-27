@@ -10,17 +10,26 @@
 #include "color.h"
 #include <memory>
 
+#include "Objects/player.h"
+
 Game::Game(const char* name, int x, int y, int w, int h, int flags)
-: running(false), WREZ(w), HREZ(h), input(0), renderer(nullptr, SDL_DestroyRenderer), window(nullptr, SDL_DestroyWindow), Sans(nullptr, TTF_CloseFont){
+: running(false), WREZ(w), HREZ(h), input(0), renderer(nullptr, SDL_DestroyRenderer),
+window(nullptr, SDL_DestroyWindow), Sans(nullptr, TTF_CloseFont){
     SDL_Init(SDL_INIT_EVERYTHING);
     IMG_Init(0);
     TTF_Init();
 
-    window   = std::unique_ptr<SDL_Window  , void(*)(SDL_Window  *)>(SDL_CreateWindow(name, x, y, w, h, flags), SDL_DestroyWindow);
-    if(!window  ) { std::cout << SDL_GetError() << "\n\n"; throw; }
+    window = std::unique_ptr<SDL_Window  , void(*)(SDL_Window  *)>(SDL_CreateWindow(name, x, y, w, h, flags), SDL_DestroyWindow);  
+    if(!window){
+        std::cout << SDL_GetError() << "\n\n";
+        throw;
+    }
 
     renderer = std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer*)>(SDL_CreateRenderer(window.get(), -1, 0) , SDL_DestroyRenderer);
-    if(!renderer) { std::cout << SDL_GetError() << "\n\n"; throw; }
+    if(!renderer){
+        std::cout << SDL_GetError() << "\n\n";
+        throw;
+    }
 
     changeIcon("../assets/icont.png");
 }
@@ -29,14 +38,9 @@ Game::~Game(){
 }
 
 void Game::Initialize(){
-    player.sprite.load(renderer.get(), "../assets/anim/test/test");
-    player.sprite.setSize(-1, 100, 100);
-    player.body = player.sprite.getDstRect();
-    player.body.x = 320;
-    player.body.y = 316;
-    player.sprite.setIndex(34);
-    player.sprite.animating = false;
-    player.sprite.animationStartIndex = 34;
+    objects.reserve(10);
+
+    objects.emplace_back(new Obj_player(renderer.get()));
 
     wallpaper.load(renderer.get(), "../assets/wallpaper");
 
@@ -53,18 +57,29 @@ void Game::HandleSDLEvents(){
     }
 }
 void Game::Update(){
+    // Handle object steps
+    for(std::unique_ptr<Object>& object : objects){
+        object->begin_step();
+    }
+    for(std::unique_ptr<Object>& object : objects){
+        object->step();
+    }
+    for(std::unique_ptr<Object>& object : objects){
+        object->end_step();
+    }
+
     // Do input stuff
     switch(getInput()){
-        case 'a': player.body.x -= 3; break;
-        case 'd': player.body.x += 3; break;
+        case 'a': objects[0]->body.x -= 3; break;
+        case 'd': objects[0]->body.x += 3; break;
 
-        case 'w':   if(!player.sprite.animatingOnce){
-                        player.sprite.setIndex(34);
-                        player.sprite.runAnimationOnce();
+        case 'w':   if(!objects[0]->sprite.animatingOnce){
+                        objects[0]->sprite.setIndex(34);
+                        objects[0]->sprite.runAnimationOnce();
                     }
     }
 
-    player.update();
+    objects[0]->update();
 }
 void Game::Render(){
     // Clear the screen
@@ -77,8 +92,11 @@ void Game::Render(){
         ground.draw(renderer.get(), x, 416);
     }
 
-    //player.sprite.draw(renderer.get(), 320, 316);
-    player.draw(renderer.get());
+    //objects[0]->sprite.draw(renderer.get(), 320, 316);
+    for(std::unique_ptr<Object>& object : objects){
+        object->draw(renderer.get());
+    }
+    //objects[0]->draw(renderer.get());
 
     // Draw the screen
     SDL_RenderPresent(renderer.get());

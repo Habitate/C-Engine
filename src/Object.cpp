@@ -2,9 +2,18 @@
 
 #include "Functions.h"
 #include "Texture.h"
+#include <iostream>
 
-Object::Object() : body{0, 0 , 0, 0} {}
-Object::Object(const SDL_Rect& body) : body(body) {}
+void Object::begin_step(){}
+void Object::step(){}
+void Object::end_step(){}
+
+Object::Object() : body{0, 0 , 0, 0}{
+}
+Object::Object(const SDL_Rect& body) : body(body){
+}
+Object::~Object(){
+}
 
 void Object::update(){
     // Sync the sprite
