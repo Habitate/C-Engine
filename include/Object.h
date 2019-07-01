@@ -20,6 +20,8 @@ class Object
 
         Texture sprite;
         SDL_Rect body;
+
+        //TODO: Add inputHandler pointer
 };
 
 #endif // OBJECT_H

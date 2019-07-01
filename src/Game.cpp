@@ -74,7 +74,6 @@ void Game::Update(){
         case 'd': objects[0]->body.x += 3; break;
 
         case 'w':   if(!objects[0]->sprite.animatingOnce){
-                        objects[0]->sprite.setIndex(34);
                         objects[0]->sprite.runAnimationOnce();
                     }
     }
@@ -92,13 +91,11 @@ void Game::Render(){
         ground.draw(renderer.get(), x, 416);
     }
 
-    //objects[0]->sprite.draw(renderer.get(), 320, 316);
     for(std::unique_ptr<Object>& object : objects){
         object->draw(renderer.get());
     }
-    //objects[0]->draw(renderer.get());
 
-    // Draw the screen
+    // Place everything on the screen
     SDL_RenderPresent(renderer.get());
 }
 
