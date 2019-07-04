@@ -2,6 +2,7 @@
 #define OBJECT_H
 
 #include "Texture.h"
+#include <SDL2/SDL.h>
 
 class Object
 {
@@ -14,14 +15,13 @@ class Object
         virtual void step();
         virtual void end_step();
 
-        void update();
+        void syncSprite();
+        
         void draw(SDL_Renderer* renderer);
         bool checkCollision(Object& object);
 
         Texture sprite;
         SDL_Rect body;
-
-        //TODO: Add inputHandler pointer
 };
 
 #endif // OBJECT_H

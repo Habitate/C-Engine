@@ -11,10 +11,10 @@
 #include <memory>
 
 #include "Objects/player.h"
+#include "InputHandler.h"
 
-Game::Game(const char* name, int x, int y, int w, int h, int flags)
-: running(false), WREZ(w), HREZ(h), input(0), renderer(nullptr, SDL_DestroyRenderer),
-window(nullptr, SDL_DestroyWindow), Sans(nullptr, TTF_CloseFont){
+Game::Game(const char* name, int x, int y, int w, int h, int flags) :
+running(false), WREZ(w), HREZ(h), input(0), renderer(nullptr, SDL_DestroyRenderer), window(nullptr, SDL_DestroyWindow), Sans(nullptr, TTF_CloseFont){
     SDL_Init(SDL_INIT_EVERYTHING);
     IMG_Init(0);
     TTF_Init();
@@ -38,9 +38,11 @@ Game::~Game(){
 }
 
 void Game::Initialize(){
+    InputHandler::Init();
+
     objects.reserve(10);
 
-    objects.emplace_back(new Obj_player(renderer.get()));
+    objects.emplace_back(new Obj_player(renderer.get(), &event));
 
     wallpaper.load(renderer.get(), "../assets/wallpaper");
 
@@ -50,6 +52,8 @@ void Game::Initialize(){
     running = true;
 }
 void Game::HandleSDLEvents(){
+    //? InputHandler::syncStates() needs to be called before SDL_PollEvent, since SDL_PolLEvent implicitly calls SDL_PumpEvents which updates the keyboard state
+    InputHandler::syncStates();
     SDL_PollEvent(&event);
 
     switch(event.type){
@@ -57,6 +61,7 @@ void Game::HandleSDLEvents(){
     }
 }
 void Game::Update(){
+
     // Handle object steps
     for(std::unique_ptr<Object>& object : objects){
         object->begin_step();
@@ -67,18 +72,6 @@ void Game::Update(){
     for(std::unique_ptr<Object>& object : objects){
         object->end_step();
     }
-
-    // Do input stuff
-    switch(getInput()){
-        case 'a': objects[0]->body.x -= 3; break;
-        case 'd': objects[0]->body.x += 3; break;
-
-        case 'w':   if(!objects[0]->sprite.animatingOnce){
-                        objects[0]->sprite.runAnimationOnce();
-                    }
-    }
-
-    objects[0]->update();
 }
 void Game::Render(){
     // Clear the screen
@@ -99,8 +92,8 @@ void Game::Render(){
     SDL_RenderPresent(renderer.get());
 }
 
-void Game::changeIcon(const char* path){
-    std::unique_ptr<SDL_Surface, void(*)(SDL_Surface*)> icon(IMG_Load(path), SDL_FreeSurface);
+void Game::changeIcon(const std::string& path){
+    std::unique_ptr<SDL_Surface, void(*)(SDL_Surface*)> icon(IMG_Load(path.c_str()), SDL_FreeSurface);
 
     //Error check
     if(!icon){

@@ -15,8 +15,7 @@ Object::Object(const SDL_Rect& body) : body(body){
 Object::~Object(){
 }
 
-void Object::update(){
-    // Sync the sprite
+void Object::syncSprite(){
     sprite.getDstRect() = body;
 }
 

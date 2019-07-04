@@ -9,12 +9,13 @@ add_executable(app
 	../src/info.rc
 )
 
-add_library(text       ../src/Text.cpp)
-add_library(functions  ../src/Functions.cpp)
-add_library(game       ../src/Game.cpp)
-add_library(object     ../src/Object.cpp)
-add_library(texture    ../src/Texture.cpp)
-add_library(color      ../src/color.cpp)
+add_library(text      OBJECT ../src/Text.cpp)
+add_library(functions OBJECT ../src/Functions.cpp)
+add_library(game      OBJECT ../src/Game.cpp)
+add_library(object    OBJECT ../src/Object.cpp)
+add_library(texture   OBJECT ../src/Texture.cpp)
+add_library(color     OBJECT ../src/color.cpp)
+add_library(input     OBJECT ../src/InputHandler.cpp)
 
 add_library(object_player ../src/objects/player.cpp)
 
@@ -25,16 +26,21 @@ target_compile_options(game PUBLIC -g)
 target_compile_options(object PUBLIC -g)
 target_compile_options(texture PUBLIC -g)
 target_compile_options(color PUBLIC -g)
+target_compile_options(input PUBLIC -g)
 
 target_compile_options(object_player PUBLIC -g)
 
 target_link_libraries(app
 	game
 	text
-	functions
 	object
 	texture
 	color
+	input
+
+	object_player
+
+	functions	
 
 	mingw32
 	SDL2main
@@ -43,8 +49,6 @@ target_link_libraries(app
 	SDL2_ttf
 	ws2_32
 	pthread
-
-	object_player
 
 	-static-libgcc
 	-static-libstdc++

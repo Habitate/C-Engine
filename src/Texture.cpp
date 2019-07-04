@@ -7,7 +7,7 @@
 #include <string>
 
 #include "color.h"
-#include "functions.h"
+#include "Functions.h"
 
 #include <exception>
 

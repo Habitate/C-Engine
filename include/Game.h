@@ -6,6 +6,7 @@
 #include "Object.h"
 #include "texture.h"
 #include <memory>
+#include "InputHandler.h"
 
 class Game
 {
@@ -18,7 +19,7 @@ class Game
         void Update();
         void Render();
         
-        void changeIcon(const char* path);
+        void changeIcon(const std::string& path);
         bool isRunning();
 
     private:
@@ -46,6 +47,7 @@ class Game
         std::vector<std::unique_ptr<Object>> objects;
 
         // Temp
+        //InputHandler inputHandler;
 };
 
 #endif // GAME_H

@@ -17,16 +17,10 @@ char* stringWInt(char*, const char*,int);
 void color(int);
 
 char getInput();
-
+ 
 bool fileExists(std::string path);
 
 // Loader functions
-
-// TTF_RenderText_Blended
-bool LoadSDLTexture(SDL_Renderer*, SDL_Surface**, SDL_Texture**, SDL_Surface* loaderFunction(TTF_Font*, const char*, SDL_Color), TTF_Font*, const char*, SDL_Color);
-
-// IMG_Load
-bool LoadSDLTexture(SDL_Renderer*, SDL_Surface**, SDL_Texture**, SDL_Surface* loaderFunction(const char*), const char*);
 
 //? Both return false if the file does not contain an extension
 bool getExtensionStart(std::string fileName, int& pos);
