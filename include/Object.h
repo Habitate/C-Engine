@@ -16,7 +16,7 @@ class Object
         virtual void end_step();
 
         void syncSprite();
-        
+
         void draw(SDL_Renderer* renderer);
         bool checkCollision(Object& object);
 

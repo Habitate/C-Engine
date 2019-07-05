@@ -24,7 +24,7 @@ std::vector<std::string> SUPPORTED_DATA_TYPES = {
 // *************************************
 // ***    ---- Texture data ----     ***
 // *************************************
-TextureData::TextureData(SDL_Renderer* renderer, std::string path) : sprite(nullptr, SDL_DestroyTexture), visable(true), srcRect({0, 0, 0, 0}), dstRect({0, 0, 0, 0}){
+TextureData::TextureData(SDL_Renderer* renderer, std::string path) : sprite(nullptr, SDL_DestroyTexture), srcRect({0, 0, 0, 0}), dstRect({0, 0, 0, 0}){
     sprite = std::unique_ptr<SDL_Texture, void(*)(SDL_Texture*)>(IMG_LoadTexture(renderer, path.c_str()), SDL_DestroyTexture);
 
     if(!good()){
@@ -40,13 +40,13 @@ TextureData::TextureData(SDL_Renderer* renderer, std::string path) : sprite(null
     std::cout << Color(10) << "Successfully loaded: \"" << Color(14) << path << Color(10) << "\"\n" << Color(7);
 }
 
-void TextureData::draw(SDL_Renderer* renderer, int x, int y){
-    if(!good() || !visable) return;
+void TextureData::draw(SDL_Renderer* renderer, const int x, const int y, const double angle, const SDL_Point* center, const SDL_RendererFlip flip){
+    if(!good()) return;
 
     dstRect.x = x;
     dstRect.y = y;
 
-    SDL_RenderCopy(renderer, sprite.get(), &srcRect, &dstRect);
+    SDL_RenderCopyEx(renderer, sprite.get(), &srcRect, &dstRect, angle, center, flip);
 }
 
 void TextureData::setSize(int w, int h){
@@ -63,7 +63,7 @@ bool TextureData::good(){
 // *************************************
 // ***   ---- Texture handler ----   ***
 // *************************************
-Texture::Texture() : spriteIndex(0), visable(true), animating(true), animatingOnce(false){}
+Texture::Texture() : spriteIndex(0), visable(true), animating(true), animatingOnce(false), flip(SDL_FLIP_NONE), center{0, 0}, angle(0){}
 
 void Texture::load(SDL_Renderer* renderer, std::string fileName){
     std::vector<std::string>* DATA_TYPES = &SUPPORTED_DATA_TYPES;
@@ -111,13 +111,13 @@ bool Texture::good() const{
 }
 
 // TODO: Add time frame implementation
-void Texture::draw(SDL_Renderer* renderer, int x, int y){
+void Texture::draw(SDL_Renderer* renderer, const int x, const int y){
     if(!sprites.size() || !visable){
         return;
     }
 
     if(sprites[spriteIndex]->good()){
-        sprites[spriteIndex]->draw(renderer, x, y);
+        sprites[spriteIndex]->draw(renderer, x, y, angle, &center, flip);
     }
 
     if(animating){
@@ -163,7 +163,31 @@ SDL_Rect& Texture::getSrcRect(int index){
         throw std::out_of_range("Attempted to access non-existent sprite!");
     }
 }
+const SDL_Rect& Texture::getSrcRect(int index) const{
+    if(index == -1){
+        return sprites[spriteIndex]->srcRect;
+    }
+
+    if(index < count() && index >= 0){
+        return sprites[index]->srcRect;
+    }
+    else{
+        throw std::out_of_range("Attempted to access non-existent sprite!");
+    }
+}
 SDL_Rect& Texture::getDstRect(int index){
+    if(index == -1){
+        return sprites[spriteIndex]->dstRect;
+    }
+
+    if(index < count() && index >= 0){
+        return sprites[index]->dstRect;
+    }
+    else{
+        throw std::out_of_range("Attempted to access non-existent sprite!");
+    }
+}
+const SDL_Rect& Texture::getDstRect(int index) const{
     if(index == -1){
         return sprites[spriteIndex]->dstRect;
     }

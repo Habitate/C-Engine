@@ -3,6 +3,7 @@
 
 #include "Object.h"
 #include "InputHandler.h"
+#include <SDL2/SDL.h>
 
 class Obj_player : public Object{
     public:

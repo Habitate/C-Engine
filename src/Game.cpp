@@ -11,6 +11,7 @@
 #include <memory>
 
 #include "Objects/player.h"
+#include "Objects/player2.h"
 #include "InputHandler.h"
 
 Game::Game(const char* name, int x, int y, int w, int h, int flags) :
@@ -43,6 +44,7 @@ void Game::Initialize(){
     objects.reserve(10);
 
     objects.emplace_back(new Obj_player(renderer.get(), &event));
+    objects.emplace_back(new Obj_player2(renderer.get(), &event, objects[0]->sprite));
 
     wallpaper.load(renderer.get(), "../assets/wallpaper");
 
@@ -61,7 +63,6 @@ void Game::HandleSDLEvents(){
     }
 }
 void Game::Update(){
-
     // Handle object steps
     for(std::unique_ptr<Object>& object : objects){
         object->begin_step();
@@ -84,6 +85,7 @@ void Game::Render(){
         ground.draw(renderer.get(), x, 416);
     }
 
+    // Draw the objects
     for(std::unique_ptr<Object>& object : objects){
         object->draw(renderer.get());
     }

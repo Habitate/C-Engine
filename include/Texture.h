@@ -10,7 +10,7 @@ class TextureData{
 	public:
 		//* Only supports paths like "assets/myImage.png"
 		TextureData(SDL_Renderer* renderer, std::string path);
-		void draw(SDL_Renderer* renderer, int x, int y);
+		void draw(SDL_Renderer* renderer, const int x, const int y, const double angle, const SDL_Point* center, const SDL_RendererFlip flip);
 		
 		//* Pass -1 to w or h to retain the current size
 		void setSize(int w, int h);
@@ -20,8 +20,6 @@ class TextureData{
 
 		SDL_Rect srcRect;
 		SDL_Rect dstRect;
-
-		bool visable;
 };
 
 class Texture{
@@ -41,13 +39,15 @@ class Texture{
 		//* Pass -1 to w or h to retain the current size
 		void setSize(int index, int w, int h);
 
-		void draw(SDL_Renderer* renderer, int x, int y);
+		void draw(SDL_Renderer* renderer, const int x, const int y);
 
 		//* Pass -1 to the index to get rect @ spriteIndex
 		SDL_Rect& getSrcRect(int index = -1);
+		const SDL_Rect& getSrcRect(int index = -1) const;
 
 		//* Pass -1 to the index to get rect @ spriteIndex
 		SDL_Rect& getDstRect(int index = -1);
+		const SDL_Rect& getDstRect(int index = -1) const;
 
 		void startAnimation();
 		void stopAnimation();
@@ -68,6 +68,10 @@ class Texture{
 		std::vector<std::shared_ptr<TextureData>> sprites;
 		int spriteIndex;
 		bool visable;
+
+		double angle;
+		SDL_Point center;
+		SDL_RendererFlip flip;
 		
 };
 
