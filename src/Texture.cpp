@@ -28,7 +28,7 @@ TextureData::TextureData(SDL_Renderer* renderer, std::string path) : sprite(null
     sprite = std::unique_ptr<SDL_Texture, void(*)(SDL_Texture*)>(IMG_LoadTexture(renderer, path.c_str()), SDL_DestroyTexture);
 
     if(!good()){
-        std::cout << Color(12) << "Error loading: \"" << Color(14) << path << Color(12) << "\"\n" << Color(7);
+        std::cout << Color(12) << "Error loading sprite: \"" << Color(14) << path << Color(12) << "\"\n" << Color(7);
         std::cout << "\t-> " << IMG_GetError() << '\n';
         
         return;
@@ -37,7 +37,7 @@ TextureData::TextureData(SDL_Renderer* renderer, std::string path) : sprite(null
     SDL_QueryTexture(sprite.get(), nullptr, nullptr, &srcRect.w, &srcRect.h);
     dstRect = srcRect;
 
-    std::cout << Color(10) << "Successfully loaded: \"" << Color(14) << path << Color(10) << "\"\n" << Color(7);
+    std::cout << Color(10) << "Successfully loaded sprite: \"" << Color(14) << path << Color(10) << "\"\n" << Color(7);
 }
 
 void TextureData::draw(SDL_Renderer* renderer, const int x, const int y, const double angle, const SDL_Point* center, const SDL_RendererFlip flip){

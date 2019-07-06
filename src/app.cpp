@@ -9,7 +9,7 @@
 int main(int argc, char* argv[])
 {
     const int fpsCap = 60;
-    const constexpr int frameDelay = 1000 / fpsCap; // How many max mileseconds can one frame take up
+    const constexpr Uint32 frameDelay = 1000 / fpsCap; // How many max mileseconds can one frame take up
 
     int frameTime;
     Uint32 frameStart;

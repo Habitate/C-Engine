@@ -13,9 +13,11 @@
 #include "Objects/player.h"
 #include "Objects/player2.h"
 #include "InputHandler.h"
+#include "Font.h"
 
 Game::Game(const char* name, int x, int y, int w, int h, int flags) :
-running(false), WREZ(w), HREZ(h), input(0), renderer(nullptr, SDL_DestroyRenderer), window(nullptr, SDL_DestroyWindow), Sans(nullptr, TTF_CloseFont){
+running(false), WREZ(w), HREZ(h), renderer(nullptr, SDL_DestroyRenderer),
+window(nullptr, SDL_DestroyWindow), Sans(nullptr, TTF_CloseFont){
     SDL_Init(SDL_INIT_EVERYTHING);
     IMG_Init(0);
     TTF_Init();
@@ -40,6 +42,8 @@ Game::~Game(){
 
 void Game::Initialize(){
     InputHandler::Init();
+
+    fnt_ubuntu.set("../font/Ubuntu.ttf");
 
     objects.reserve(10);
 
@@ -90,6 +94,9 @@ void Game::Render(){
         object->draw(renderer.get());
     }
 
+    for(int i = 0; i < 100000; ++i);
+    fnt_ubuntu.draw_text(renderer.get(), "Hello there, text here", 0, 0, {255, 255, 255, 255});
+    
     // Place everything on the screen
     SDL_RenderPresent(renderer.get());
 }

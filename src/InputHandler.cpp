@@ -2,12 +2,12 @@
 #include <cstring>
 #include <vector>
 
-int                InputHandler::arraySize;
+unsigned int       InputHandler::arraySize;
 const Uint8*       InputHandler::currentState;
 std::vector<Uint8> InputHandler::prevState;
 
 void InputHandler::Init(){
-    currentState = SDL_GetKeyboardState(&arraySize);
+    currentState = SDL_GetKeyboardState((int*)&arraySize);
     prevState.resize(arraySize);
 }
 

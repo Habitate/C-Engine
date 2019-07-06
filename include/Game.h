@@ -2,14 +2,13 @@
 #define GAME_H
 
 #include <SDL2/SDL.h>
-#include "Text.h"
 #include "Object.h"
 #include "texture.h"
 #include <memory>
 #include "InputHandler.h"
+#include "Font.h"
 
-class Game
-{
+class Game{
     public:
         Game(const char* name, int x, int y, int w, int h, int flags);
         ~Game();
@@ -26,12 +25,8 @@ class Game
         bool running;
         int WREZ, HREZ;
 
-        // Variables
-        char input;
-
         // SDL
         SDL_Event event;
-        //SDL_Window* window;
         std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer*)> renderer;
         std::unique_ptr<SDL_Window  , void(*)(SDL_Window  *)> window;
 
@@ -46,8 +41,8 @@ class Game
         // Objects
         std::vector<std::unique_ptr<Object>> objects;
 
-        // Temp
-        //InputHandler inputHandler;
+        // Fonts
+        Font fnt_ubuntu;
 };
 
 #endif // GAME_H

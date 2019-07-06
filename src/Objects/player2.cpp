@@ -50,6 +50,7 @@ void Obj_player2::step(){
             sprite.runAnimationOnce();
         }
     }
+
 }
 void Obj_player2::end_step(){
     syncSprite();

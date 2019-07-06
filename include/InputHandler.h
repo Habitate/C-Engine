@@ -20,7 +20,7 @@ class InputHandler{
         static const Uint8* currentState;
         static std::vector<Uint8> prevState;
 
-        static int arraySize;
+        static unsigned int arraySize;
 };
 
 #endif // INPUTHANDLER_H
