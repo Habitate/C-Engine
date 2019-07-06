@@ -8,7 +8,16 @@
 class Obj_player : public Object{
     public:
         Obj_player(SDL_Renderer* renderer, SDL_Event* event);
-        ~Obj_player();
+
+        // Copyable
+        Obj_player(Obj_player& object);
+        Obj_player& operator=(Obj_player& object);
+
+        // Moveable
+        Obj_player(Obj_player&& object);
+        Obj_player& operator=(Obj_player&& object);
+
+        ~Obj_player() override;
 
         void begin_step() override;
         void step()       override;

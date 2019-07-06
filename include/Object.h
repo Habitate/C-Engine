@@ -4,12 +4,11 @@
 #include "Texture.h"
 #include <SDL2/SDL.h>
 
-class Object
-{
+class Object{
     public:
         Object();
         Object(const SDL_Rect& body);
-        ~Object();
+        virtual ~Object();
 
         virtual void begin_step();
         virtual void step();

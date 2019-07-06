@@ -4,10 +4,10 @@
 #include <SDL2/SDL.h>
 #include "InputHandler.h"
 
-Obj_player::Obj_player(SDL_Renderer* renderer, SDL_Event* event) : renderer(renderer), event(event){
+Obj_player::Obj_player(SDL_Renderer* renderer, SDL_Event* event) : event(event), renderer(renderer){
     sprite.load(renderer, "../assets/anim/test/test");
-    sprite.setSize(-1, 100, 100);
-    body = sprite.getDstRect();
+    sprite.setSize(0, 100, 100, true);
+    body = sprite.getDstRect(0);
 
     body.x = 100;
     body.y = 316;
@@ -17,9 +17,16 @@ Obj_player::Obj_player(SDL_Renderer* renderer, SDL_Event* event) : renderer(rend
     sprite.animating = false;
 
     sprite.flip = SDL_FLIP_NONE;
-    sprite.center = {sprite.getDstRect().w / 2, sprite.getDstRect().h / 2};
+    sprite.center = {sprite.getDstRect(0).w / 2, sprite.getDstRect(0).h / 2};
     sprite.angle = 0;
 }
+
+Obj_player::Obj_player(Obj_player& object) = default;
+Obj_player& Obj_player::operator=(Obj_player& object) = default;
+
+Obj_player::Obj_player(Obj_player&& object) = default;
+Obj_player& Obj_player::operator=(Obj_player&& object) = default;
+
 Obj_player::~Obj_player(){
     //
 }

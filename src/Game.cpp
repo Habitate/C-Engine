@@ -15,14 +15,10 @@
 #include "InputHandler.h"
 #include "Font.h"
 
-Game::Game(const char* name, int x, int y, int w, int h, int flags) :
-running(false), WREZ(w), HREZ(h), renderer(nullptr, SDL_DestroyRenderer),
-window(nullptr, SDL_DestroyWindow), Sans(nullptr, TTF_CloseFont){
-    SDL_Init(SDL_INIT_EVERYTHING);
-    IMG_Init(0);
-    TTF_Init();
-
-    window = std::unique_ptr<SDL_Window  , void(*)(SDL_Window  *)>(SDL_CreateWindow(name, x, y, w, h, flags), SDL_DestroyWindow);  
+Game::Game(const std::string& name, const int x, const int y, const int w, const int h, const unsigned int flags) :
+running(false), WREZ(w), HREZ(h), event{0}, renderer(nullptr, SDL_DestroyRenderer), window(nullptr, SDL_DestroyWindow),
+White{255, 255, 255, 255}, wallpaper(), ground(), objects(), fnt_ubuntu("../font/Ubuntu.ttf"){
+    window = std::unique_ptr<SDL_Window  , void(*)(SDL_Window  *)>(SDL_CreateWindow(name.c_str(), x, y, w, h, flags), SDL_DestroyWindow);  
     if(!window){
         std::cout << SDL_GetError() << "\n\n";
         throw;
@@ -42,8 +38,6 @@ Game::~Game(){
 
 void Game::Initialize(){
     InputHandler::Init();
-
-    fnt_ubuntu.set("../font/Ubuntu.ttf");
 
     objects.reserve(10);
 

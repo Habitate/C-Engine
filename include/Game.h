@@ -10,7 +10,7 @@
 
 class Game{
     public:
-        Game(const char* name, int x, int y, int w, int h, int flags);
+        Game(const std::string& name, const int x, const int y, const int w, const int h, const unsigned int flags);
         ~Game();
 
         void Initialize();
@@ -31,7 +31,6 @@ class Game{
         std::unique_ptr<SDL_Window  , void(*)(SDL_Window  *)> window;
 
         // Text options
-        std::unique_ptr<TTF_Font, void(*)(TTF_Font*)> Sans;
         SDL_Color White;
 
         // Textures

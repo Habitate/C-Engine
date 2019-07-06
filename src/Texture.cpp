@@ -24,7 +24,7 @@ std::vector<std::string> SUPPORTED_DATA_TYPES = {
 // *************************************
 // ***    ---- Texture data ----     ***
 // *************************************
-TextureData::TextureData(SDL_Renderer* renderer, std::string path) : sprite(nullptr, SDL_DestroyTexture), srcRect({0, 0, 0, 0}), dstRect({0, 0, 0, 0}){
+TextureData::TextureData(SDL_Renderer* renderer, std::string path) : sprite(nullptr, SDL_DestroyTexture), srcRect{0, 0, 0, 0}, dstRect{0, 0, 0, 0}{
     sprite = std::unique_ptr<SDL_Texture, void(*)(SDL_Texture*)>(IMG_LoadTexture(renderer, path.c_str()), SDL_DestroyTexture);
 
     if(!good()){
@@ -63,7 +63,7 @@ bool TextureData::good(){
 // *************************************
 // ***   ---- Texture handler ----   ***
 // *************************************
-Texture::Texture() : spriteIndex(0), visable(true), animating(true), animatingOnce(false), flip(SDL_FLIP_NONE), center{0, 0}, angle(0){}
+Texture::Texture() : sprites(), spriteIndex(0), visable(true), angle(0), center{0, 0}, flip(SDL_FLIP_NONE), animationStartIndex(0), animating(true), animatingOnce(false){}
 
 void Texture::load(SDL_Renderer* renderer, std::string fileName){
     std::vector<std::string>* DATA_TYPES = &SUPPORTED_DATA_TYPES;
@@ -88,12 +88,12 @@ void Texture::load(SDL_Renderer* renderer, std::string fileName){
     std::cout << "Unable to find a suitable file for: " << fileName + singleType[0] << '\n';  
 }
 
-int Texture::getIndex(){
+unsigned int Texture::getIndex(){
     return spriteIndex;
 }
 
-void Texture::setIndex(const int index){
-    if(index < count() && index >= 0){
+void Texture::setIndex(const unsigned int index){
+    if(index < count()){
         spriteIndex = index;
     }
     else{
@@ -101,12 +101,12 @@ void Texture::setIndex(const int index){
     }
 }
 
-int Texture::count() const{
+unsigned int Texture::count() const noexcept{
     return sprites.size();
 }
 
 //! Returns good if, atleast, the first sprite is valid
-bool Texture::good() const{
+bool Texture::good() const noexcept{
     return sprites[spriteIndex]->good();
 }
 
@@ -136,63 +136,65 @@ void Texture::draw(SDL_Renderer* renderer, const int x, const int y){
     }
 }
 
-void Texture::setSize(int index, int w, int h){
-    if(index == sprites.size() || index < -1){
-        throw std::out_of_range("Attempted to access a non-existent sprite!");
-    }
-    
-    if(index == -1){
-        for(int i = 0; i < sprites.size(); ++i){
-            sprites[i]->setSize(w, h);
+void Texture::setSize(unsigned int index, int w, int h, bool setAll){
+    if(setAll){
+        for(std::shared_ptr<TextureData>& sprite : sprites){
+            sprite->setSize(w, h);
         }
+
+        return;
     }
-    else{
+
+    if(index < sprites.size()){
         sprites[index]->setSize(w, h);
     }
+    else{
+        throw std::out_of_range("Attempted to access a non-existent sprite!");
+    }    
 }
 
-SDL_Rect& Texture::getSrcRect(int index){
-    if(index == -1){
+SDL_Rect& Texture::getSrcRect(unsigned int index, bool getCurrent){
+    if(getCurrent){
         return sprites[spriteIndex]->srcRect;
     }
 
-    if(index < count() && index >= 0){
+    if(index < count()){
         return sprites[index]->srcRect;
     }
     else{
         throw std::out_of_range("Attempted to access non-existent sprite!");
     }
 }
-const SDL_Rect& Texture::getSrcRect(int index) const{
-    if(index == -1){
+const SDL_Rect& Texture::getSrcRect(unsigned int index, bool getCurrent) const{
+    if(getCurrent){
         return sprites[spriteIndex]->srcRect;
     }
 
-    if(index < count() && index >= 0){
+    if(index < count()){
         return sprites[index]->srcRect;
     }
     else{
         throw std::out_of_range("Attempted to access non-existent sprite!");
     }
 }
-SDL_Rect& Texture::getDstRect(int index){
-    if(index == -1){
+SDL_Rect& Texture::getDstRect(unsigned int index, bool getCurrent){
+    if(getCurrent){
         return sprites[spriteIndex]->dstRect;
     }
 
-    if(index < count() && index >= 0){
+    if(index < count()){
         return sprites[index]->dstRect;
     }
     else{
         throw std::out_of_range("Attempted to access non-existent sprite!");
     }
 }
-const SDL_Rect& Texture::getDstRect(int index) const{
-    if(index == -1){
+const SDL_Rect& Texture::getDstRect(unsigned int index, bool getCurrent) const{
+    if(getCurrent){
         return sprites[spriteIndex]->dstRect;
     }
 
-    if(index < count() && index >= 0){
+    if(index < count()){
         return sprites[index]->dstRect;
     }
     else{

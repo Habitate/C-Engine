@@ -8,15 +8,15 @@ void Object::begin_step(){}
 void Object::step(){}
 void Object::end_step(){}
 
-Object::Object() : body{0, 0 , 0, 0}{
+Object::Object() : sprite(), body{0, 0 , 0, 0}{
 }
-Object::Object(const SDL_Rect& body) : body(body){
+Object::Object(const SDL_Rect& body) : sprite(), body(body){
 }
 Object::~Object(){
 }
 
 void Object::syncSprite(){
-    sprite.getDstRect() = body;
+    sprite.getDstRect(0) = body;
 }
 
 void Object::draw(SDL_Renderer* renderer){
@@ -24,5 +24,5 @@ void Object::draw(SDL_Renderer* renderer){
 }
 
 bool Object::checkCollision(Object& obj){
-    return SDL_HasIntersection(&this->sprite.getDstRect(), &obj.sprite.getDstRect()) == SDL_TRUE;
+    return SDL_HasIntersection(&this->sprite.getDstRect(0), &obj.sprite.getDstRect(0)) == SDL_TRUE;
 }

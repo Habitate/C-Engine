@@ -29,34 +29,30 @@ class Texture{
 		//* Supports various path 
 		void load(SDL_Renderer* renderer, std::string path);
 		
-		int getIndex();
-		void setIndex(const int index);
+		unsigned int getIndex();
+		void setIndex(const unsigned int index);
 
-		int count() const;
-		bool good() const; //! Good if the first sprite is valid
+		unsigned int count() const noexcept;
+		bool good() const noexcept; //! Good if the first sprite is valid
 
-		//* Pass -1 to index to change all sprites
+		//* If setAll is set to true, index is ignored
 		//* Pass -1 to w or h to retain the current size
-		void setSize(int index, int w, int h);
+		void setSize(unsigned int index, int w, int h, bool setAll = false);
 
 		void draw(SDL_Renderer* renderer, const int x, const int y);
 
 		//* Pass -1 to the index to get rect @ spriteIndex
-		SDL_Rect& getSrcRect(int index = -1);
-		const SDL_Rect& getSrcRect(int index = -1) const;
+		SDL_Rect& getSrcRect(unsigned int index, bool getCurrent = true);
+		const SDL_Rect& getSrcRect(unsigned int index, bool getCurrent = true) const;
 
 		//* Pass -1 to the index to get rect @ spriteIndex
-		SDL_Rect& getDstRect(int index = -1);
-		const SDL_Rect& getDstRect(int index = -1) const;
+		SDL_Rect& getDstRect(unsigned int index, bool getCurrent = true);
+		const SDL_Rect& getDstRect(unsigned int index, bool getCurrent = true) const;
 
 		void startAnimation();
 		void stopAnimation();
 		void resetAnimation();
 		void runAnimationOnce();
-
-		int animationStartIndex;
-		bool animating;
-		bool animatingOnce;
 
 	//private:
 		//* Loads the file with the given name
@@ -66,13 +62,16 @@ class Texture{
 		void MultiLoad  (SDL_Renderer* renderer, const std::string& fileName, const std::string& extension);
 
 		std::vector<std::shared_ptr<TextureData>> sprites;
-		int spriteIndex;
+		unsigned int spriteIndex;
 		bool visable;
 
 		double angle;
 		SDL_Point center;
 		SDL_RendererFlip flip;
-		
+
+		unsigned int animationStartIndex;
+		bool animating;
+		bool animatingOnce;
 };
 
 #endif
