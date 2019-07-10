@@ -17,7 +17,8 @@
 
 Game::Game(const std::string& name, const int x, const int y, const int w, const int h, const unsigned int flags) :
 running(false), WREZ(w), HREZ(h), event{0}, renderer(nullptr, SDL_DestroyRenderer), window(nullptr, SDL_DestroyWindow),
-White{255, 255, 255, 255}, wallpaper(), ground(), objects(), fnt_ubuntu("../font/Ubuntu.ttf"){
+White{255, 255, 255, 255}, wallpaper(), ground(), objects(), fnt_ubuntu("../font/Ubuntu.ttf"), tempText(),
+tempTextSrcRect{0, 0, 0, 0}, tempTextDstRect{0, 0, 0, 0}{
     window = std::unique_ptr<SDL_Window  , void(*)(SDL_Window  *)>(SDL_CreateWindow(name.c_str(), x, y, w, h, flags), SDL_DestroyWindow);  
     if(!window){
         std::cout << SDL_GetError() << "\n\n";
@@ -48,6 +49,10 @@ void Game::Initialize(){
 
     ground.load(renderer.get(), "../assets/tilee");
     ground.setSize(0, 64, 64);
+
+    tempText = fnt_ubuntu.render_text(renderer.get(), "Hello there, text here!", White);
+    SDL_QueryTexture(tempText.get(), nullptr, nullptr, &tempTextSrcRect.w, &tempTextSrcRect.h);
+    tempTextDstRect = tempTextSrcRect;
 
     running = true;
 }
@@ -88,8 +93,9 @@ void Game::Render(){
         object->draw(renderer.get());
     }
 
-    for(int i = 0; i < 100000; ++i);
-    fnt_ubuntu.draw_text(renderer.get(), "Hello there, text here", 0, 0, {255, 255, 255, 255});
+    //for(int i = 0; i < 100000; ++i);
+    //fnt_ubuntu.draw_text(renderer.get(), "Hello there, text here", 0, 0, White);
+    SDL_RenderCopy(renderer.get(), tempText.get(), &tempTextSrcRect, &tempTextDstRect);
     
     // Place everything on the screen
     SDL_RenderPresent(renderer.get());

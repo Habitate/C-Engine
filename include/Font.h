@@ -21,6 +21,7 @@ class Font{
         const std::string& getPath() const noexcept;
 
         void draw_text(SDL_Renderer* const renderer, const std::string& text, const int x, const int y, const SDL_Color& color) const;
+        std::shared_ptr<SDL_Texture> render_text(SDL_Renderer* const renderer, const std::string& text, const SDL_Color& color) const;
 
     private:
         void update();

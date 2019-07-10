@@ -89,3 +89,23 @@ void Font::draw_text(SDL_Renderer* const renderer, const std::string& text, cons
     
     SDL_RenderCopy(renderer, sprite.get(), &srcRect, &dstRect);
 }
+
+std::shared_ptr<SDL_Texture> Font::render_text(SDL_Renderer* const renderer, const std::string& text, const SDL_Color& color) const{
+    if(!font){
+        throw std::runtime_error((std::string("Failed to render text " + text + "\n\tTTF Errors: " + TTF_GetError() + "!\n")).c_str());
+    }
+
+    const std::unique_ptr<SDL_Surface, void(*)(SDL_Surface*)> loader(TTF_RenderText_Blended(this->font.get(), text.c_str(), color), SDL_FreeSurface);
+    
+    if(!loader){
+        throw std::runtime_error((std::string("Failed to render text " + text + "\n\tTTF Errors: " + TTF_GetError() + "!\n")).c_str());
+    }
+
+    const std::shared_ptr<SDL_Texture> sprite(SDL_CreateTextureFromSurface(renderer, loader.get()), SDL_DestroyTexture);
+
+    if(!sprite){
+        throw std::runtime_error((std::string("Failed to render text " + text + "\n\tTTF Errors: " + TTF_GetError() + "!\n")).c_str());
+    }
+    
+    return sprite;
+}

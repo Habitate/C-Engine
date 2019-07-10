@@ -24,40 +24,6 @@ std::vector<std::string> SUPPORTED_DATA_TYPES = {
 // *************************************
 // ***    ---- Texture data ----     ***
 // *************************************
-TextureData::TextureData(SDL_Renderer* renderer, std::string path) : sprite(nullptr, SDL_DestroyTexture), srcRect{0, 0, 0, 0}, dstRect{0, 0, 0, 0}{
-    sprite = std::unique_ptr<SDL_Texture, void(*)(SDL_Texture*)>(IMG_LoadTexture(renderer, path.c_str()), SDL_DestroyTexture);
-
-    if(!good()){
-        std::cout << Color(12) << "Error loading sprite: \"" << Color(14) << path << Color(12) << "\"\n" << Color(7);
-        std::cout << "\t-> " << IMG_GetError() << '\n';
-        
-        return;
-    }
-
-    SDL_QueryTexture(sprite.get(), nullptr, nullptr, &srcRect.w, &srcRect.h);
-    dstRect = srcRect;
-
-    std::cout << Color(10) << "Successfully loaded sprite: \"" << Color(14) << path << Color(10) << "\"\n" << Color(7);
-}
-
-void TextureData::draw(SDL_Renderer* renderer, const int x, const int y, const double angle, const SDL_Point* center, const SDL_RendererFlip flip){
-    if(!good()) return;
-
-    dstRect.x = x;
-    dstRect.y = y;
-
-    SDL_RenderCopyEx(renderer, sprite.get(), &srcRect, &dstRect, angle, center, flip);
-}
-
-void TextureData::setSize(int w, int h){
-    if(w >= 0) dstRect.w = w;
-    if(h >= 0) dstRect.h = h;
-}
-
-bool TextureData::good(){
-    return (bool)sprite;
-}
-
 
 
 // *************************************

@@ -42,6 +42,11 @@ class Game{
 
         // Fonts
         Font fnt_ubuntu;
+
+        // Texts
+        std::shared_ptr<SDL_Texture> tempText;
+        SDL_Rect tempTextSrcRect;
+        SDL_Rect tempTextDstRect;
 };
 
 #endif // GAME_H

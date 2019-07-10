@@ -6,20 +6,90 @@
 #include <string>
 #include <memory>
 
+//TODO: Add more concise exception definitions
+
 class TextureData{
 	public:
-		//* Only supports paths like "assets/myImage.png"
-		TextureData(SDL_Renderer* renderer, std::string path);
-		void draw(SDL_Renderer* renderer, const int x, const int y, const double angle, const SDL_Point* center, const SDL_RendererFlip flip);
+		TextureData(const SDL_Renderer* const renderer, const std::string& path) : 
+		sprite(), dstRect{0, 0, 0, 0}, srcRect{0, 0, 0, 0), flip(SDL_FLIP_NONE), center{0, 0}
+		angle(0){}
+
+		//* Only supports paths with full extensions. E.x.: "image.png"
+		TextureData(const SDL_Renderer* const renderer, const std::string& path) : 
+		sprite(), dstRect{0, 0, 0, 0}, srcRect{0, 0, 0, 0), flip(SDL_FLIP_NONE), center{0, 0}
+		angle(0){
+			sprite = std::shared_ptr<SDL_Texture>(IMG_LoadTexture(renderer, path.c_str()), SDL_DestroyTexture);
 		
-		//* Pass -1 to w or h to retain the current size
-		void setSize(int w, int h);
-		bool good();
+			if(!sprite){
+				throw std::runtime_error("Failed to load sprite!");
+			}
 
-		std::unique_ptr<SDL_Texture, void(*)(SDL_Texture*)> sprite;
+			SDL_QueryTexture(sprite.get(), nullptr, nullptr, &srcRect.w, &srcRect.h);
+    		dstRect = srcRect;
 
+			std::cout << Color(10) << "Successfully loaded sprite: \"" << Color(14) << path << Color(10) << "\"\n" << Color(7);
+		}
+
+		const SDL_Rect& getSrcRect() const noexcept{
+			return srcRect;
+		}
+		const SDL_Rect& getDstRect() const noexcept{
+			return dstRect;
+		}
+		SDL_Rect& getSrcRect() noexcept{
+			return srcRect;
+		}
+		SDL_Rect& getDstRect() noexcept{
+			return dstRect;
+		}
+
+		void setWidth(const int width) noexcept{
+			dstRect.w = width;
+		}
+		void setHeight(const int width) noexcept{
+			dstRect.w = width;
+		}
+
+		void setSize(const int width, const int height) noexcept{
+			dstRect.w = width;
+			dstRect.h = height;
+		}
+
+		bool good() const noexcept{
+			return (bool)sprite;
+		}
+
+		void draw_ex(SDL_Renderer* const renderer, const int x, const int y, const double angle, const SDL_Point* const center, const SDL_RendererFlip flip) const noexcept{
+			if(!sprite){
+				throw std::runtime_error("Attempted to draw an uninitialized sprite!");
+			}
+
+			dstRect.x = x;
+			dstRect.y = y;
+
+			SDL_RenderCopyEx(renderer, sprite.get(), &srcRect, &dstRect, angle, center, flip);
+		}
+
+		void draw(SDL_Renderer* const renderer, const int x, const int y) const noexcept{
+			if(!sprite){
+				throw std::runtime_error("Attempted to draw an uninitialized sprite!");
+			}
+
+			dstRect.x = x;
+			dstRect.y = y;
+
+			SDL_RenderCopy(renderer, sprite.get(), &srcRect, &dstRect);
+		}
+
+	private:
+		std::shared_ptr<SDL_Texture> sprite;
+
+		mutable SDL_Rect dstRect;
 		SDL_Rect srcRect;
-		SDL_Rect dstRect;
+
+		SDL_RendererFlip flip;
+		SDL_Point center;
+		double angle;
 };
 
 class Texture{
@@ -64,10 +134,6 @@ class Texture{
 		std::vector<std::shared_ptr<TextureData>> sprites;
 		unsigned int spriteIndex;
 		bool visable;
-
-		double angle;
-		SDL_Point center;
-		SDL_RendererFlip flip;
 
 		unsigned int animationStartIndex;
 		bool animating;
