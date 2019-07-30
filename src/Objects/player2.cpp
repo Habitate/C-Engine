@@ -16,7 +16,7 @@ Obj_player2::Obj_player2(SDL_Renderer* renderer, SDL_Event* event) : event(event
     sprite.animationStartIndex = 34;
     sprite.animating = false;
 
-    sprite.flip = SDL_FLIP_NONE;
+    sprite.tex = SDL_FLIP_NONE;
     sprite.center = {sprite.getDstRect(0).w / 2, sprite.getDstRect(0).h / 2};
     sprite.angle = 0;
 }

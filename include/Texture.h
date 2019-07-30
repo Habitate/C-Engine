@@ -10,134 +10,91 @@
 
 class TextureData{
 	public:
-		TextureData(const SDL_Renderer* const renderer, const std::string& path) : 
-		sprite(), dstRect{0, 0, 0, 0}, srcRect{0, 0, 0, 0), flip(SDL_FLIP_NONE), center{0, 0}
-		angle(0){}
+		TextureData();
 
 		//* Only supports paths with full extensions. E.x.: "image.png"
-		TextureData(const SDL_Renderer* const renderer, const std::string& path) : 
-		sprite(), dstRect{0, 0, 0, 0}, srcRect{0, 0, 0, 0), flip(SDL_FLIP_NONE), center{0, 0}
-		angle(0){
-			sprite = std::shared_ptr<SDL_Texture>(IMG_LoadTexture(renderer, path.c_str()), SDL_DestroyTexture);
-		
-			if(!sprite){
-				throw std::runtime_error("Failed to load sprite!");
-			}
+		TextureData(SDL_Renderer* const renderer, const std::string& path);
 
-			SDL_QueryTexture(sprite.get(), nullptr, nullptr, &srcRect.w, &srcRect.h);
-    		dstRect = srcRect;
+		// Copyable
+		TextureData(TextureData& obj);
+		TextureData& operator=(TextureData& obj);
 
-			std::cout << Color(10) << "Successfully loaded sprite: \"" << Color(14) << path << Color(10) << "\"\n" << Color(7);
-		}
+		// Moveable
+		TextureData(TextureData&& obj);
+		TextureData& operator=(TextureData&& obj);
 
-		const SDL_Rect& getSrcRect() const noexcept{
-			return srcRect;
-		}
-		const SDL_Rect& getDstRect() const noexcept{
-			return dstRect;
-		}
-		SDL_Rect& getSrcRect() noexcept{
-			return srcRect;
-		}
-		SDL_Rect& getDstRect() noexcept{
-			return dstRect;
-		}
+		void setWidth(const int width) noexcept;
+		void setHeight(const int width) noexcept;
+		void setDimensions(const int width, const int height) noexcept;
 
-		void setWidth(const int width) noexcept{
-			dstRect.w = width;
-		}
-		void setHeight(const int width) noexcept{
-			dstRect.w = width;
-		}
+		//* Syncs dstRect dimensions with those of srcRect
+		void resetDimensions() noexcept;
 
-		void setSize(const int width, const int height) noexcept{
-			dstRect.w = width;
-			dstRect.h = height;
-		}
+		//* Draw the texure using custom parameters
+		void draw_ext(SDL_Renderer* const renderer, const int x, const int y, const double& angle, const SDL_Point& center, const SDL_RendererFlip& flip) const;
+		//* Draws the texture without taking the flip, center and angle into consideration
+		void draw_raw(SDL_Renderer* const renderer, const int x, const int y) const;
+		//* Draws the texture using the last known coordinates
+		void draw_static(SDL_Renderer* const renderer) const;
 
-		bool good() const noexcept{
-			return (bool)sprite;
-		}
+		//TODO: Implement
+		bool check_collision(const TextureData& sprite) const noexcept;
 
-		void draw_ex(SDL_Renderer* const renderer, const int x, const int y, const double angle, const SDL_Point* const center, const SDL_RendererFlip flip) const noexcept{
-			if(!sprite){
-				throw std::runtime_error("Attempted to draw an uninitialized sprite!");
-			}
-
-			dstRect.x = x;
-			dstRect.y = y;
-
-			SDL_RenderCopyEx(renderer, sprite.get(), &srcRect, &dstRect, angle, center, flip);
-		}
-
-		void draw(SDL_Renderer* const renderer, const int x, const int y) const noexcept{
-			if(!sprite){
-				throw std::runtime_error("Attempted to draw an uninitialized sprite!");
-			}
-
-			dstRect.x = x;
-			dstRect.y = y;
-
-			SDL_RenderCopy(renderer, sprite.get(), &srcRect, &dstRect);
-		}
+		//* Returns if the sprite is not null
+		bool good() const noexcept;
 
 	private:
 		std::shared_ptr<SDL_Texture> sprite;
-
 		mutable SDL_Rect dstRect;
 		SDL_Rect srcRect;
-
-		SDL_RendererFlip flip;
-		SDL_Point center;
-		double angle;
 };
 
-class Texture{
+class Sprite{
 	public:
-		Texture();
-
-		//* Supports various path 
-		void load(SDL_Renderer* renderer, std::string path);
+		Sprite();
 		
-		unsigned int getIndex();
-		void setIndex(const unsigned int index);
+		//* Loads the file with the given name
+		void load_single(SDL_Renderer* renderer, const std::string& fileName);
+		//* Loops and loads all files with the given extension starting with *_0.ext to *_n.ext
+		void load_multiple(SDL_Renderer* renderer, const std::string& fileName, const std::string& extension);
 
 		unsigned int count() const noexcept;
-		bool good() const noexcept; //! Good if the first sprite is valid
-
-		//* If setAll is set to true, index is ignored
-		//* Pass -1 to w or h to retain the current size
-		void setSize(unsigned int index, int w, int h, bool setAll = false);
 
 		void draw(SDL_Renderer* renderer, const int x, const int y);
 
-		//* Pass -1 to the index to get rect @ spriteIndex
-		SDL_Rect& getSrcRect(unsigned int index, bool getCurrent = true);
-		const SDL_Rect& getSrcRect(unsigned int index, bool getCurrent = true) const;
+		//* If setAll is set to true, index is ignored
+		//* Pass -1 to w or h to retain the current size
+		void setDimensions(unsigned int index, int w, int h, bool setAll = false);
 
-		//* Pass -1 to the index to get rect @ spriteIndex
-		SDL_Rect& getDstRect(unsigned int index, bool getCurrent = true);
-		const SDL_Rect& getDstRect(unsigned int index, bool getCurrent = true) const;
+		void setWidth(const int width) noexcept;
+		void setHeight(const int width) noexcept;
+		void setDimensions(const int width, const int height) noexcept;
 
-		void startAnimation();
-		void stopAnimation();
-		void resetAnimation();
-		void runAnimationOnce();
+		//Animation control
+		void runAnimation_once() const noexcept;
+		void runAnimation_continous() const noexcept;
 
-	//private:
-		//* Loads the file with the given name
-		void SingleLoad (SDL_Renderer* renderer, const std::string& fileName);
-		
-		//* Loops and loads all files with the given extension starting with x_0.ext to x_n.ext
-		void MultiLoad  (SDL_Renderer* renderer, const std::string& fileName, const std::string& extension);
+		void stopAnimation() const noexcept;
+		void resetAnimation() const noexcept;
 
-		std::vector<std::shared_ptr<TextureData>> sprites;
-		unsigned int spriteIndex;
+		unsigned int getIndex() const noexcept;
+		void setIndex(const unsigned int index);
+
+		//Animation bounds
+		void setAnimationBounds(unsigned int lower, unsigned int upper);
+		void setAnimationBound_upper(unsigned int bound);
+		void setAnimationBound_lower(unsigned int bound);
+
+	private:
+		std::vector<std::unique_ptr<TextureData>> textures;
 		bool visable;
 
-		unsigned int animationStartIndex;
+		//Animation variables
+		unsigned int lower_animation_bound;
+		unsigned int upper_animation_bound;
+		unsigned int sprite_index;
+		bool animating_once;
 		bool animating;
-		bool animatingOnce;
 };
 
 #endif
