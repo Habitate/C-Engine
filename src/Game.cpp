@@ -11,7 +11,6 @@
 #include <memory>
 
 #include "Objects/player.h"
-#include "Objects/player2.h"
 #include "InputHandler.h"
 #include "Font.h"
 
@@ -43,12 +42,12 @@ void Game::Initialize(){
     objects.reserve(10);
 
     objects.emplace_back(new Obj_player(renderer.get(), &event));
-    objects.emplace_back(new Obj_player2(renderer.get(), &event, objects[0]->sprite));
+    //objects.emplace_back(new Obj_player2(renderer.get(), &event, objects[0]->sprite));
 
-    wallpaper.load(renderer.get(), "../assets/wallpaper");
+    wallpaper.load_single(renderer.get(), "../assets/wallpaper.jpg");
 
-    ground.load(renderer.get(), "../assets/tilee");
-    ground.setSize(0, 64, 64);
+    ground.load_single(renderer.get(), "../assets/tilee.jpg");
+    ground.set_dimensions(64, 64);
 
     tempText = fnt_ubuntu.render_text(renderer.get(), "Hello there, text here!", White);
     SDL_QueryTexture(tempText.get(), nullptr, nullptr, &tempTextSrcRect.w, &tempTextSrcRect.h);
@@ -81,11 +80,11 @@ void Game::Render(){
     // Clear the screen
     SDL_RenderClear(renderer.get());
 
-    wallpaper.draw(renderer.get(), 0, 0);
+    wallpaper.draw_raw(renderer.get(), 0, 0);
 
     // Draw the ground
     for(int x = 0; x < 640; x += 64){
-        ground.draw(renderer.get(), x, 416);
+        ground.draw_raw(renderer.get(), x, 416);
     }
 
     // Draw the objects
@@ -106,7 +105,7 @@ void Game::changeIcon(const std::string& path){
 
     //Error check
     if(!icon){
-        std::cout << Color(12) << "Failed loading icon: " << Color(7) << path << "\n";
+        std::cout << C(C::RED) << "Failed loading icon: " << C(C::DEFAULT) << path << "\n";
         return;
     }
 

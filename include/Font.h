@@ -12,12 +12,12 @@ class Font{
 
         bool good() const noexcept;
 
-        void set(const std::string& path, const unsigned int size = 14);
+        void load(const std::string& path, const unsigned int size = 14);
 
         void setSize(const unsigned int size);
         void setFont(const std::string& path);
 
-        const unsigned int& getSize() const noexcept;
+        unsigned int getSize() const noexcept;
         const std::string& getPath() const noexcept;
 
         void draw_text(SDL_Renderer* const renderer, const std::string& text, const int x, const int y, const SDL_Color& color) const;

@@ -13,8 +13,6 @@ void recievePosition(int*, int*, SOCKET);
 
 bool fileExists(const std::string& path);
 
-//? Both return false if the file does not contain an extension
-bool getExtensionStart(const std::string& fileName, int& pos);
-bool cutExtension(std::string& file, std::string& ext);
+std::string getExtension(const std::string& path);
 
 #endif // FUNCTIONS_H

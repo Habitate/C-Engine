@@ -6,19 +6,15 @@
 #include "color.h"
 
 Font::Font() noexcept: path(), size(0), font(nullptr, TTF_CloseFont) {}
-Font::Font(const std::string& path, const unsigned int size) : path(path), size(size), font(TTF_OpenFont(path.c_str(), (int)size), TTF_CloseFont){
-    if(!font){
-        throw std::runtime_error((std::string("Failed to initialize font!\n\tFont path: ") + path + "\n\tsize: " + std::to_string(size) + "\n\tTTF Errors: " + TTF_GetError() + "!\n").c_str());
-    }
-
-    std::cout << Color(10) << "Successfully loaded font: \"" << Color(11) << path << Color(10) << "\"\n" << Color(7);
+Font::Font(const std::string& path, const unsigned int size) : path(), size(0), font(nullptr, TTF_CloseFont){
+    load(path, size);
 }
 
 bool Font::good() const noexcept{
     return (bool)font;
 }
 
-void Font::set(const std::string& path, const unsigned int size){
+void Font::load(const std::string& path, const unsigned int size){
     //? Prevent unnecessary reloading
     if(this->path == path && this->size == size){
         return;
@@ -27,8 +23,6 @@ void Font::set(const std::string& path, const unsigned int size){
     this->path = path;
     this->size = size;
     update();
-
-    std::cout << Color(10) << "Successfully loaded font: \"" << Color(11) << path << Color(10) << "\"\n" << Color(7);
 }
 
 void Font::setSize(const unsigned int size){
@@ -48,11 +42,9 @@ void Font::setFont(const std::string& path){
 
     this->path = path;
     update();
-
-    std::cout << Color(10) << "Successfully loaded font: \"" << Color(11) << path << Color(10) << "\"\n" << Color(7);
 }
 
-const unsigned int& Font::getSize() const noexcept{
+unsigned int Font::getSize() const noexcept{
     return size;
 }
 const std::string& Font::getPath() const noexcept{
@@ -63,7 +55,13 @@ void Font::update(){
     font.reset(TTF_OpenFont(path.c_str(), (int)size));
 
     if(!font){
-        throw std::runtime_error((std::string("Failed to initialize font!\n\tFont path: ") + path + "\n\tsize: " + std::to_string(size) + "\n\tTTF Errors: " + TTF_GetError() + "!\n").c_str());
+        std::cout << C(C::RED) << "Failed loading font: " << C(C::CYAN) << '\"'<< path << "\"\n" << C();
+        std::cout << "\tError: " << SDL_GetError() << '\n';
+
+        throw std::runtime_error("^^^");
+    }
+    else{
+        std::cout << C(C::GREEN) << "Successfully loaded font: " << C(C::CYAN) << "\"" << path << "\"\n" << C();
     }
 }
 

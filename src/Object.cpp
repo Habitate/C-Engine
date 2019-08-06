@@ -1,28 +1,29 @@
 #include "Object.h"
 
-#include "Functions.h"
-#include "Texture.h"
-#include <iostream>
+Object::Object() : sprite(), body{0, 0 , 0, 0}{
+}
+Object::Object(const SDL_Rect& body) : sprite(), body(body){
+}
+Object::~Object() = default;
+
+Object::Object(Object& obj) = default;
+Object& Object::operator=(Object& obj) = default;
+
+Object::Object(Object&& obj) = default;
+Object& Object::operator=(Object&& obj) = default;
 
 void Object::begin_step(){}
 void Object::step(){}
 void Object::end_step(){}
 
-Object::Object() : sprite(), body{0, 0 , 0, 0}{
-}
-Object::Object(const SDL_Rect& body) : sprite(), body(body){
-}
-Object::~Object(){
-}
-
 void Object::syncSprite(){
-    sprite.getDstRect(0) = body;
+    sprite.set_dimensions(body.w, body.h);
 }
 
 void Object::draw(SDL_Renderer* renderer){
-    sprite.draw(renderer, body.x, body.y);
+    sprite.draw_raw(renderer, body.x, body.y);
 }
 
 bool Object::checkCollision(Object& obj){
-    return SDL_HasIntersection(&this->sprite.getDstRect(0), &obj.sprite.getDstRect(0)) == SDL_TRUE;
+    return sprite[0].check_collision(obj.sprite[0]);   
 }

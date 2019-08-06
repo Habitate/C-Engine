@@ -34,8 +34,8 @@ class Game{
         SDL_Color White;
 
         // Textures
-        Texture wallpaper;
-        Texture ground;
+        Sprite wallpaper;
+        Sprite ground;
 
         // Objects
         std::vector<std::unique_ptr<Object>> objects;
