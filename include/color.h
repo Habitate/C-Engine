@@ -17,9 +17,13 @@ class C{
 
         //* Color definitions
         static int RED;
+        static int PINK;
+        static int BLUE;
         static int CYAN;
         static int GREEN;
+        static int WHITE;
         static int YELLOW;
+        static int PURPLE;
         static int DEFAULT;
 };
 

@@ -12,8 +12,8 @@
 #include "Color.h"
 #include "Functions.h"
 
-Texture::Texture() noexcept : imageData(), dstRect{0, 0, 0, 0}, srcRect{0, 0, 0, 0}{}
-Texture::Texture(SDL_Renderer* const renderer, const std::string& path) : imageData(), dstRect{0, 0, 0, 0}, srcRect{0, 0, 0, 0}{
+Texture::Texture() noexcept : imageData(), dstRect{0, 0, 0, 0}, srcRect{0, 0, 0, 0}, depth(0){}
+Texture::Texture(SDL_Renderer* const renderer, const std::string& path) : Texture(){
 	load(renderer, path);
 }
 Texture::~Texture() = default;
@@ -110,6 +110,13 @@ const SDL_Rect& Texture::get_src_rect() const noexcept{
 }
 const SDL_Rect& Texture::get_dst_rect() const noexcept{
 	return dstRect;
+}
+
+void Texture::set_depth(unsigned int depth){
+    this->depth = depth;
+}
+unsigned int Texture::get_depth() const{
+    return depth;
 }
 
 bool Texture::good() const noexcept{

@@ -1,30 +1,27 @@
 #ifndef ROOM_H
 #define ROOM_H
 
-#include <SDL2/SDL.h>
+//#include <SDL2/SDL.h>
+
+#include <vector>
+#include <memory>
 #include "Object.h"
-#include "Texture.h"
+#include "Sprite.h"
 
-class Room
-{
+class Room{
     public:
-        Room();
-        ~Room();
+        void add_object(Object* object);
+        void add_sprite(Sprite* sprite);
+        void add_texture(Texture* texture);
 
-        void Initialize(SDL_Window* window, SDL_Renderer* renderer);
+        void draw(){
+            
+        }
 
-        void CreateObject(int x, int y, int w, int h, const char* path, bool multiple, bool serverObject);
-
-        void Update();
-
-        void Render();
-
-        SDL_Window*   window  ;
-        SDL_Renderer* renderer;
-
-        Object * objects ; int objectCount ;
-        Texture* texts   ; int textCount   ;
-        Texture* textures; int textureCount;
+    private:
+        std::vector<std::unique_ptr<Object>> objects;
+        std::vector<std::unique_ptr<Sprite>> sprites;
+        std::vector<std::unique_ptr<Texture>> textures;
 };
 
 #endif // ROOM_H

@@ -6,9 +6,10 @@
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
 
+#include "color.h"
+
 #define W 640
 #define H 480
-#define CENTERED SDL_WINDOWPOS_CENTERED
 
 int main(int argc, char* argv[]){
     //Referenc argc and argv to get rid of unused variable warnings
@@ -26,12 +27,14 @@ int main(int argc, char* argv[]){
     Uint32 frameTime;
     Uint32 frameStart;
 
-    std::unique_ptr<Game> game(new Game("Engine", CENTERED, CENTERED, W, H, SDL_WINDOW_RESIZABLE));
+    std::cout << C(C::BLUE) << "\n\n-------------- Game started! --------------\n\n" << C();
 
-    std::cout << "Contructed game! <Initialized framework>\n\n";
+    std::unique_ptr<Game> game(new Game("Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, W, H, 0));
+
+    std::cout << C(C::GREEN) << "\nContructed game! " << C(C::WHITE) << "<Initialized all initial objects>\n\n";
 
     game->Initialize();
-    std::cout << "\nInitialized all objects!\n\n";
+    std::cout << C(C::PINK) << "\nLoaded all objects!\n\n" << C();
 
     while(game->isRunning()){
         frameStart = SDL_GetTicks();
@@ -48,6 +51,8 @@ int main(int argc, char* argv[]){
             SDL_Delay(frameDelay - frameTime);
         }
     }
+
+    std::cout << C(C::BLUE) << "--------------- Game ended! ---------------\n\n" << C();
 
     return 0;
 }

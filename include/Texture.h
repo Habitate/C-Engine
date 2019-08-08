@@ -45,6 +45,9 @@ class Texture{
 		const SDL_Rect& get_src_rect() const noexcept;
 		const SDL_Rect& get_dst_rect() const noexcept;
 
+		void set_depth(unsigned int depth);
+		unsigned int get_depth() const;
+
 		//* Returns if the imageData is not null
 		bool good() const noexcept;
 
@@ -54,6 +57,8 @@ class Texture{
 		std::shared_ptr<SDL_Texture> imageData;
 		mutable SDL_Rect dstRect;
 		SDL_Rect srcRect;
+		
+		unsigned int depth;
 };
 
 #endif // TEXTURE_H

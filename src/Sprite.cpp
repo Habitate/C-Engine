@@ -221,3 +221,10 @@ bool Sprite::is_animating_once() const noexcept{
 bool Sprite::valid_texture_selection(const unsigned int pos) const noexcept{
     return pos < textures.size();
 }
+
+void Sprite::set_depth(unsigned int depth){
+    at(0).set_depth(depth);
+}
+unsigned int Sprite::get_depth() const{
+    return at(0).get_depth();
+}

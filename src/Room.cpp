@@ -1,48 +1,24 @@
 #include "Room.h"
+#include <algorithm>
 
-#include "myInternet.h"
-#include <SDL2/SDL.h>
-#include <windows.h>
-#include <iostream>
-#include "Texture.h"
-#include "Object.h"
+void Room::add_object(Object* object){
+    objects.emplace_back(object);
 
-Room::Room(){
-    // Initialize objects, textures and texts
-    objects  = (Object* )malloc(0);
-    textures = (Texture*)malloc(sizeof(Texture));
-    texts    = (Texture*)malloc(sizeof(Texture));
-    objectCount  = 0;
-    textureCount = 0;
-    textCount    = 0;
+    sort(objects.begin(), objects.end(), [](const Object& obj1, const Object& obj2){
+        return obj1.sprite.get_depth() < obj2.sprite.get_depth();
+    });
 }
-
-Room::~Room(){
-    // Something
+void Room::add_sprite(Sprite* sprite){
+    sprites.emplace_back(sprite);
+    
+    sort(sprites.begin(), sprites.end(), [](const Sprite& obj1, const Sprite& obj2){
+        return obj1.get_depth() < obj2.get_depth();
+    });
 }
-
-void Room::Initialize(SDL_Window* window, SDL_Renderer* renderer){
-    // Set the window and renderers
-    this->window = window;
-    this->renderer = renderer;
-}
-
-void Room::CreateObject(int x, int y, int w, int h, const char* path, bool multiple, bool serverObject){
-    objects = (Object*)realloc(objects, sizeof(Object));
-    if(objects == NULL) { std::cout << "Realloc failed!" << std::endl; return; }    
-    objectCount++;
-
-
-    // Initialize the object
-    objects[objectCount - 1].sprite.Initialize();
-    objects[objectCount - 1].Initialize(x, y, serverObject);   
-
-    // Load the texture
-    if(!multiple) objects[objectCount - 1].sprite.loadAsSingle  (renderer, path, x, y, w, h);
-    else          objects[objectCount - 1].sprite.loadAsMultiple(renderer, path, x, y, w, h);     
-}
-
-void Room::Update(){
-    // Update objects
-    for(int i = 0; i < objectCount; i++) objects[i].Update(false);
+void Room::add_texture(Texture* texture){
+    textures.emplace_back(texture);
+    
+    sort(textures.begin(), textures.end(), [](const Texture& obj1, const Texture& obj2){
+        return obj1.get_depth() < obj2.get_depth();
+    });
 }
