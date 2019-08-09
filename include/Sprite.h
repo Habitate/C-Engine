@@ -70,9 +70,6 @@ class Sprite{
 		bool is_animating() const noexcept;
 		bool is_animating_once() const noexcept;
 
-		void set_depth(unsigned int depth);
-		unsigned int get_depth() const;
-
 	private:
 		bool valid_texture_selection(const unsigned int pos) const noexcept;
 

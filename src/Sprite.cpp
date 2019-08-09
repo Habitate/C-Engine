@@ -66,7 +66,7 @@ void Sprite::load_multiple(SDL_Renderer* renderer, const std::string& fileName, 
         textures.emplace_back(new Texture(renderer, fullPath));
 
         fullPath = fileName + '_' + std::to_string(textures.size()) + extension;
-    }while(fileExists(fullPath));
+    }while(file_exists(fullPath));
 
     animation_begin = 0;
     animation_end = textures.size() - 1;
@@ -220,11 +220,4 @@ bool Sprite::is_animating_once() const noexcept{
 
 bool Sprite::valid_texture_selection(const unsigned int pos) const noexcept{
     return pos < textures.size();
-}
-
-void Sprite::set_depth(unsigned int depth){
-    at(0).set_depth(depth);
-}
-unsigned int Sprite::get_depth() const{
-    return at(0).get_depth();
 }

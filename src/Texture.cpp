@@ -28,14 +28,14 @@ void Texture::load(SDL_Renderer* const renderer, const std::string& path){
     imageData = std::shared_ptr<SDL_Texture>(IMG_LoadTexture(renderer, path.c_str()), SDL_DestroyTexture);
 
 	if(!imageData){
-		std::cout << C(C::RED) << "Failed to load texture: " << C(C::YELLOW) << path << "\"\n" << C();
+		std::cout << C(C::RED) << "Failed to load image: " << C(C::YELLOW) << path << "\"\n" << C();
 		std::string errorMSG;
 
-		if(!fileExists(path)){
+		if(!file_exists(path)){
 			errorMSG += "File doesn't exist!\n";
 		}
 
-		const std::string extension = getExtension(path);
+		const std::string extension = get_extension(path);
 
 		if(extension.empty()){
 			errorMSG += "\t   File does not contain an extension!\n";
@@ -51,7 +51,7 @@ void Texture::load(SDL_Renderer* const renderer, const std::string& path){
         throw std::runtime_error(errorMSG);
 	}
 	else{
-		std::cout << C(C::GREEN) << "Successfully loaded imageData: " << C(C::YELLOW) << "\"" << path << "\"\n" << C();
+		std::cout << C(C::GREEN) << "Successfully loaded image: " << C(C::YELLOW) << "\"" << path << "\"\n" << C();
 	}
 
 	SDL_QueryTexture(imageData.get(), nullptr, nullptr, &srcRect.w, &srcRect.h);

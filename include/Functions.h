@@ -7,12 +7,8 @@
 #include <string>
 #include <iostream>
 
-/// --- Internet --- ///
-void sendPosition(int*, int*, SOCKET);
-void recievePosition(int*, int*, SOCKET);
+bool file_exists(const std::string& path);
 
-bool fileExists(const std::string& path);
-
-std::string getExtension(const std::string& path);
+std::string get_extension(const std::string& path);
 
 #endif // FUNCTIONS_H
