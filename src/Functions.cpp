@@ -1,4 +1,4 @@
-#include "Functions.h"
+#include "functions.h"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>

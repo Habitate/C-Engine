@@ -9,16 +9,16 @@ add_executable(app
 	../src/info.rc
 )
 
-add_library(functions OBJECT ../src/Functions.cpp)
-add_library(game      OBJECT ../src/Game.cpp)
-add_library(object    OBJECT ../src/Object.cpp)
-add_library(texture   OBJECT ../src/Texture.cpp)
-add_library(sprite    OBJECT ../src/Sprite.cpp)
+add_library(functions OBJECT ../src/functions.cpp)
+add_library(game      OBJECT ../src/game.cpp)
+add_library(object    OBJECT ../src/object.cpp)
+add_library(texture   OBJECT ../src/texture.cpp)
+add_library(sprite    OBJECT ../src/sprite.cpp)
 add_library(color     OBJECT ../src/color.cpp)
-add_library(input     OBJECT ../src/InputHandler.cpp)
-add_library(font      OBJECT ../src/Font.cpp)
+add_library(input     OBJECT ../src/input.cpp)
+add_library(font      OBJECT ../src/font.cpp)
 
-add_library(object_player ../src/objects/player.cpp)
+add_library(object_player ../src/obj/player.cpp)
 
 target_compile_options(app PUBLIC -g -Wall -Weffc++ -Wextra -Wsign-conversion)
 target_compile_options(functions PUBLIC -g -Wall -Weffc++ -Wextra -Wsign-conversion)

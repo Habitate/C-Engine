@@ -1,8 +1,8 @@
 #ifndef OBJ_PLAYER
 #define OBJ_PLAYER
 
-#include "Object.h"
-#include "InputHandler.h"
+#include "object.h"
+#include "input.h"
 #include <SDL2/SDL.h>
 
 class Obj_player : public Object{

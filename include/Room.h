@@ -5,8 +5,8 @@
 
 #include <vector>
 #include <memory>
-#include "Object.h"
-#include "Sprite.h"
+#include "object.h"
+#include "sprite.h"
 
 class Room{
     public:

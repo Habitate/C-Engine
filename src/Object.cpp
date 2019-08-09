@@ -1,4 +1,4 @@
-#include "Object.h"
+#include "object.h"
 
 Object::Object() : sprite(), body{0, 0 , 0, 0}{
 }

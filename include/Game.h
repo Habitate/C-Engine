@@ -2,11 +2,11 @@
 #define GAME_H
 
 #include <SDL2/SDL.h>
-#include "Object.h"
+#include "object.h"
 #include "texture.h"
 #include <memory>
-#include "InputHandler.h"
-#include "Font.h"
+#include "input.h"
+#include "font.h"
 
 class Game{
     public:

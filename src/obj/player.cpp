@@ -1,7 +1,7 @@
-#include "Objects/player.h"
+#include "obj/player.h"
 
 #include <SDL2/SDL.h>
-#include "InputHandler.h"
+#include "input.h"
 
 Obj_player::Obj_player(SDL_Renderer* renderer, SDL_Event* event) : flip(SDL_FLIP_NONE), event(event){
     sprite.load_multiple(renderer, "../assets/anim/test/test", ".png");

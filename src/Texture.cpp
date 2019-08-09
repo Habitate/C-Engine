@@ -9,8 +9,8 @@
 #include <array>
 #include <algorithm>
 
-#include "Color.h"
-#include "Functions.h"
+#include "color.h"
+#include "functions.h"
 
 Texture::Texture() noexcept : imageData(), dstRect{0, 0, 0, 0}, srcRect{0, 0, 0, 0}, depth(0){}
 Texture::Texture(SDL_Renderer* const renderer, const std::string& path) : Texture(){

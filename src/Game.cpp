@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "game.h"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
@@ -6,13 +6,13 @@
 #include <exception>
 
 #include <iostream>
-#include "Functions.h"
+#include "functions.h"
 #include "color.h"
 #include <memory>
 
-#include "Objects/player.h"
-#include "InputHandler.h"
-#include "Font.h"
+#include "obj/player.h"
+#include "input.h"
+#include "font.h"
 
 Game::Game(const std::string& name, const int x, const int y, const int w, const int h, const unsigned int flags) :
 running(false), WREZ(w), HREZ(h), event{0}, renderer(nullptr, SDL_DestroyRenderer), window(nullptr, SDL_DestroyWindow),

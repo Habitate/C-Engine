@@ -1,5 +1,5 @@
-#ifndef INPUTHANDLER_H
-#define INPUTHANDLER_H
+#ifndef INPUT_H
+#define INPUT_H
 
 #include <SDL2/SDL.h>
 #include <vector>
@@ -23,4 +23,4 @@ class InputHandler{
         static unsigned int arraySize;
 };
 
-#endif // INPUTHANDLER_H
+#endif // INPUT_H

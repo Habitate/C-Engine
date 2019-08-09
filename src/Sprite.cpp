@@ -1,6 +1,6 @@
-#include "Sprite.h"
+#include "sprite.h"
 
-#include "Functions.h"
+#include "functions.h"
 
 Sprite::Sprite() noexcept : textures(), visable(true), sprite_index(0), animation_begin(0), animation_end(0), animating_once(false), animating(true){}
 Sprite::Sprite(SDL_Renderer* renderer, const std::string& fileName) : Sprite(){
