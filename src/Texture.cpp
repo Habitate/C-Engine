@@ -12,17 +12,28 @@
 #include "color.h"
 #include "functions.h"
 
+//? Data types supported by the SDL_Image library
+const std::array<std::string, 17> Texture::SUPPORTED_DATA_TYPES = {
+	".png", ".jpg", ".jpeg",
+    ".bmp", ".gif", ".tga",
+    ".pnm", ".pbm", ".pgm",
+    ".ppm", ".xpm", ".xcf",
+    ".pcx", ".tif", ".tiff",
+    ".lbm", ".iff"
+};
+
 Texture::Texture() noexcept : imageData(), dstRect{0, 0, 0, 0}, srcRect{0, 0, 0, 0}{}
 Texture::Texture(SDL_Renderer* const renderer, const std::string& path) : Texture(){
 	load(renderer, path);
 }
-Texture::~Texture() = default;
 
 Texture::Texture(Texture& obj) noexcept = default;
 Texture& Texture::operator=(Texture& obj) noexcept = default;
 
 Texture::Texture(Texture&& obj) noexcept = default;
 Texture& Texture::operator=(Texture&& obj) noexcept = default;
+
+Texture::~Texture() noexcept = default;
 
 void Texture::load(SDL_Renderer* const renderer, const std::string& path){
     imageData = std::shared_ptr<SDL_Texture>(IMG_LoadTexture(renderer, path.c_str()), SDL_DestroyTexture);
@@ -115,13 +126,3 @@ const SDL_Rect& Texture::get_dst_rect() const noexcept{
 bool Texture::good() const noexcept{
 	return (bool)imageData;
 }
-
-//? Data types supported by the SDL_Image library
-const std::array<std::string, 17> Texture::SUPPORTED_DATA_TYPES = {
-	".png", ".jpg", ".jpeg",
-    ".bmp", ".gif", ".tga",
-    ".pnm", ".pbm", ".pgm",
-    ".ppm", ".xpm", ".xcf",
-    ".pcx", ".tif", ".tiff",
-    ".lbm", ".iff"
-};

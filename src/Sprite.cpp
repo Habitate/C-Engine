@@ -43,6 +43,8 @@ Sprite& Sprite::operator=(Sprite& obj) noexcept{
 Sprite::Sprite(Sprite&& obj) noexcept = default;
 Sprite& Sprite::operator=(Sprite&& obj) noexcept = default;
 
+Sprite::~Sprite() noexcept = default;
+
 void Sprite::load_single(SDL_Renderer* renderer, const std::string& fileName){
     if(!textures.empty()){
         textures.clear();

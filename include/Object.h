@@ -6,28 +6,29 @@
 
 class Object{
     public:
-        Object();
-        Object(const SDL_Rect& body);
-        virtual ~Object();
-
+        Object() noexcept;
+        Object(const SDL_Rect& body) noexcept;
+        
         // Copyable
-        Object(Object& obj);
-		Object& operator=(Object& obj);
+        Object(Object& obj) noexcept;
+		Object& operator=(Object& obj) noexcept;
 
 		//Moveable
-		Object(Object&& obj);
-		Object& operator=(Object&& obj);
+		Object(Object&& obj) noexcept;
+		Object& operator=(Object&& obj) noexcept;
+
+        virtual ~Object() noexcept;
 
         virtual void begin_step();
         virtual void step();
         virtual void end_step();
 
-        void syncSprite();
+        void syncSprite() const noexcept;
 
-        virtual void draw(SDL_Renderer* const renderer);
-        bool checkCollision(Object& object);
+        virtual void draw(SDL_Renderer* const renderer) const;
+        bool checkCollision(const Object& object) const noexcept;
 
-        Sprite sprite;
+        mutable Sprite sprite;
         SDL_Rect body;
 };
 

@@ -8,12 +8,11 @@
 
 class Texture{
 	public:
-		Texture() noexcept;
+		static const std::array<std::string, 17> SUPPORTED_DATA_TYPES;
 
+		Texture() noexcept;
 		//* Only supports paths with full extensions. E.x.: "image.png"
 		Texture(SDL_Renderer* const renderer, const std::string& path);
-
-		~Texture();
 
 		// Copyable
 		Texture(Texture& obj) noexcept;
@@ -22,6 +21,8 @@ class Texture{
 		// Moveable
 		Texture(Texture&& obj) noexcept;
 		Texture& operator=(Texture&& obj) noexcept;
+
+		~Texture();
 
 		void load(SDL_Renderer* const renderer, const std::string& path);
 
@@ -46,8 +47,6 @@ class Texture{
 		const SDL_Rect& get_dst_rect() const noexcept;
 
 		bool good() const noexcept;
-
-		static const std::array<std::string, 17> SUPPORTED_DATA_TYPES;
 
 	private:
 		std::shared_ptr<SDL_Texture> imageData;

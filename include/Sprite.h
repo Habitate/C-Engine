@@ -21,6 +21,8 @@ class Sprite{
 		Sprite(Sprite&& obj) noexcept;
 		Sprite& operator=(Sprite&& obj) noexcept;
 		
+		~Sprite() noexcept;
+
 		//* Loads the file with the given name
 		void load_single(SDL_Renderer* renderer, const std::string& fileName);
 		//* Loops and loads all files with the given extension from *_0.ext to *_n.ext

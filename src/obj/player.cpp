@@ -3,7 +3,7 @@
 #include <SDL2/SDL.h>
 #include "input.h"
 
-Obj_player::Obj_player(SDL_Renderer* renderer, SDL_Event* event) : flip(SDL_FLIP_NONE), event(event){
+Obj_player::Obj_player(SDL_Renderer* const renderer, SDL_Event* const event) : flip(SDL_FLIP_NONE), event(event){
     sprite.load_multiple(renderer, "../assets/anim/test/test", ".png");
 
     sprite.set_index(35);
@@ -21,7 +21,7 @@ Obj_player& Obj_player::operator=(Obj_player&& obj) = default;
 
 Obj_player::~Obj_player() = default;
 
-void Obj_player::draw(SDL_Renderer* const renderer){
+void Obj_player::draw(SDL_Renderer* const renderer) const{
     sprite.draw_ext(renderer, body.x, body.y, 0, nullptr, flip);
 }
 
