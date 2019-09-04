@@ -47,7 +47,7 @@ class Texture{
 
 		bool good() const noexcept;
 
-		static std::array<std::string, 17> SUPPORTED_DATA_TYPES;
+		static const std::array<std::string, 17> SUPPORTED_DATA_TYPES;
 
 	private:
 		std::shared_ptr<SDL_Texture> imageData;

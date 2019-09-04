@@ -12,7 +12,7 @@
 #include "color.h"
 #include "functions.h"
 
-Texture::Texture() noexcept : imageData(), dstRect{0, 0, 0, 0}, srcRect{0, 0, 0, 0}, depth(0){}
+Texture::Texture() noexcept : imageData(), dstRect{0, 0, 0, 0}, srcRect{0, 0, 0, 0}{}
 Texture::Texture(SDL_Renderer* const renderer, const std::string& path) : Texture(){
 	load(renderer, path);
 }
@@ -112,19 +112,12 @@ const SDL_Rect& Texture::get_dst_rect() const noexcept{
 	return dstRect;
 }
 
-void Texture::set_depth(unsigned int depth){
-    this->depth = depth;
-}
-unsigned int Texture::get_depth() const{
-    return depth;
-}
-
 bool Texture::good() const noexcept{
 	return (bool)imageData;
 }
 
 //? Data types supported by the SDL_Image library
-std::array<std::string, 17> Texture::SUPPORTED_DATA_TYPES = {
+const std::array<std::string, 17> Texture::SUPPORTED_DATA_TYPES = {
 	".png", ".jpg", ".jpeg",
     ".bmp", ".gif", ".tga",
     ".pnm", ".pbm", ".pgm",
