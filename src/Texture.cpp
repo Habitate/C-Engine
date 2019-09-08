@@ -22,7 +22,7 @@ const std::array<std::string, 17> Texture::SUPPORTED_DATA_TYPES = {
     ".lbm", ".iff"
 };
 
-Texture::Texture() noexcept : imageData(), dstRect{0, 0, 0, 0}, srcRect{0, 0, 0, 0}{}
+Texture::Texture() noexcept : imageData(), dstRect{0, 0, 0, 0}, srcRect{0, 0, 0, 0}, renderer(nullptr){}
 Texture::Texture(SDL_Renderer* const renderer, const std::string& path) : Texture(){
 	load(renderer, path);
 }
@@ -36,6 +36,8 @@ Texture& Texture::operator=(Texture&& obj) noexcept = default;
 Texture::~Texture() noexcept = default;
 
 void Texture::load(SDL_Renderer* const renderer, const std::string& path){
+	this->renderer = renderer;
+
     imageData = std::shared_ptr<SDL_Texture>(IMG_LoadTexture(renderer, path.c_str()), SDL_DestroyTexture);
 
 	if(!imageData){
@@ -69,6 +71,10 @@ void Texture::load(SDL_Renderer* const renderer, const std::string& path){
     dstRect = srcRect;
 }
 
+SDL_Renderer* Texture::get_renderer() const noexcept{
+	return renderer;
+}
+
 void Texture::set_width(const int width) noexcept{
 	dstRect.w = width;
 }
@@ -91,17 +97,7 @@ void Texture::reset_height() noexcept{
     dstRect.h = srcRect.h;
 }
 
-void Texture::draw_ext(SDL_Renderer* const renderer, const int x, const int y, const double& angle, const SDL_Point* const center, const SDL_RendererFlip& flip) const{
-    if(!imageData){
-        throw std::runtime_error(std::string("Attempted to draw an uninitialized texture! Object: ") + std::to_string((int)(void*)this) + '\n');
-	}
-
-	dstRect.x = x;
-	dstRect.y = y;
-
-	SDL_RenderCopyEx(renderer, imageData.get(), &srcRect, &dstRect, angle, center, flip);
-}
-void Texture::draw_raw(SDL_Renderer* const renderer, const int x, const int y) const{
+void Texture::draw(const int x, const int y, const double angle, const SDL_Point* const center, const SDL_RendererFlip& flip) const{
 	if(!imageData){
         throw std::runtime_error(std::string("Attempted to draw an uninitialized texture! Object: ") + std::to_string((int)(void*)this) + '\n');
 	}
@@ -109,7 +105,7 @@ void Texture::draw_raw(SDL_Renderer* const renderer, const int x, const int y) c
 	dstRect.x = x;
 	dstRect.y = y;
 
-	SDL_RenderCopy(renderer, imageData.get(), &srcRect, &dstRect);
+	SDL_RenderCopyEx(renderer, imageData.get(), &srcRect, &dstRect, angle, center, flip);
 }
 
 bool Texture::check_collision(const Texture& texture) const noexcept{

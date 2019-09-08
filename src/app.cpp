@@ -20,12 +20,13 @@ int main(int argc, char* argv[]){
     SDL_Init(SDL_INIT_EVERYTHING);
     IMG_Init(0);
     TTF_Init();
-    
-    const int fpsCap = 60;
-    const constexpr Uint32 frameDelay = 1000 / fpsCap; // How many max mileseconds can one frame take up
 
-    Uint32 frameTime;
-    Uint32 frameStart;
+    //SDL_SetRelativeMouseMode(SDL_TRUE);
+    
+    const int fps_cap = 60;
+    const constexpr Uint32 frame_delay = 1000 / fps_cap; // How many max mileseconds can one frame take up
+
+    Uint32 frame_time, frame_start;
 
     std::cout << C(C::BLUE) << "\n\n-------------- Game started! --------------\n\n" << C();
 
@@ -37,7 +38,7 @@ int main(int argc, char* argv[]){
     std::cout << C(C::PINK) << "\nLoaded all objects!\n\n" << C();
 
     while(game->isRunning()){
-        frameStart = SDL_GetTicks();
+        frame_start = SDL_GetTicks();
 
         //!----------------------
         game->HandleSDLEvents();
@@ -45,11 +46,9 @@ int main(int argc, char* argv[]){
         game->Render();
         //!----------------------
 
-        frameTime = SDL_GetTicks() - frameStart;
+        frame_time = SDL_GetTicks() - frame_start;
         
-        if(frameDelay > frameTime){
-            SDL_Delay(frameDelay - frameTime);
-        }
+        SDL_Delay(frame_delay > frame_time ? frame_delay - frame_time : 0);
     }
 
     std::cout << C(C::BLUE) << "--------------- Game ended! ---------------\n\n" << C();

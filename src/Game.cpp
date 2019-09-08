@@ -14,20 +14,20 @@
 #include "input.h"
 #include "font.h"
 
+#include <string>
+
 Game::Game(const std::string& name, const int x, const int y, const int w, const int h, const unsigned int flags) :
 running(false), WREZ(w), HREZ(h), event{0}, renderer(nullptr, SDL_DestroyRenderer), window(nullptr, SDL_DestroyWindow),
 White{255, 255, 255, 255}, wallpaper(), ground(), objects(), fnt_ubuntu("../font/Ubuntu.ttf"), tempText(),
 tempTextSrcRect{0, 0, 0, 0}, tempTextDstRect{0, 0, 0, 0}{
     window = std::unique_ptr<SDL_Window  , void(*)(SDL_Window  *)>(SDL_CreateWindow(name.c_str(), x, y, w, h, flags), SDL_DestroyWindow);  
     if(!window){
-        std::cout << SDL_GetError() << "\n\n";
-        throw;
+        throw std::runtime_error(std::string("Unable to create window!\n\t") + SDL_GetError());
     }
 
     renderer = std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer*)>(SDL_CreateRenderer(window.get(), -1, 0) , SDL_DestroyRenderer);
     if(!renderer){
-        std::cout << SDL_GetError() << "\n\n";
-        throw;
+        throw std::runtime_error(std::string("Unable to create renderer!\n\t") + SDL_GetError());
     }
 
     changeIcon("../assets/icont.png");
@@ -66,13 +66,13 @@ void Game::HandleSDLEvents(){
 }
 void Game::Update(){
     // Handle object steps
-    for(std::unique_ptr<Object>& object : objects){
+    for(const std::unique_ptr<Object>& object : objects){
         object->begin_step();
     }
-    for(std::unique_ptr<Object>& object : objects){
+    for(const std::unique_ptr<Object>& object : objects){
         object->step();
     }
-    for(std::unique_ptr<Object>& object : objects){
+    for(const std::unique_ptr<Object>& object : objects){
         object->end_step();
     }
 }
@@ -80,16 +80,16 @@ void Game::Render(){
     // Clear the screen
     SDL_RenderClear(renderer.get());
 
-    wallpaper.draw_raw(renderer.get(), 0, 0);
+    wallpaper.draw(0, 0);
 
     // Draw the ground
     for(int x = 0; x < 640; x += 64){
-        ground.draw_raw(renderer.get(), x, 416);
+        ground.draw(x, 416);
     }
 
     // Draw the objects
-    for(std::unique_ptr<Object>& object : objects){
-        object->draw(renderer.get());
+    for(const std::unique_ptr<Object>& object : objects){
+        object->draw();
     }
 
     //for(int i = 0; i < 100000; ++i);

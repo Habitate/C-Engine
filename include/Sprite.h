@@ -40,10 +40,9 @@ class Sprite{
 		Texture& at(const unsigned int index);
 		const Texture& at(const unsigned int index) const;
 
-		//* Draw the texure using custom parameters
-		void draw_ext(SDL_Renderer* const renderer, const int x, const int y, const double& angle, const SDL_Point* const center, const SDL_RendererFlip& flip) const;
-		//* Draws the texture
-		void draw_raw(SDL_Renderer* const renderer, const int x, const int y) const;
+		SDL_Renderer* get_renderer() const;
+
+		void draw(const int x, const int y, const double angle = 0, const SDL_Point* const center = nullptr, const SDL_RendererFlip& flip = SDL_FLIP_NONE) const;
 
 		//* Set the dimensions of all the textures within the sprite
 		void set_dimensions(const int w, const int h) noexcept;
@@ -76,10 +75,9 @@ class Sprite{
 		bool good() const noexcept;
 		
 	private:
-		bool valid_texture_selection(const unsigned int pos) const noexcept;
+		bool is_valid_texture_selection(const unsigned int pos) const noexcept;
 
 		std::vector<std::unique_ptr<Texture>> textures;
-		bool visable;
 
 		//Animation variables
 		mutable unsigned int sprite_index;

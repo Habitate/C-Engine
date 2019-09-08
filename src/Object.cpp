@@ -15,12 +15,12 @@ void Object::begin_step(){}
 void Object::step(){}
 void Object::end_step(){}
 
-void Object::syncSprite() const noexcept{
+void Object::sync_sprite() const noexcept{
     sprite.set_dimensions(body.w, body.h);
 }
 
-void Object::draw(SDL_Renderer* renderer) const{
-    sprite.draw_raw(renderer, body.x, body.y);
+void Object::draw() const{
+    sprite.draw(body.x, body.y);
 }
 
 bool Object::checkCollision(const Object& obj) const noexcept{

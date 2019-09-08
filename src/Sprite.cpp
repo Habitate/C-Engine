@@ -2,7 +2,7 @@
 
 #include "functions.h"
 
-Sprite::Sprite() noexcept : textures(), visable(true), sprite_index(0), animation_begin(0), animation_end(0), animating_once(false), animating(true){}
+Sprite::Sprite() noexcept : textures(), sprite_index(0), animation_begin(0), animation_end(0), animating_once(false), animating(true){}
 Sprite::Sprite(SDL_Renderer* renderer, const std::string& fileName) : Sprite(){
     load_single(renderer, fileName);
 }
@@ -14,7 +14,7 @@ Sprite::Sprite(SDL_Renderer* renderer, const std::string& fileName, const std::s
     this->animation_end   = animation_end;
 }
 
-Sprite::Sprite(Sprite& obj) noexcept : textures(obj.textures.size()), visable(obj.visable), sprite_index(obj.sprite_index), animation_begin(obj.animation_begin), animation_end(obj.animation_end), animating_once(obj.animating_once), animating(obj.animating){
+Sprite::Sprite(Sprite& obj) noexcept : textures(obj.textures.size()), sprite_index(obj.sprite_index), animation_begin(obj.animation_begin), animation_end(obj.animation_end), animating_once(obj.animating_once), animating(obj.animating){
     const unsigned int textureCount = textures.size();
 
     for(unsigned int i = 0; i < textureCount; ++i){
@@ -35,8 +35,6 @@ Sprite& Sprite::operator=(Sprite& obj) noexcept{
     animating_once = obj.animating_once;
 	sprite_index = obj.sprite_index;
 	animating = obj.animating;
-    visable = obj.visable;
-
     return *this;
 }
 
@@ -82,7 +80,7 @@ unsigned int Sprite::get_index() const noexcept{
     return sprite_index;
 }
 void Sprite::set_index(const unsigned int index){
-    if(!valid_texture_selection(index)){
+    if(!is_valid_texture_selection(index)){
         throw std::runtime_error("Tried to the sprite index to an invalid value!");
     }
 
@@ -97,29 +95,31 @@ const Texture& Sprite::operator[](const unsigned int index) const noexcept{
 }
 
 Texture& Sprite::at(const unsigned int index){
-    if(!valid_texture_selection(index)){
+    if(!is_valid_texture_selection(index)){
         throw std::runtime_error("Tried to access a non-existant texture!");
     }
 
     return *textures[index];
 }
 const Texture& Sprite::at(const unsigned int index) const{
-    if(!valid_texture_selection(index)){
+    if(!is_valid_texture_selection(index)){
         throw std::runtime_error("Tried to access a non-existant texture!");
     }
 
     return *textures[index];
 }
 
-void Sprite::draw_ext(SDL_Renderer* const renderer, const int x, const int y, const double& angle, const SDL_Point* const center, const SDL_RendererFlip& flip) const{
-    //* Throws if necessary
-    textures[sprite_index]->draw_ext(renderer, x, y, angle, center, flip);
+SDL_Renderer* Sprite::get_renderer() const{
+	if(!textures.size()){
+		throw std::runtime_error("get_renderer() -> unable to get the renderer of an empty sprite!");
+	}
 
-    iterate();
+	return textures[0]->get_renderer();
 }
-void Sprite::draw_raw(SDL_Renderer* const renderer, const int x, const int y) const{
+
+void Sprite::draw(const int x, const int y, const double angle, const SDL_Point* const center, const SDL_RendererFlip& flip) const{
     //* Throws if necessary
-    textures[sprite_index]->draw_raw(renderer, x, y);
+    textures[sprite_index]->draw(x, y, angle, center, flip);
 
     iterate();
 }
@@ -191,7 +191,7 @@ void Sprite::reset_animation() const noexcept{
 }
 
 void Sprite::set_animation_range(unsigned int beg, unsigned int end){
-    if(!valid_texture_selection(beg) || !valid_texture_selection(end)){
+    if(!is_valid_texture_selection(beg) || !is_valid_texture_selection(end)){
         throw std::runtime_error("Tried to set the animation range to invalid values!");
     }
 
@@ -199,14 +199,14 @@ void Sprite::set_animation_range(unsigned int beg, unsigned int end){
     animation_end = end;
 }
 void Sprite::set_animation_begin(unsigned int beg){
-    if(!valid_texture_selection(beg)){
+    if(!is_valid_texture_selection(beg)){
         throw std::runtime_error("Tried to set the beggining of the animation range to an invalid value!");
     }
 
     animation_begin = beg;
 }
 void Sprite::set_animation_end(unsigned int end){
-    if(!valid_texture_selection(end)){
+    if(!is_valid_texture_selection(end)){
         throw std::runtime_error("Tried to set the end of the animation range to an invalid value!");
     }
 
@@ -230,6 +230,6 @@ bool Sprite::good() const noexcept{
     return true;
 }
 
-bool Sprite::valid_texture_selection(const unsigned int pos) const noexcept{
+bool Sprite::is_valid_texture_selection(const unsigned int pos) const noexcept{
     return pos < textures.size();
 }

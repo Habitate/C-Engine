@@ -19,7 +19,7 @@ class Obj_player : public Object{
 
         ~Obj_player();
 
-        void draw(SDL_Renderer* const renderer) const;
+        void draw() const;
 
         void begin_step() override;
         void step() override;

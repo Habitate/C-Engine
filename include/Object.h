@@ -13,7 +13,7 @@ class Object{
         Object(Object& obj) noexcept;
 		Object& operator=(Object& obj) noexcept;
 
-		//Moveable
+		// Moveable
 		Object(Object&& obj) noexcept;
 		Object& operator=(Object&& obj) noexcept;
 
@@ -23,9 +23,9 @@ class Object{
         virtual void step();
         virtual void end_step();
 
-        void syncSprite() const noexcept;
+        void sync_sprite() const noexcept;
 
-        virtual void draw(SDL_Renderer* const renderer) const;
+        virtual void draw() const;
         bool checkCollision(const Object& object) const noexcept;
 
         mutable Sprite sprite;

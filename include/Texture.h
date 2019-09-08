@@ -26,6 +26,8 @@ class Texture{
 
 		void load(SDL_Renderer* const renderer, const std::string& path);
 
+		SDL_Renderer* get_renderer() const noexcept;
+
 		//* Set the dimensions
 		void set_width(const int width) noexcept;
 		void set_height(const int width) noexcept;
@@ -36,10 +38,7 @@ class Texture{
 		void reset_height() noexcept;
 		void reset_dimensions() noexcept;
 
-		//* Draw the texure using custom parameters
-		void draw_ext(SDL_Renderer* const renderer, const int x, const int y, const double& angle, const SDL_Point* const center, const SDL_RendererFlip& flip) const;
-		//* Draws the texture
-		void draw_raw(SDL_Renderer* const renderer, const int x, const int y) const;
+		void draw(const int x, const int y, const double angle = 0, const SDL_Point* const center = nullptr, const SDL_RendererFlip& flip = SDL_FLIP_NONE) const;
 
 		bool check_collision(const Texture& texture) const noexcept;
 
@@ -52,6 +51,8 @@ class Texture{
 		std::shared_ptr<SDL_Texture> imageData;
 		mutable SDL_Rect dstRect;
 		SDL_Rect srcRect;
+
+		SDL_Renderer* renderer; 
 };
 
 #endif // TEXTURE_H

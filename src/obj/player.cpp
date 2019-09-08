@@ -21,8 +21,8 @@ Obj_player& Obj_player::operator=(Obj_player&& obj) = default;
 
 Obj_player::~Obj_player() = default;
 
-void Obj_player::draw(SDL_Renderer* const renderer) const{
-    sprite.draw_ext(renderer, body.x, body.y, 0, nullptr, flip);
+void Obj_player::draw() const{
+    sprite.draw(body.x, body.y, 0, nullptr, flip);
 }
 
 void Obj_player::begin_step(){
@@ -63,5 +63,5 @@ void Obj_player::step(){
     }
 }
 void Obj_player::end_step(){
-    syncSprite();
+    sync_sprite();
 } 
