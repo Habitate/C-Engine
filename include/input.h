@@ -9,12 +9,12 @@ class InputHandler{
     public:
         static void Init();
 
-        //? Makes the previous keyboard state to be equal to the current keyboard state
+        //? Syncs the current keyboard state with the class buffers
         static void syncStates();
 
-        static bool pressed(SDL_Scancode scancode);
-        static bool released(SDL_Scancode scancode);
-        static bool held(SDL_Scancode scancode);
+        static bool pressed(const SDL_Scancode scancode);
+        static bool released(const SDL_Scancode scancode);
+        static bool held(const SDL_Scancode scancode);
 
     private:
         static const Uint8* currentState;

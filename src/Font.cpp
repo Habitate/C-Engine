@@ -10,6 +10,11 @@ Font::Font(const std::string& path, const unsigned int size) : Font(){
     load(path, size);
 }
 
+Font::Font(Font&& font) noexcept = default;
+Font& Font::operator=(Font&& font) noexcept = default;
+
+Font::~Font() noexcept = default;
+
 void Font::load(const std::string& path, const unsigned int size){
     //? Prevent unnecessary loading
     if(this->path == path && this->size == size){
@@ -65,7 +70,6 @@ void Font::draw_text(SDL_Renderer* const renderer, const std::string& text, cons
     
     SDL_RenderCopy(renderer, sprite.get(), &srcRect, &dstRect);
 }
-
 std::shared_ptr<SDL_Texture> Font::render_text(SDL_Renderer* const renderer, const std::string& text, const SDL_Color& color) const{
     if(!font){
         throw std::runtime_error("Tried to draw text from an uninitialized font!\n");

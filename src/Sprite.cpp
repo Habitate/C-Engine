@@ -220,6 +220,16 @@ bool Sprite::is_animating_once() const noexcept{
     return animating_once;
 }
 
+bool Sprite::good() const noexcept{
+    for(const std::unique_ptr<Texture>& texture : textures){
+        if(!texture->good()){
+            return false;
+        }
+    }
+
+    return true;
+}
+
 bool Sprite::valid_texture_selection(const unsigned int pos) const noexcept{
     return pos < textures.size();
 }

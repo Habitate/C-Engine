@@ -2,29 +2,34 @@
 #define COLOR_H
 
 #include <ostream>
-#include <string>
+#include "windows.h"
 
 class C{
     public:
-        C(int color);
-        C();
+        enum Colors : uint8_t{
+            DEFAULT = 7,
+
+            RED = 12,
+            PINK = 13,
+            BLUE = 9,
+            CYAN = 11,
+            GREEN = 10,
+            WHITE = 15,
+            YELLOW = 14,
+            PURPLE = 5
+        };
+
+        static const HANDLE OUTPUT_HANDLE;
+    
+        C(const uint8_t color) noexcept;
+        C() noexcept;
 
         ~C();
 
-        friend std::ostream& operator<<(std::ostream& ss, C color);
+        friend std::ostream& operator<<(std::ostream& ss, const C& color);
 
-        int color;
-
-        //* Color definitions
-        static int RED;
-        static int PINK;
-        static int BLUE;
-        static int CYAN;
-        static int GREEN;
-        static int WHITE;
-        static int YELLOW;
-        static int PURPLE;
-        static int DEFAULT;
+    private:
+        uint8_t color;
 };
 
 #endif // COLOR_H

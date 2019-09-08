@@ -1,3 +1,5 @@
 1. Add image depth support.
 2. Add an efficent collision checking system.
 3. Let objects reference other objects
+4. Make GAME and INPUT into a singleton
+5. Streamline all classes

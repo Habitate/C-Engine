@@ -72,6 +72,9 @@ class Sprite{
 		bool is_animating() const noexcept;
 		bool is_animating_once() const noexcept;
 
+		//* Checks if every single internal texture is valid
+		bool good() const noexcept;
+		
 	private:
 		bool valid_texture_selection(const unsigned int pos) const noexcept;
 

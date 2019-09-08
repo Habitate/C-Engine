@@ -1,6 +1,8 @@
 Typedefs and Enums
 Constants
+
 Constructors
 Destructor
+
 Functions, Static Functions
 Data Members, Static data members.
