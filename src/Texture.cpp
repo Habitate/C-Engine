@@ -9,8 +9,10 @@
 #include <array>
 #include <algorithm>
 
+#include "camera.h"
 #include "color.h"
 #include "functions.h"
+#include "camera.h"
 
 //? Data types supported by the SDL_Image library
 const std::array<std::string, 17> Texture::SUPPORTED_DATA_TYPES = {
@@ -97,15 +99,26 @@ void Texture::reset_height() noexcept{
     dstRect.h = srcRect.h;
 }
 
-void Texture::draw(const int x, const int y, const double angle, const SDL_Point* const center, const SDL_RendererFlip& flip) const{
+void Texture::draw(const Camera& camera, const int x, const int y, const double angle, const SDL_Point* const center, const SDL_RendererFlip& flip) const{
 	if(!imageData){
         throw std::runtime_error(std::string("Attempted to draw an uninitialized texture! Object: ") + std::to_string((int)(void*)this) + '\n');
 	}
 
-	dstRect.x = x;
-	dstRect.y = y;
+	SDL_Rect temp = dstRect;
 
-	SDL_RenderCopyEx(renderer, imageData.get(), &srcRect, &dstRect, angle, center, flip);
+	temp.x = x + camera.get_y();
+	temp.y = y + camera.get_x();
+/*
+	int shift_in_x = (double)dstRect.w * camera.get_amp();
+	int shift_in_y = (double)dstRect.h * camera.get_amp();
+
+	temp.w = shift_in_x;
+	temp.h = shift_in_y;
+*/
+	temp.w = (double)dstRect.w * camera.get_amp();
+	temp.h = (double)dstRect.h * camera.get_amp();
+
+	SDL_RenderCopyEx(renderer, imageData.get(), &srcRect, &temp, angle, center, flip);
 }
 
 bool Texture::check_collision(const Texture& texture) const noexcept{

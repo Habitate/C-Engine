@@ -25,7 +25,7 @@ class Object{
 
         void sync_sprite() const noexcept;
 
-        virtual void draw() const;
+        virtual void draw(const Camera& camera) const;
         bool checkCollision(const Object& object) const noexcept;
 
         mutable Sprite sprite;

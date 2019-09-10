@@ -17,18 +17,20 @@ add_library(sprite    OBJECT ../src/sprite.cpp)
 add_library(color     OBJECT ../src/color.cpp)
 add_library(input     OBJECT ../src/input.cpp)
 add_library(font      OBJECT ../src/font.cpp)
+add_library(camera    OBJECT ../src/camera.cpp)
 
 add_library(object_player ../src/obj/player.cpp)
 
-target_compile_options(app PUBLIC -g -Wall -Weffc++ -Wextra -Wsign-conversion)
+target_compile_options(app       PUBLIC -g -Wall -Weffc++ -Wextra -Wsign-conversion)
 target_compile_options(functions PUBLIC -g -Wall -Weffc++ -Wextra -Wsign-conversion)
-target_compile_options(game PUBLIC -g -Wall -Weffc++ -Wextra -Wsign-conversion)
-target_compile_options(object PUBLIC -g -Wall -Weffc++ -Wextra -Wsign-conversion)
-target_compile_options(texture PUBLIC -g -Wall -Weffc++ -Wextra -Wsign-conversion)
-target_compile_options(sprite PUBLIC -g -Wall -Weffc++ -Wextra -Wsign-conversion)
-target_compile_options(color PUBLIC -g -Wall -Weffc++ -Wextra -Wsign-conversion)
-target_compile_options(input PUBLIC -g -Wall -Weffc++ -Wextra -Wsign-conversion)
-target_compile_options(font PUBLIC -g -Wall -Weffc++ -Wextra -Wsign-conversion)
+target_compile_options(game      PUBLIC -g -Wall -Weffc++ -Wextra -Wsign-conversion)
+target_compile_options(object    PUBLIC -g -Wall -Weffc++ -Wextra -Wsign-conversion)
+target_compile_options(texture   PUBLIC -g -Wall -Weffc++ -Wextra -Wsign-conversion)
+target_compile_options(sprite    PUBLIC -g -Wall -Weffc++ -Wextra -Wsign-conversion)
+target_compile_options(color     PUBLIC -g -Wall -Weffc++ -Wextra -Wsign-conversion)
+target_compile_options(input     PUBLIC -g -Wall -Weffc++ -Wextra -Wsign-conversion)
+target_compile_options(font      PUBLIC -g -Wall -Weffc++ -Wextra -Wsign-conversion)
+target_compile_options(camera    PUBLIC -g -Wall -Weffc++ -Wextra -Wsign-conversion)
 
 target_compile_options(object_player PUBLIC -g -Wall -Weffc++ -Wextra -Wsign-conversion)
 
@@ -40,6 +42,7 @@ target_link_libraries(app
 	color
 	input
 	font
+	camera
 
 	object_player
 

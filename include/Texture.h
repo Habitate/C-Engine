@@ -5,6 +5,7 @@
 #include <string>
 #include <memory>
 #include <array>
+#include "camera.h"
 
 class Texture{
 	public:
@@ -38,7 +39,7 @@ class Texture{
 		void reset_height() noexcept;
 		void reset_dimensions() noexcept;
 
-		void draw(const int x, const int y, const double angle = 0, const SDL_Point* const center = nullptr, const SDL_RendererFlip& flip = SDL_FLIP_NONE) const;
+		void draw(const Camera& camera, const int x, const int y, const double angle = 0, const SDL_Point* const center = nullptr, const SDL_RendererFlip& flip = SDL_FLIP_NONE) const;
 
 		bool check_collision(const Texture& texture) const noexcept;
 

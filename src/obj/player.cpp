@@ -2,6 +2,7 @@
 
 #include <SDL2/SDL.h>
 #include "input.h"
+#include "camera.h"
 
 Obj_player::Obj_player(SDL_Renderer* const renderer, SDL_Event* const event) : flip(SDL_FLIP_NONE), event(event){
     sprite.load_multiple(renderer, "../assets/anim/test/test", ".png");
@@ -21,8 +22,8 @@ Obj_player& Obj_player::operator=(Obj_player&& obj) = default;
 
 Obj_player::~Obj_player() = default;
 
-void Obj_player::draw() const{
-    sprite.draw(body.x, body.y, 0, nullptr, flip);
+void Obj_player::draw(const Camera& camera) const{
+    sprite.draw(camera, body.x, body.y, 0, nullptr, flip);
 }
 
 void Obj_player::begin_step(){
@@ -65,3 +66,24 @@ void Obj_player::step(){
 void Obj_player::end_step(){
     sync_sprite();
 } 
+
+void Obj_player::control_camera(Camera& camera){
+    if(InputHandler::held(SDL_SCANCODE_L)){
+        camera.move_horizontal(1);
+    }
+    if(InputHandler::held(SDL_SCANCODE_K)){
+        camera.move_horizontal(-1);
+    }
+    if(InputHandler::held(SDL_SCANCODE_P)){
+        camera.move_vertical(-1);
+    }
+    if(InputHandler::held(SDL_SCANCODE_M)){
+        camera.move_vertical(1);
+    }
+    if(InputHandler::pressed(SDL_SCANCODE_O)){
+        camera.zoom_in(0.1);
+    }
+    if(InputHandler::pressed(SDL_SCANCODE_I)){
+        camera.zoom_out(0.1);
+    }
+}

@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "Texture.h"
+#include "camera.h"
 
 class Sprite{
 	public:
@@ -42,7 +43,7 @@ class Sprite{
 
 		SDL_Renderer* get_renderer() const;
 
-		void draw(const int x, const int y, const double angle = 0, const SDL_Point* const center = nullptr, const SDL_RendererFlip& flip = SDL_FLIP_NONE) const;
+		void draw(const Camera& camera, const int x, const int y, const double angle = 0, const SDL_Point* const center = nullptr, const SDL_RendererFlip& flip = SDL_FLIP_NONE) const;
 
 		//* Set the dimensions of all the textures within the sprite
 		void set_dimensions(const int w, const int h) noexcept;

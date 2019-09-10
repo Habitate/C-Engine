@@ -8,8 +8,8 @@
 
 #include "color.h"
 
-#define W 640
-#define H 480
+const unsigned int W(640);
+const unsigned int H(480);
 
 int main(int argc, char* argv[]){
     //Referenc argc and argv to get rid of unused variable warnings

@@ -7,6 +7,7 @@
 #include <memory>
 #include "input.h"
 #include "font.h"
+#include "camera.h"
 
 class Game{
     public:
@@ -56,6 +57,9 @@ class Game{
         std::shared_ptr<SDL_Texture> tempText;
         SDL_Rect tempTextSrcRect;
         SDL_Rect tempTextDstRect;
+
+        // Cameras
+        Camera camera;
 };
 
 #endif // GAME_H

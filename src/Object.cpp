@@ -19,8 +19,8 @@ void Object::sync_sprite() const noexcept{
     sprite.set_dimensions(body.w, body.h);
 }
 
-void Object::draw() const{
-    sprite.draw(body.x, body.y);
+void Object::draw(const Camera& camera) const{
+    sprite.draw(camera, body.x, body.y);
 }
 
 bool Object::checkCollision(const Object& obj) const noexcept{

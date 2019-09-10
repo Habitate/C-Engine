@@ -117,9 +117,9 @@ SDL_Renderer* Sprite::get_renderer() const{
 	return textures[0]->get_renderer();
 }
 
-void Sprite::draw(const int x, const int y, const double angle, const SDL_Point* const center, const SDL_RendererFlip& flip) const{
+void Sprite::draw(const Camera& camera, const int x, const int y, const double angle, const SDL_Point* const center, const SDL_RendererFlip& flip) const{
     //* Throws if necessary
-    textures[sprite_index]->draw(x, y, angle, center, flip);
+    textures[sprite_index]->draw(camera, x, y, angle, center, flip);
 
     iterate();
 }
