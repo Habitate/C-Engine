@@ -36,4 +36,4 @@ int Camera::get_y() const noexcept{
 }
 double Camera::get_amp() const noexcept{
     return amp;
-}//
+}
