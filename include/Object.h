@@ -3,11 +3,13 @@
 
 #include "Sprite.h"
 #include <SDL2/SDL.h>
+#include "camera.h"
 
 class Object{
     public:
         Object() noexcept;
-        Object(const SDL_Rect& body) noexcept;
+        Object(Camera* const camera) noexcept;
+        Object(const SDL_Rect& body, Camera* const camera) noexcept;
         
         // Copyable
         Object(Object& obj) noexcept;
@@ -25,11 +27,13 @@ class Object{
 
         void sync_sprite() const noexcept;
 
-        virtual void draw(const Camera& camera) const;
+        virtual void draw() const;
         bool checkCollision(const Object& object) const noexcept;
 
         mutable Sprite sprite;
         SDL_Rect body;
+
+        Camera* camera;
 };
 
 #endif // OBJECT_H

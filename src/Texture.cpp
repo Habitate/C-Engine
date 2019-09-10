@@ -101,24 +101,17 @@ void Texture::reset_height() noexcept{
 
 void Texture::draw(const Camera& camera, const int x, const int y, const double angle, const SDL_Point* const center, const SDL_RendererFlip& flip) const{
 	if(!imageData){
-        throw std::runtime_error(std::string("Attempted to draw an uninitialized texture! Object: ") + std::to_string((int)(void*)this) + '\n');
+        throw std::runtime_error(std::string("Attempted to draw an uninitialized texture! Object: ") + static_cast<const void*>(this) + '\n');
 	}
 
-	SDL_Rect temp = dstRect;
+	SDL_Rect dest{
+		x + camera.get_x(),
+		y + camera.get_y(),
+		static_cast<int>(dstRect.w * camera.get_amp()),
+		static_cast<int>(dstRect.h * camera.get_amp())
+	};
 
-	temp.x = x + camera.get_y();
-	temp.y = y + camera.get_x();
-/*
-	int shift_in_x = (double)dstRect.w * camera.get_amp();
-	int shift_in_y = (double)dstRect.h * camera.get_amp();
-
-	temp.w = shift_in_x;
-	temp.h = shift_in_y;
-*/
-	temp.w = (double)dstRect.w * camera.get_amp();
-	temp.h = (double)dstRect.h * camera.get_amp();
-
-	SDL_RenderCopyEx(renderer, imageData.get(), &srcRect, &temp, angle, center, flip);
+	SDL_RenderCopyEx(renderer, imageData.get(), &srcRect, &dest, angle, center, flip);
 }
 
 bool Texture::check_collision(const Texture& texture) const noexcept{

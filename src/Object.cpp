@@ -1,7 +1,8 @@
 #include "object.h"
 
-Object::Object() noexcept : sprite(), body{0, 0 , 0, 0}{}
-Object::Object(const SDL_Rect& body) noexcept : sprite(), body(body){}
+Object::Object() noexcept : sprite(), body{0, 0 , 0, 0}, camera(nullptr){}
+Object::Object(Camera* const camera) noexcept: sprite(), body{0, 0, 0, 0}, camera(camera){}
+Object::Object(const SDL_Rect& body, Camera* const camera) noexcept : sprite(), body(body), camera(camera){}
 
 Object::Object(Object& obj) noexcept = default;
 Object& Object::operator=(Object& obj) noexcept = default;
@@ -19,8 +20,8 @@ void Object::sync_sprite() const noexcept{
     sprite.set_dimensions(body.w, body.h);
 }
 
-void Object::draw(const Camera& camera) const{
-    sprite.draw(camera, body.x, body.y);
+void Object::draw() const{
+    sprite.draw(*camera, body.x, body.y);
 }
 
 bool Object::checkCollision(const Object& obj) const noexcept{

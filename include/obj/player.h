@@ -7,7 +7,7 @@
 
 class Obj_player : public Object{
     public:
-        Obj_player(SDL_Renderer* const renderer, SDL_Event* const event);
+        Obj_player(SDL_Renderer* const renderer, Camera* const camera, SDL_Event* const event);
 
         // Copyable
 		Obj_player(Obj_player& obj);
@@ -19,16 +19,13 @@ class Obj_player : public Object{
 
         ~Obj_player();
 
-        //* ---------------------------
-        //* ---------------------------
+        //* --------------------------- *\\
 
-        void draw(const Camera& camera) const override;
+        void draw() const override;
 
         void begin_step() override;
         void step() override;
         void end_step() override;
-
-        void control_camera(Camera& camera);
 
         SDL_RendererFlip flip;
         SDL_Event* event;

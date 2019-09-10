@@ -41,7 +41,7 @@ void Game::Initialize(){
 
     objects.reserve(10);
 
-    objects.emplace_back(new Obj_player(renderer.get(), &event));
+    objects.emplace_back(new Obj_player(renderer.get(), &camera, &event));
     //objects.emplace_back(new Obj_player2(renderer.get(), &event, objects[0]->sprite));
 
     wallpaper.load_single(renderer.get(), "../assets/wallpaper.jpg");
@@ -75,8 +75,6 @@ void Game::Update(){
     for(const std::unique_ptr<Object>& object : objects){
         object->end_step();
     }
-
-    dynamic_cast<Obj_player*>(objects[0].get())->control_camera(camera);
 }
 void Game::Render(){
     // Clear the screen
@@ -91,7 +89,7 @@ void Game::Render(){
 
     // Draw the objects
     for(const std::unique_ptr<Object>& object : objects){
-        object->draw(camera);
+        object->draw();
     }
 
     //for(int i = 0; i < 100000; ++i);

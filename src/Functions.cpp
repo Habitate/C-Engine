@@ -11,6 +11,8 @@
 #include <string>
 #include <algorithm>
 
+#include <sstream>
+
 bool file_exists(const std::string& path){
     struct stat stats;
 
@@ -21,4 +23,11 @@ std::string get_extension(const std::string& path){
     std::string::const_reverse_iterator dot = std::find(path.rbegin(), path.rend(), '.');
 
     return dot == path.rend() ? std::string() : std::string(dot.base() - 1, path.end());
+}
+
+std::string operator+(const std::string& str, const void* ptr){
+    std::stringstream stream;
+    stream << ptr;
+
+    return str + stream.str();
 }
