@@ -5,11 +5,13 @@
 #include <SDL2/SDL.h>
 #include "camera.h"
 
+class Game; // Forward declare
+
 class Object{
     public:
-        Object() noexcept;
-        Object(Camera* const camera) noexcept;
-        Object(const SDL_Rect& body, Camera* const camera) noexcept;
+        Object(Game* const game) noexcept;
+        Object(Game* const game, Camera* const camera) noexcept;
+        Object(Game* const game, const SDL_Rect& body, Camera* const camera) noexcept;
         
         // Copyable
         Object(Object& obj) noexcept;
@@ -35,8 +37,7 @@ class Object{
 
         Camera* camera;
 
-    private:
-       // Game& game_ptr;
+        Game* game_ptr;
 };
 
 #endif // OBJECT_H

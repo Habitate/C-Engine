@@ -3,15 +3,20 @@
 #include <SDL2/SDL.h>
 #include "input.h"
 #include "camera.h"
+#include "Game.h"
 
-Obj_player::Obj_player(SDL_Renderer* const renderer, Camera* const camera, SDL_Event* const event) : Object(camera), flip(SDL_FLIP_NONE), event(event){
+#include <iostream>
+
+Obj_player::Obj_player(Game* const game, SDL_Renderer* const renderer, Camera* const camera, SDL_Event* const event) : Object(game, camera), flip(SDL_FLIP_NONE), event(event){
     sprite.load_multiple(renderer, "../assets/anim/test/test", ".png");
 
     sprite.set_index(35);
     sprite.set_animation_range(35, 34);
     sprite.stop_animating();
 
-    body = {100, 316, 100, 100};
+    //std::cout << game_ptr->HREZ;
+
+    body = {100, game_ptr->HREZ - 64 - 100, 100, 100};
 }
 
 Obj_player::Obj_player(Obj_player& obj) = default;

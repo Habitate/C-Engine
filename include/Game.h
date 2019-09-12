@@ -33,7 +33,7 @@ class Game{
         void changeIcon(const std::string& path);
         bool isRunning();
 
-    private:
+    //private:
         bool running;
         int WREZ, HREZ;
 

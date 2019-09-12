@@ -7,7 +7,7 @@
 
 class Obj_player : public Object{
     public:
-        Obj_player(SDL_Renderer* const renderer, Camera* const camera, SDL_Event* const event);
+        Obj_player(Game* const game, SDL_Renderer* const renderer, Camera* const camera, SDL_Event* const event);
 
         // Copyable
 		Obj_player(Obj_player& obj);

@@ -1,8 +1,8 @@
 #include "object.h"
 
-Object::Object() noexcept : sprite(), body{0, 0 , 0, 0}, camera(nullptr){}
-Object::Object(Camera* const camera) noexcept: sprite(), body{0, 0, 0, 0}, camera(camera){}
-Object::Object(const SDL_Rect& body, Camera* const camera) noexcept : sprite(), body(body), camera(camera){}
+Object::Object(Game* const game) noexcept: sprite(), body{0, 0 , 0, 0}, camera(nullptr), game_ptr(game){}
+Object::Object(Game* const game, Camera* const camera) noexcept: sprite(), body{0, 0, 0, 0}, camera(camera), game_ptr(game){}
+Object::Object(Game* const game, const SDL_Rect& body, Camera* const camera) noexcept : sprite(), body(body), camera(camera), game_ptr(game){}
 
 Object::Object(Object& obj) noexcept = default;
 Object& Object::operator=(Object& obj) noexcept = default;
