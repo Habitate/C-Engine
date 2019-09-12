@@ -44,7 +44,8 @@ void Game::Initialize(){
     objects.emplace_back(new Obj_player(renderer.get(), &camera, &event));
     //objects.emplace_back(new Obj_player2(renderer.get(), &event, objects[0]->sprite));
 
-    wallpaper.load_single(renderer.get(), "../assets/wallpaper.jpg");
+    wallpaper.load_single(renderer.get(), "../assets/wallpaper2.jpg");
+    wallpaper.set_dimensions(WREZ, HREZ);
 
     ground.load_single(renderer.get(), "../assets/tilee.jpg");
     ground.set_dimensions(64, 64);
@@ -83,8 +84,10 @@ void Game::Render(){
     wallpaper.draw(camera, 0, 0);
 
     // Draw the ground
-    for(int x = 0; x < 640; x += 64){
-        ground.draw(camera, x, 416);
+
+    const int ground_y = HREZ - ground[0].get_dst_rect().h;
+    for(int x = 0; x < WREZ; x += 64){
+        ground.draw(camera, x, ground_y);
     }
 
     // Draw the objects

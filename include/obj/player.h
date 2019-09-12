@@ -19,7 +19,7 @@ class Obj_player : public Object{
 
         ~Obj_player();
 
-        //* --------------------------- *\\
+        //**********************************************
 
         void draw() const override;
 

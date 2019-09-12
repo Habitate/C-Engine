@@ -34,6 +34,9 @@ class Object{
         SDL_Rect body;
 
         Camera* camera;
+
+    private:
+       // Game& game_ptr;
 };
 
 #endif // OBJECT_H

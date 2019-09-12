@@ -104,13 +104,10 @@ void Texture::draw(const Camera& camera, const int x, const int y, const double 
         throw std::runtime_error(std::string("Attempted to draw an uninitialized texture! Object: ") + static_cast<const void*>(this) + '\n');
 	}
 
-	SDL_Rect dest{
-		x + camera.get_x(),
-		y + camera.get_y(),
-		static_cast<int>(dstRect.w * camera.get_amp()),
-		static_cast<int>(dstRect.h * camera.get_amp())
-	};
-
+	dstRect.x = x;
+	dstRect.y = y;
+	SDL_Rect dest = camera.get_dst_view(dstRect);
+	
 	SDL_RenderCopyEx(renderer, imageData.get(), &srcRect, &dest, angle, center, flip);
 }
 

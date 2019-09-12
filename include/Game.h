@@ -8,6 +8,8 @@
 #include "input.h"
 #include "font.h"
 #include "camera.h"
+#include "Sprite.h"
+#include "Object.h"
 
 class Game{
     public:

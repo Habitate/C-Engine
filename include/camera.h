@@ -19,11 +19,15 @@ class Camera{
 
         ~Camera() noexcept;
 
+        //**********************************************
+
         void move_horizontal(const int dist = 1) noexcept;
         void move_vertical(const int dist = 1) noexcept;
 
         void zoom_in(const double amount = 1) noexcept;
         void zoom_out(const double amount = 1) noexcept;
+
+        SDL_Rect get_dst_view(const SDL_Rect& current) const noexcept;
 
         int get_x() const noexcept;
         int get_y() const noexcept;

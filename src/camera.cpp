@@ -28,6 +28,10 @@ void Camera::zoom_out(const double amount) noexcept{
     amp -= amount;
 }
 
+SDL_Rect Camera::get_dst_view(const SDL_Rect& current) const noexcept{
+    return SDL_Rect{current.x + x, current.y + y, current.w * amp, current.h * amp};
+}
+
 int Camera::get_x() const noexcept{
     return x;
 }
