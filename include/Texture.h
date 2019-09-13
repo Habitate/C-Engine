@@ -1,5 +1,4 @@
-#ifndef TEXTURE_H
-#define TEXTURE_H
+#pragma once
 
 #include <SDL2/SDL.h>
 #include <string>
@@ -55,5 +54,3 @@ class Texture{
 
 		SDL_Renderer* renderer; 
 };
-
-#endif // TEXTURE_H

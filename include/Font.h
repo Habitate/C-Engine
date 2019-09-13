@@ -1,5 +1,4 @@
-#ifndef FONT_H
-#define FONT_H
+#pragma once
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
@@ -39,5 +38,3 @@ class Font{
 
         std::unique_ptr<TTF_Font, void(*)(TTF_Font*)> font;
 };
-
-#endif // FONT_H

@@ -1,11 +1,12 @@
-#ifndef OBJECT_H
-#define OBJECT_H
+#pragma once
 
 #include "Sprite.h"
 #include <SDL2/SDL.h>
-#include "camera.h"
 
-class Game; // Forward declare
+//? Forward declares
+//? Declaring pointer types to minimize preprocessing (also can't include 'Game' any other way)
+class Camera;
+class Game;
 
 class Object{
     public:
@@ -36,8 +37,5 @@ class Object{
         SDL_Rect body;
 
         Camera* camera;
-
-        Game* game_ptr;
+        Game*  game_ptr;
 };
-
-#endif // OBJECT_H

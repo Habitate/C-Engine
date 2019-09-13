@@ -90,4 +90,4 @@ void Obj_player::step(){
 }
 void Obj_player::end_step(){
     sync_sprite();
-} 
+}

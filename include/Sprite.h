@@ -1,5 +1,4 @@
-#ifndef SPRITE_H
-#define SPRITE_H
+#pragma once
 
 #include <vector>
 #include <memory>
@@ -87,5 +86,3 @@ class Sprite{
 		mutable bool animating_once;
 		mutable bool animating;
 };
-
-#endif // SPRITE_H

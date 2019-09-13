@@ -1,5 +1,4 @@
-#ifndef OBJ_PLAYER
-#define OBJ_PLAYER
+#pragma once
 
 #include "object.h"
 #include "input.h"
@@ -30,5 +29,3 @@ class Obj_player : public Object{
         SDL_RendererFlip flip;
         SDL_Event* event;
 };
-
-#endif // OBJECT_H

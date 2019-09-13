@@ -1,7 +1,4 @@
-#ifndef ROOM_H
-#define ROOM_H
-
-//#include <SDL2/SDL.h>
+#pragma once
 
 #include <vector>
 #include <memory>
@@ -23,5 +20,3 @@ class Room{
         std::vector<std::unique_ptr<Sprite>> sprites;
         std::vector<std::unique_ptr<Texture>> textures;
 };
-
-#endif // ROOM_H

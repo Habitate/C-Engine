@@ -1,5 +1,4 @@
-#ifndef COLOR_H
-#define COLOR_H
+#pragma once
 
 #include <ostream>
 #include "windows.h"
@@ -31,5 +30,3 @@ class C{
     private:
         uint8_t color;
 };
-
-#endif // COLOR_H

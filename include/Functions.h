@@ -1,5 +1,4 @@
-#ifndef FUNCTIONS_H
-#define FUNCTIONS_H
+#pragma once
 
 #include <windows.h>
 #include <SDL2/SDL.h>
@@ -12,5 +11,3 @@ bool file_exists(const std::string& path);
 std::string get_extension(const std::string& path);
 
 std::string operator+(const std::string& str, const void* ptr);
-
-#endif // FUNCTIONS_H

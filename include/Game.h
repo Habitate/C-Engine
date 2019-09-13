@@ -1,5 +1,4 @@
-#ifndef GAME_H
-#define GAME_H
+#pragma once
 
 #include <SDL2/SDL.h>
 #include "object.h"
@@ -63,5 +62,3 @@ class Game{
         // Cameras
         Camera camera;
 };
-
-#endif // GAME_H

@@ -1,5 +1,4 @@
-#ifndef CAMERA_H
-#define CAMERA_H
+#pragma once
 
 #include <SDL2/SDL.h>
 
@@ -37,5 +36,3 @@ class Camera{
         int x, y;
         double amp;
 };
-
-#endif // CAMERA_H
