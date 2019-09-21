@@ -37,12 +37,7 @@ Game::~Game(){
 }
 
 void Game::Initialize(){
-    InputHandler::Init();
-
-    objects.reserve(10);
-
     objects.emplace_back(new Obj_player(this, renderer.get(), &camera, &event));
-    //objects.emplace_back(new Obj_player2(renderer.get(), &event, objects[0]->sprite));
 
     wallpaper.load_single(renderer.get(), "../assets/wallpaper2.jpg");
     wallpaper.set_dimensions(WREZ, HREZ);

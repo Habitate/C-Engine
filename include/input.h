@@ -6,9 +6,7 @@
 
 class InputHandler{
     public:
-        static void Init();
-
-        //? Syncs the current keyboard state with the class buffers
+        //? Syncs the current keyboard state with the previous keyboard state
         static void syncStates();
 
         static bool pressed(const SDL_Scancode scancode);
@@ -16,8 +14,7 @@ class InputHandler{
         static bool held(const SDL_Scancode scancode);
 
     private:
-        static const Uint8* currentState;
-        static std::vector<Uint8> prevState;
-
-        static unsigned int arraySize;
+        static int array_size;
+        static const Uint8* const current_state;
+        static std::vector<Uint8> prev_state;
 };
