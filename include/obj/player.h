@@ -3,6 +3,7 @@
 #include "object.h"
 #include "input.h"
 #include <SDL2/SDL.h>
+#include "sound.h"
 
 class Obj_player : public Object{
     public:
@@ -28,4 +29,6 @@ class Obj_player : public Object{
 
         SDL_RendererFlip flip;
         SDL_Event* event;
+
+        Sound sound;
 };

@@ -4,17 +4,16 @@
 #include "input.h"
 #include "camera.h"
 #include "Game.h"
+#include "sound.h"
 
 #include <iostream>
 
-Obj_player::Obj_player(Game* const game, SDL_Renderer* const renderer, Camera* const camera, SDL_Event* const event) : Object(game, camera), flip(SDL_FLIP_NONE), event(event){
+Obj_player::Obj_player(Game* const game, SDL_Renderer* const renderer, Camera* const camera, SDL_Event* const event) : Object(game, camera), flip(SDL_FLIP_NONE), event(event), sound("../assets/sounds/test.wav"){
     sprite.load_multiple(renderer, "../assets/anim/test/test", ".png");
 
     sprite.set_index(35);
     sprite.set_animation_range(35, 34);
     sprite.stop_animating();
-
-    //std::cout << game_ptr->HREZ;
 
     body = {100, game_ptr->HREZ - 64 - 100, 100, 100};
 }
@@ -47,6 +46,13 @@ void Obj_player::step(){
         if(!sprite.is_animating()){
             sprite.animate_once();
         }
+    }
+
+    if(InputHandler::pressed(SDL_SCANCODE_X)){
+        sound.play();
+    }
+    if(InputHandler::pressed(SDL_SCANCODE_Z)){
+        sound.load("../assets/sounds/drift.mp3");
     }
 
     //? Movement

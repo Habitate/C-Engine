@@ -19,7 +19,8 @@ set(LIBRARIES
 	color 
 	input 
 	font 
-	camera 
+	camera
+	sound
 )
 # User objects
 set(OBJECTS
@@ -34,6 +35,7 @@ set(POST_LINK_LIBRARIES
 	SDL2
 	SDL2_Image
 	SDL2_ttf
+	SDL2_mixer
 	ws2_32
 	pthread
 

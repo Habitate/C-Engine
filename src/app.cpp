@@ -5,14 +5,20 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_mixer.h>
 
 #include "color.h"
 
 const unsigned int W(640);
 const unsigned int H(480);
 
-//const unsigned int W(1920);
-//const unsigned int H(1080);
+const int audio_rate(44100);
+const int audio_channels(1);
+const int audio_buffers(4096);
+
+const Uint16 audio_format(AUDIO_S16); /* 16-bit stereo */
+
+const int volume(MIX_MAX_VOLUME);
 
 int main(int argc, char* argv[]){
     //Referenc argc and argv to get rid of unused variable warnings
@@ -23,6 +29,11 @@ int main(int argc, char* argv[]){
     SDL_Init(SDL_INIT_EVERYTHING);
     IMG_Init(0);
     TTF_Init();
+
+    //Init SDl_Mixer
+	Mix_Init(27); // Everything
+	Mix_OpenAudio(audio_rate, audio_format, audio_channels, audio_buffers);
+	Mix_VolumeMusic(volume);
 
     //SDL_SetRelativeMouseMode(SDL_TRUE);
     
