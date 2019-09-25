@@ -17,9 +17,22 @@
 #include <string>
 
 Game::Game(const std::string& name, const int x, const int y, const int w, const int h, const unsigned int flags) :
-running(false), WREZ(w), HREZ(h), event{0}, renderer(nullptr, SDL_DestroyRenderer), window(nullptr, SDL_DestroyWindow),
-White{255, 255, 255, 255}, wallpaper(), ground(), objects(), fnt_ubuntu("../font/Ubuntu.ttf"), tempText(),
-tempTextSrcRect{0, 0, 0, 0}, tempTextDstRect{0, 0, 0, 0}, camera(SDL_Rect{0, 0, w, h}){
+running(false),
+WREZ(w),
+HREZ(h),
+event{0},
+renderer(nullptr, SDL_DestroyRenderer),
+window(nullptr, SDL_DestroyWindow),
+White{255, 255, 255, 255},
+wallpaper(),
+ground(),
+objects(),
+fnt_ubuntu("../font/Ubuntu.ttf"),
+tempText(),
+tempTextSrcRect{0, 0, 0, 0},
+tempTextDstRect{0, 0, 0, 0},
+camera(SDL_Rect{0, 0, w, h}){
+
     window = std::unique_ptr<SDL_Window  , void(*)(SDL_Window  *)>(SDL_CreateWindow(name.c_str(), x, y, w, h, flags), SDL_DestroyWindow);  
     if(!window){
         throw std::runtime_error(std::string("Unable to create window!\n\t") + SDL_GetError());
