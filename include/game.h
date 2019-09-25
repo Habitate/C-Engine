@@ -12,17 +12,19 @@
 
 class Game{
     public:
-        Game(const std::string& name, const int x, const int y, const int w, const int h, const unsigned int flags);
+        Game(const std::string& name, const int x, const int y, const int w, const int h, const unsigned int flags) ;
 
         // Non-Copyable
-        Game(Game& game) = delete;
-        Game& operator=(Game& game) = delete;
+        Game(const Game& game) = delete;
+        Game& operator=(const Game& game) = delete;
 
         // Non-Moveable
         Game(Game&& game) = delete;
         Game& operator=(Game&& game) = delete;
 
-        ~Game();
+        ~Game() noexcept;
+
+        //*----------------------------------------------------
 
         void Initialize();
         void HandleSDLEvents();

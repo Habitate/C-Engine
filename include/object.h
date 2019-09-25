@@ -15,14 +15,16 @@ class Object{
         Object(Game* const game, const SDL_Rect& body, Camera* const camera) noexcept;
         
         // Copyable
-        Object(Object& obj) noexcept;
-		Object& operator=(Object& obj) noexcept;
+        Object(const Object& obj) noexcept;
+		Object& operator=(const Object& obj) noexcept;
 
 		// Moveable
 		Object(Object&& obj) noexcept;
 		Object& operator=(Object&& obj) noexcept;
 
         virtual ~Object() noexcept;
+
+        //*----------------------------------------------------
 
         virtual void begin_step();
         virtual void step();

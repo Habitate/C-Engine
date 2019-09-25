@@ -45,9 +45,11 @@ camera(SDL_Rect{0, 0, w, h}){
 
     changeIcon("../assets/icont.png");
 }
-Game::~Game(){
+Game::~Game() noexcept{
     SDL_Quit();
 }
+
+//*----------------------------------------------------
 
 void Game::Initialize(){
     InputHandler::init();
