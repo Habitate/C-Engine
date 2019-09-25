@@ -6,12 +6,26 @@
 
 class InputHandler{
     public:
-        //? Syncs the current keyboard state with the previous keyboard state
+        InputHandler() noexcept = delete;
+
+        // Non-copyable
+        InputHandler(const InputHandler&) noexcept = delete;
+        InputHandler& operator=(const InputHandler&) noexcept = delete;
+
+        // Non-moveable
+        InputHandler(InputHandler&&) noexcept = delete;
+        InputHandler& operator=(InputHandler&&) noexcept = delete;
+
+        ~InputHandler() noexcept = delete;
+        
+        //*----------------------------------------------------
+
+        //? Syncs the previous keyboard state with the current keyboard state
         static void syncStates();
 
-        static bool pressed(const SDL_Scancode scancode);
-        static bool released(const SDL_Scancode scancode);
-        static bool held(const SDL_Scancode scancode);
+        static bool pressed(const SDL_Scancode scancode) noexcept;
+        static bool released(const SDL_Scancode scancode) noexcept;
+        static bool held(const SDL_Scancode scancode) noexcept;
 
     private:
         static int array_size;

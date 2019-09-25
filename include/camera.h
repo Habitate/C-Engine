@@ -18,7 +18,7 @@ class Camera{
 
         ~Camera() noexcept;
 
-        //**********************************************
+        //*----------------------------------------------------
 
         void move_horizontal(const int dist = 1) noexcept;
         void move_vertical(const int dist = 1) noexcept;

@@ -14,14 +14,16 @@ class Sprite{
 		Sprite(SDL_Renderer* renderer, const std::string& fileName, const std::string& extension, unsigned int animation_begin, unsigned animation_end);
 
 		// Copyable
-		Sprite(Sprite& obj) noexcept;
-		Sprite& operator=(Sprite& obj) noexcept;
+		Sprite(const Sprite& obj) noexcept;
+		Sprite& operator=(const Sprite& obj) noexcept;
 
 		// Moveable
 		Sprite(Sprite&& obj) noexcept;
 		Sprite& operator=(Sprite&& obj) noexcept;
 		
 		~Sprite() noexcept;
+
+		//*----------------------------------------------------
 
 		//* Loads the file with the given name
 		void load_single(SDL_Renderer* renderer, const std::string& fileName);

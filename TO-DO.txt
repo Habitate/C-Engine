@@ -1,12 +1,10 @@
-1. Make GAME and INPUT into a singleton
-2. Streamline all classes
-3. Add sound
-4. Add cameras
-5. Make constructors explicit
-6. Make almost all passings of SDL_Renderer* -> SDL_Renderer* const
-7. Make copy-constructors const
-
-7. Let objects reference other objects
-8. Add an efficent collision checking system.
-9. Add image depth support.
-10. Cleanup includes (remove header includes from cpp files)
+* Streamline all classes
+* Add sound
+* Add cameras
+* Make constructors explicit
+* Make almost all passings of SDL_Renderer* -> SDL_Renderer* const
+* Make copy-constructors const
+* Let objects reference other objects
+* Add an efficent collision checking system.
+* Add image depth support.
+* Cleanup includes (remove header includes from cpp files)

@@ -29,13 +29,15 @@ Texture::Texture(SDL_Renderer* const renderer, const std::string& path) : Textur
 	load(renderer, path);
 }
 
-Texture::Texture(Texture& obj) noexcept = default;
-Texture& Texture::operator=(Texture& obj) noexcept = default;
+Texture::Texture(const Texture& obj) noexcept = default;
+Texture& Texture::operator=(const Texture& obj) noexcept = default;
 
 Texture::Texture(Texture&& obj) noexcept = default;
 Texture& Texture::operator=(Texture&& obj) noexcept = default;
 
 Texture::~Texture() noexcept = default;
+
+//*----------------------------------------------------
 
 void Texture::load(SDL_Renderer* const renderer, const std::string& path){
 	this->renderer = renderer;

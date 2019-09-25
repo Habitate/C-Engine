@@ -14,14 +14,15 @@ Sprite::Sprite(SDL_Renderer* renderer, const std::string& fileName, const std::s
     this->animation_end   = animation_end;
 }
 
-Sprite::Sprite(Sprite& obj) noexcept : textures(obj.textures.size()), sprite_index(obj.sprite_index), animation_begin(obj.animation_begin), animation_end(obj.animation_end), animating_once(obj.animating_once), animating(obj.animating){
+// Copyable
+Sprite::Sprite(const Sprite& obj) noexcept : textures(obj.textures.size()), sprite_index(obj.sprite_index), animation_begin(obj.animation_begin), animation_end(obj.animation_end), animating_once(obj.animating_once), animating(obj.animating){
     const unsigned int textureCount = textures.size();
 
     for(unsigned int i = 0; i < textureCount; ++i){
         textures[i].reset(new Texture(*obj.textures[i]));
     }
 }
-Sprite& Sprite::operator=(Sprite& obj) noexcept{
+Sprite& Sprite::operator=(const Sprite& obj) noexcept{
     textures.resize(obj.textures.size());
 
     const unsigned int textureCount = textures.size();
@@ -38,10 +39,13 @@ Sprite& Sprite::operator=(Sprite& obj) noexcept{
     return *this;
 }
 
+// Moveable
 Sprite::Sprite(Sprite&& obj) noexcept = default;
 Sprite& Sprite::operator=(Sprite&& obj) noexcept = default;
 
 Sprite::~Sprite() noexcept = default;
+
+//*----------------------------------------------------
 
 void Sprite::load_single(SDL_Renderer* renderer, const std::string& fileName){
     if(!textures.empty()){

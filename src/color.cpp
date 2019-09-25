@@ -3,15 +3,25 @@
 #include "windows.h"
 #include <ostream>
 
-const HANDLE C::OUTPUT_HANDLE(GetStdHandle(STD_OUTPUT_HANDLE));
-
-C::C(const uint8_t color) noexcept: color(color){}
 C::C() noexcept: color(DEFAULT){}
+C::C(const uint8_t color) noexcept: color(color){}
 
-C::~C() = default;
+// Copyable
+C::C(const C& color) noexcept = default;
+C& C::operator=(const C& color) noexcept = default;
 
-std::ostream& operator<<(std::ostream& ss, const C& color){
-    SetConsoleTextAttribute(C::OUTPUT_HANDLE, color.color);
+// Moveable
+C::C(C&& color) noexcept = default;
+C& C::operator=(C&& color) noexcept = default;
+
+C::~C() noexcept = default;
+
+//*----------------------------------------------------
+
+std::ostream& operator<<(std::ostream& stream, const C& color){
+    SetConsoleTextAttribute(C::output_handle, color.color);
     
-    return ss;
+    return stream;
 }
+
+const HANDLE C::output_handle(GetStdHandle(STD_OUTPUT_HANDLE));

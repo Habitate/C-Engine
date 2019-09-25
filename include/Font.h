@@ -10,14 +10,16 @@ class Font{
         Font(const std::string& path, const unsigned int size = 14);
 
         // Non-Copyable
-        Font(Font& font) = delete;
-        Font& operator=(Font& font) = delete;
+        Font(const Font& font) = delete;
+        Font& operator=(const Font& font) = delete;
 
         // Moveable
         Font(Font&& font) noexcept;
         Font& operator=(Font&& font) noexcept;
 
         ~Font() noexcept;
+
+        //*----------------------------------------------------
 
         void load(const std::string& path, const unsigned int size = 14);
 

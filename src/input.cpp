@@ -5,13 +5,13 @@ void InputHandler::syncStates(){
     std::copy(current_state, current_state + array_size, prev_state.data());
 }
 
-bool InputHandler::pressed(const SDL_Scancode scancode){
+bool InputHandler::pressed(const SDL_Scancode scancode) noexcept{
     return !prev_state[scancode] && current_state[scancode];
 }
-bool InputHandler::released(const SDL_Scancode scancode){
+bool InputHandler::released(const SDL_Scancode scancode) noexcept{
     return prev_state[scancode] && !current_state[scancode];
 }
-bool InputHandler::held(const SDL_Scancode scancode){
+bool InputHandler::held(const SDL_Scancode scancode) noexcept{
     return current_state[scancode];
 }
 

@@ -10,10 +10,13 @@ Font::Font(const std::string& path, const unsigned int size) : Font(){
     load(path, size);
 }
 
+// Moveable
 Font::Font(Font&& font) noexcept = default;
 Font& Font::operator=(Font&& font) noexcept = default;
 
 Font::~Font() noexcept = default;
+
+//*----------------------------------------------------
 
 void Font::load(const std::string& path, const unsigned int size){
     //? Prevent unnecessary loading

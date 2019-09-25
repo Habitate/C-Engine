@@ -15,14 +15,16 @@ class Texture{
 		Texture(SDL_Renderer* const renderer, const std::string& path);
 
 		// Copyable
-		Texture(Texture& obj) noexcept;
-		Texture& operator=(Texture& obj) noexcept;
+		Texture(const Texture& obj) noexcept;
+		Texture& operator=(const Texture& obj) noexcept;
 
 		// Moveable
 		Texture(Texture&& obj) noexcept;
 		Texture& operator=(Texture&& obj) noexcept;
 
 		~Texture();
+
+		//*----------------------------------------------------
 
 		void load(SDL_Renderer* const renderer, const std::string& path);
 

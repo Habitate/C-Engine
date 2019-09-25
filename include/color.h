@@ -17,16 +17,26 @@ class C{
             YELLOW = 14,
             PURPLE = 5
         };
-
-        static const HANDLE OUTPUT_HANDLE;
     
-        C(const uint8_t color) noexcept;
         C() noexcept;
+        C(const uint8_t color) noexcept;
 
-        ~C();
+        // Copyable
+        C(const C& color) noexcept;
+        C& operator=(const C& color) noexcept;
 
-        friend std::ostream& operator<<(std::ostream& ss, const C& color);
+        // Moveable
+        C(C&& color) noexcept;
+        C& operator=(C&& color) noexcept;
+
+        ~C() noexcept;
+
+        //*----------------------------------------------------
+
+        friend std::ostream& operator<<(std::ostream& stream, const C& color);
 
     private:
+        static const HANDLE output_handle;
+
         uint8_t color;
 };

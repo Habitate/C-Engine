@@ -14,6 +14,8 @@ Camera& Camera::operator=(Camera&& camera) noexcept = default;
 
 Camera::~Camera() noexcept = default;
 
+//*----------------------------------------------------
+
 void Camera::move_horizontal(const int dist) noexcept{
     x -= dist;
 }
