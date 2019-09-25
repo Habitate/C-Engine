@@ -3,6 +3,7 @@
 #include <SDL2/SDL.h>
 #include <vector>
 #include <memory>
+#include "gsl/span"
 
 class InputHandler{
     public:
@@ -19,6 +20,7 @@ class InputHandler{
         ~InputHandler() noexcept = delete;
         
         //*----------------------------------------------------
+        static void init();
 
         //? Syncs the previous keyboard state with the current keyboard state
         static void syncStates();
@@ -28,7 +30,6 @@ class InputHandler{
         static bool held(const SDL_Scancode scancode) noexcept;
 
     private:
-        static int array_size;
-        static const Uint8* const current_state;
+        static gsl::span<const Uint8> current_state;
         static std::vector<Uint8> prev_state;
 };

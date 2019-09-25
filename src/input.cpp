@@ -1,8 +1,16 @@
 #include "input.h"
 #include <vector>
 
+void InputHandler::init(){
+    int size;
+    const Uint8* data(SDL_GetKeyboardState(&size));
+
+    current_state = gsl::span<const Uint8>(data, size);
+    prev_state.resize(static_cast<unsigned int>(size));
+}
+
 void InputHandler::syncStates(){
-    std::copy(current_state, current_state + array_size, prev_state.data());
+    std::copy(std::begin(current_state), std::end(current_state), std::begin(prev_state));
 }
 
 bool InputHandler::pressed(const SDL_Scancode scancode) noexcept{
@@ -15,6 +23,5 @@ bool InputHandler::held(const SDL_Scancode scancode) noexcept{
     return current_state[scancode];
 }
 
-int                InputHandler::array_size;
-const Uint8* const InputHandler::current_state(SDL_GetKeyboardState(&array_size));
-std::vector<Uint8> InputHandler::prev_state(static_cast<unsigned int>(array_size));
+gsl::span<const Uint8> InputHandler::current_state;
+std::vector<Uint8> InputHandler::prev_state;

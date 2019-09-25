@@ -37,6 +37,8 @@ Game::~Game(){
 }
 
 void Game::Initialize(){
+    InputHandler::init();
+
     objects.emplace_back(new Obj_player(this, renderer.get(), &camera, &event));
 
     wallpaper.load_single(renderer.get(), "../assets/wallpaper2.jpg");
