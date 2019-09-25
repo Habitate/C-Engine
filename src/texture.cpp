@@ -46,26 +46,17 @@ void Texture::load(SDL_Renderer* const renderer, const std::string& path){
 
 	if(!imageData){
 		std::cout << C(C::RED) << "Failed to load image: " << C(C::YELLOW) << path << "\"\n" << C();
-		std::string errorMSG;
+		std::string error_msg;
 
 		if(!file_exists(path)){
-			errorMSG += "File doesn't exist!\n";
+			error_msg += "File doesn't exist!\n";
 		}
 
-		const std::string extension = get_extension(path);
-
-		if(extension.empty()){
-			errorMSG += "\t   File does not contain an extension!\n";
-		}
-		else{
-			std::array<std::string, 17>::const_iterator ext = std::find(SUPPORTED_DATA_TYPES.begin(), SUPPORTED_DATA_TYPES.end(), extension);
-
-			if(ext == SUPPORTED_DATA_TYPES.end()){
-				errorMSG += "\t   Invalid file extension! \"" + extension + '\"';
-			}
+		if(!exists(std::begin(SUPPORTED_DATA_TYPES), std::end(SUPPORTED_DATA_TYPES), get_extension(path))){
+			error_msg += "\t   No valid extension found!\n";
 		}
 
-        throw std::runtime_error(errorMSG);
+        throw std::runtime_error(error_msg);
 	}
 	else{
 		std::cout << C(C::GREEN) << "Successfully loaded image: " << C(C::YELLOW) << "\"" << path << "\"\n" << C();
