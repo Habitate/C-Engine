@@ -30,13 +30,10 @@ class Object{
         virtual void step();
         virtual void end_step();
 
-        void sync_sprite() const noexcept;
-
-        virtual void draw() const;
+        virtual void draw() const = 0;
         [[nodiscard]] bool checkCollision(const Object& object) const noexcept;
 
         mutable Sprite sprite;
-        SDL_Rect body;
 
         Camera* camera;
         Game*  game_ptr;
