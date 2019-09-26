@@ -10,16 +10,16 @@ class Game;
 
 class Object{
     public:
-        Object(Game* const game) noexcept;
-        Object(Game* const game, Camera* const camera) noexcept;
-        Object(Game* const game, const SDL_Rect& body, Camera* const camera) noexcept;
+        explicit Object(Game* const game) noexcept;
+        explicit Object(Game* const game, Camera* const camera) noexcept;
+        explicit Object(Game* const game, const SDL_Rect& body, Camera* const camera) noexcept;
         
         // Copyable
-        Object(const Object& obj) noexcept;
+        explicit Object(const Object& obj) noexcept;
 		Object& operator=(const Object& obj) noexcept;
 
 		// Moveable
-		Object(Object&& obj) noexcept;
+		explicit Object(Object&& obj) noexcept;
 		Object& operator=(Object&& obj) noexcept;
 
         virtual ~Object() noexcept;
@@ -33,7 +33,7 @@ class Object{
         void sync_sprite() const noexcept;
 
         virtual void draw() const;
-        bool checkCollision(const Object& object) const noexcept;
+        [[nodiscard]] bool checkCollision(const Object& object) const noexcept;
 
         mutable Sprite sprite;
         SDL_Rect body;
