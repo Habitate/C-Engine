@@ -30,5 +30,6 @@ class Obj_player : public Object{
         SDL_RendererFlip flip;
         SDL_Event* event;
 
+        SDL_Point pos;
         Sound sound;
 };

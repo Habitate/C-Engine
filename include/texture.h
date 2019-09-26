@@ -40,7 +40,7 @@ class Texture{
 		void reset_height() noexcept;
 		void reset_dimensions() noexcept;
 
-		void draw(const Camera& camera, const int x, const int y, const double angle = 0, const SDL_Point* const center = nullptr, const SDL_RendererFlip& flip = SDL_FLIP_NONE) const;
+		void draw(const Camera& camera, const SDL_Point& coords, const double angle = 0, const SDL_Point* const center = nullptr, const SDL_RendererFlip& flip = SDL_FLIP_NONE) const;
 
 		[[nodiscard]] bool check_collision(const Texture& texture) const noexcept;
 
