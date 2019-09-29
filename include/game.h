@@ -1,14 +1,12 @@
 #pragma once
 
 #include <SDL2/SDL.h>
-#include "object.h"
 #include "texture.h"
 #include <memory>
 #include "input.h"
 #include "font.h"
 #include "camera.h"
 #include "Sprite.h"
-#include "Object.h"
 
 class Game{
     public:
@@ -47,11 +45,11 @@ class Game{
         SDL_Color White;
 
         // Textures
-        Sprite wallpaper;
-        Sprite ground;
+        Texture wallpaper;
+        Texture ground;
 
         // Objects
-        std::vector<std::unique_ptr<Object>> objects;
+        //std::vector<std::unique_ptr<Object>> objects;
 
         // Fonts
         Font fnt_ubuntu;

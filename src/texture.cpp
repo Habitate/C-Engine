@@ -24,9 +24,9 @@ const std::array<std::string, 17> Texture::SUPPORTED_DATA_TYPES = {
     ".lbm", ".iff"
 };
 
-Texture::Texture() noexcept : imageData(), dstRect{0, 0, 0, 0}, srcRect{0, 0, 0, 0}, renderer(nullptr){}
-Texture::Texture(SDL_Renderer* const renderer, const std::string& path) : Texture(){
-	load(renderer, path);
+Texture::Texture() noexcept : Drawable(), imageData(), dstRect{0, 0, 0, 0}, srcRect{0, 0, 0, 0}{}
+Texture::Texture(SDL_Renderer* const renderer, const std::string& path) : Drawable(renderer), imageData(), dstRect{0, 0, 0, 0}, srcRect{0, 0, 0, 0}{
+	load(path);
 }
 
 Texture::Texture(const Texture& obj) noexcept = default;
@@ -39,9 +39,7 @@ Texture::~Texture() noexcept = default;
 
 //*----------------------------------------------------
 
-void Texture::load(SDL_Renderer* const renderer, const std::string& path){
-	this->renderer = renderer;
-
+void Texture::load(const std::string& path){
     imageData = std::shared_ptr<SDL_Texture>(IMG_LoadTexture(renderer, path.c_str()), SDL_DestroyTexture);
 
 	if(!imageData){
@@ -66,8 +64,10 @@ void Texture::load(SDL_Renderer* const renderer, const std::string& path){
     dstRect = srcRect;
 }
 
-SDL_Renderer* Texture::get_renderer() const noexcept{
-	return renderer;
+void Texture::set_renderer(SDL_Renderer* const renderer){
+	this->renderer = renderer;
+
+	imageData.reset();
 }
 
 void Texture::set_width(const int width) noexcept{
@@ -92,13 +92,13 @@ void Texture::reset_height() noexcept{
     dstRect.h = srcRect.h;
 }
 
-void Texture::draw(const Camera& camera, const SDL_Point& coords, const double angle, const SDL_Point* const center, const SDL_RendererFlip& flip) const{
+void Texture::draw(const Camera& camera, const SDL_Point& coords, const double& angle, const SDL_Point* const center, const SDL_RendererFlip& flip) const{
 	if(!imageData){
         throw std::runtime_error(std::string("Attempted to draw an uninitialized texture! Object: ") + static_cast<const void*>(this) + '\n');
 	}
 
-	dstRect.x = x;
-	dstRect.y = y;
+	dstRect.x = coords.x;
+	dstRect.y = coords.y;
 	SDL_Rect dest = camera.get_dst_view(dstRect);
 	
 	SDL_RenderCopyEx(renderer, imageData.get(), &srcRect, &dest, angle, center, flip);

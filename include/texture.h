@@ -5,12 +5,13 @@
 #include <memory>
 #include <array>
 #include "camera.h"
+#include "drawable.h"
 
-class Texture{
+class Texture : public Drawable{
 	public:
 		static const std::array<std::string, 17> SUPPORTED_DATA_TYPES;
 
-		Texture() noexcept;
+		explicit Texture() noexcept;
 		//* Only supports paths with full extensions. E.x.: "image.png"
 		explicit Texture(SDL_Renderer* const renderer, const std::string& path);
 
@@ -22,13 +23,13 @@ class Texture{
 		explicit Texture(Texture&& obj) noexcept;
 		Texture& operator=(Texture&& obj) noexcept;
 
-		~Texture();
+		~Texture() override;
 
 		//*----------------------------------------------------
 
-		void load(SDL_Renderer* const renderer, const std::string& path);
+		void load(const std::string& path);
 
-		[[nodiscard]] SDL_Renderer* get_renderer() const noexcept;
+		void set_renderer(SDL_Renderer* const renderer) override;
 
 		//* Set the dimensions
 		void set_width(const int width) noexcept;
@@ -40,7 +41,7 @@ class Texture{
 		void reset_height() noexcept;
 		void reset_dimensions() noexcept;
 
-		void draw(const Camera& camera, const SDL_Point& coords, const double angle = 0, const SDL_Point* const center = nullptr, const SDL_RendererFlip& flip = SDL_FLIP_NONE) const;
+		void draw(const Camera& camera = {}, const SDL_Point& coords = {0, 0}, const double& angle = 0, const SDL_Point* const center = nullptr, const SDL_RendererFlip& flip = SDL_FLIP_NONE) const override;
 
 		[[nodiscard]] bool check_collision(const Texture& texture) const noexcept;
 
@@ -53,6 +54,4 @@ class Texture{
 		std::shared_ptr<SDL_Texture> imageData;
 		mutable SDL_Rect dstRect;
 		SDL_Rect srcRect;
-
-		SDL_Renderer* renderer; 
 };

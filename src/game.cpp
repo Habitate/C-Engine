@@ -10,7 +10,6 @@
 #include "color.h"
 #include <memory>
 
-#include "obj/player.h"
 #include "input.h"
 #include "font.h"
 
@@ -26,7 +25,6 @@ window(nullptr, SDL_DestroyWindow),
 White{255, 255, 255, 255},
 wallpaper(),
 ground(),
-objects(),
 fnt_ubuntu("../font/Ubuntu.ttf"),
 tempText(),
 tempTextSrcRect{0, 0, 0, 0},
@@ -43,6 +41,9 @@ camera(SDL_Rect{0, 0, w, h}){
         throw std::runtime_error(std::string("Unable to create renderer!\n\t") + SDL_GetError());
     }
 
+    wallpaper.set_renderer(renderer.get());
+    ground.set_renderer(renderer.get());
+
     changeIcon("../assets/icont.png");
 }
 Game::~Game() noexcept{
@@ -54,12 +55,12 @@ Game::~Game() noexcept{
 void Game::Initialize(){
     InputHandler::init();
 
-    objects.emplace_back(new Obj_player(this, renderer.get(), &camera, &event));
+    //objects.emplace_back(new Obj_player(this, renderer.get(), &camera, &event));
 
-    wallpaper.load_single(renderer.get(), "../assets/wallpaper2.jpg");
+    wallpaper.load("../assets/wallpaper2.jpg");
     wallpaper.set_dimensions(WREZ, HREZ);
 
-    ground.load_single(renderer.get(), "../assets/tilee.jpg");
+    ground.load("../assets/tilee.jpg");
     ground.set_dimensions(64, 64);
 
     tempText = fnt_ubuntu.render_text(renderer.get(), "Hello there, text here!", White);
@@ -78,6 +79,7 @@ void Game::HandleSDLEvents(){
     }
 }
 void Game::Update(){
+    /*
     // Handle object steps
     for(const std::unique_ptr<Object>& object : objects){
         object->begin_step();
@@ -88,25 +90,26 @@ void Game::Update(){
     for(const std::unique_ptr<Object>& object : objects){
         object->end_step();
     }
+    */
 }
 void Game::Render(){
     // Clear the screen
     SDL_RenderClear(renderer.get());
 
-    wallpaper.draw(camera, 0, 0);
+    wallpaper.draw(camera, {0, 0});
 
     // Draw the ground
 
-    const int ground_y = HREZ - ground[0].get_dst_rect().h;
+    const int ground_y = HREZ - ground.get_dst_rect().h;
     for(int x = 0; x < WREZ; x += 64){
-        ground.draw(camera, x, ground_y);
+        ground.draw(camera, {x, ground_y});
     }
-
+/*
     // Draw the objects
     for(const std::unique_ptr<Object>& object : objects){
         object->draw();
     }
-
+*/
     //for(int i = 0; i < 100000; ++i);
     //fnt_ubuntu.draw_text(renderer.get(), "Hello there, text here", 0, 0, White);
     SDL_RenderCopy(renderer.get(), tempText.get(), &tempTextSrcRect, &tempTextDstRect);

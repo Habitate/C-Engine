@@ -13,7 +13,7 @@ add_executable(app
 set(LIBRARIES
 	functions
 	game
-	object
+	#object
 	texture
 	sprite
 	color 
@@ -21,10 +21,11 @@ set(LIBRARIES
 	font 
 	camera
 	sound
+	drawable
 )
 # User objects
 set(OBJECTS
-	player
+	#player
 )
 
 # Mandatory (mainly SDL2) libs
