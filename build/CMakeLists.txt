@@ -14,7 +14,8 @@ set(LIBRARIES
 	functions
 	game
 	#object
-	texture
+	#texture
+	image
 	sprite
 	color 
 	input 

@@ -2,7 +2,11 @@
 
 #include "functions.h"
 
-Sprite::Sprite() noexcept : textures(), sprite_index(0), animation_begin(0), animation_end(0), animating_once(false), animating(true){}
+#include <string>
+
+#include <SDL2/SDL.h>
+
+Sprite::Sprite() noexcept : textures(), src_rect{0, 0, 0, 0}, dst_rect{0, 0, 0, 0}, sprite_index(0), animation_begin(0), animation_end(0), animating_once(false), animating(true){}
 Sprite::Sprite(SDL_Renderer* renderer, const std::string& fileName) : Sprite(){
     load_single(renderer, fileName);
 }
@@ -15,29 +19,8 @@ Sprite::Sprite(SDL_Renderer* renderer, const std::string& fileName, const std::s
 }
 
 // Copyable
-Sprite::Sprite(const Sprite& obj) noexcept : textures(obj.textures.size()), sprite_index(obj.sprite_index), animation_begin(obj.animation_begin), animation_end(obj.animation_end), animating_once(obj.animating_once), animating(obj.animating){
-    const unsigned int textureCount = textures.size();
-
-    for(unsigned int i = 0; i < textureCount; ++i){
-        textures[i].reset(new Texture(*obj.textures[i]));
-    }
-}
-Sprite& Sprite::operator=(const Sprite& obj) noexcept{
-    textures.resize(obj.textures.size());
-
-    const unsigned int textureCount = textures.size();
-
-    for(unsigned int i = 0; i < textureCount; ++i){
-        textures[i].reset(new Texture(*obj.textures[i]));
-    }
-
-	animation_begin = obj.animation_begin;
-	animation_end = obj.animation_end;
-    animating_once = obj.animating_once;
-	sprite_index = obj.sprite_index;
-	animating = obj.animating;
-    return *this;
-}
+Sprite::Sprite(const Sprite& obj) = default;
+Sprite& Sprite::operator=(const Sprite& obj) = default;
 
 // Moveable
 Sprite::Sprite(Sprite&& obj) noexcept = default;
@@ -47,18 +30,18 @@ Sprite::~Sprite() noexcept = default;
 
 //*----------------------------------------------------
 
-void Sprite::load_single(SDL_Renderer* renderer, const std::string& fileName){
+void Sprite::load_single(SDL_Renderer* const renderer, const std::string& fileName){
     if(!textures.empty()){
         textures.clear();
     }
 
     //* Throws if necessary
-    textures.emplace_back(new Texture(renderer, fileName));
+    textures.emplace_back(load_texture(renderer, fileName));
 
     animation_begin = 0;
     animation_end = 0;
 }
-void Sprite::load_multiple(SDL_Renderer* renderer, const std::string& fileName, const std::string& extension){
+void Sprite::load_multiple(SDL_Renderer* const renderer, const std::string& fileName, const std::string& extension){
     if(!textures.empty()){
         textures.clear();
     }
@@ -67,7 +50,7 @@ void Sprite::load_multiple(SDL_Renderer* renderer, const std::string& fileName, 
 
     do{
         //* Throws if necessary
-        textures.emplace_back(new Texture(renderer, fullPath));
+        textures.emplace_back(load_texture(renderer, fileName));
 
         fullPath = fileName + '_' + std::to_string(textures.size()) + extension;
     }while(file_exists(fullPath));
@@ -85,79 +68,49 @@ unsigned int Sprite::get_index() const noexcept{
 }
 void Sprite::set_index(const unsigned int index){
     if(!is_valid_texture_selection(index)){
-        throw std::runtime_error("Tried to the sprite index to an invalid value!");
+        throw std::invalid_argument("Tried to the sprite index to an invalid value!");
     }
 
     sprite_index = index;
 }
 
-Texture& Sprite::operator[](const unsigned int index) noexcept{
-    return *textures[index];
-}
-const Texture& Sprite::operator[](const unsigned int index) const noexcept{
-    return *textures[index];
-}
+void Sprite::draw(const Camera& camera, const SDL_Point& coords, const double& angle, const SDL_Point* const center, const SDL_RendererFlip& flip) const{
+    //* Throws if necessary
+    //textures[sprite_index]->draw(camera, coords, angle, center, flip);
 
-Texture& Sprite::at(const unsigned int index){
-    if(!is_valid_texture_selection(index)){
-        throw std::runtime_error("Tried to access a non-existant texture!");
-    }
-
-    return *textures[index];
-}
-const Texture& Sprite::at(const unsigned int index) const{
-    if(!is_valid_texture_selection(index)){
-        throw std::runtime_error("Tried to access a non-existant texture!");
-    }
-
-    return *textures[index];
-}
-
-SDL_Renderer* Sprite::get_renderer() const{
-	if(!textures.size()){
-		throw std::runtime_error("get_renderer() -> unable to get the renderer of an empty sprite!");
+    if(!textures[sprite_index]){
+        throw std::runtime_error(std::string("Attempted to draw an uninitialized image! Object: ") + static_cast<const void*>(this) + '\n');
 	}
 
-	return textures[0]->get_renderer();
-}
-
-void Sprite::draw(const Camera& camera, const SDL_Point& coords, const double angle, const SDL_Point* const center, const SDL_RendererFlip& flip) const{
-    //* Throws if necessary
-    textures[sprite_index]->draw(camera, coords, angle, center, flip);
+	dst_rect.x = coords.x;
+	dst_rect.y = coords.y;
+	SDL_Rect dest = camera.get_dst_view(dst_rect);
+	
+	SDL_RenderCopyEx(renderer, textures[sprite_index].get(), &src_rect, &dest, angle, center, flip);
 
     iterate();
 }
 
-void Sprite::set_dimensions(const int w, const int h) noexcept{
-    for(std::unique_ptr<Texture>& texture : textures){
-        texture->set_dimensions(w, h);
-    }
+void Sprite::set_dimensions(const int width, const int height) noexcept{
+    dst_rect.w = width;
+    dst_rect.h = height;
 }
 void Sprite::set_width(const int width) noexcept{
-    for(std::unique_ptr<Texture>& texture : textures){
-        texture->set_width(width);
-    }
+    dst_rect.w = width;
 }
 void Sprite::set_height(const int height) noexcept{
-    for(std::unique_ptr<Texture>& texture : textures){
-        texture->set_height(height);
-    }
+    dst_rect.h = height;
 }
 
 void Sprite::reset_dimensions() noexcept{
-    for(std::unique_ptr<Texture>& texture : textures){
-        texture->reset_dimensions();
-    }
+    dst_rect.w = src_rect.w;
+    dst_rect.h = src_rect.h;
 }
 void Sprite::reset_width() noexcept{
-    for(std::unique_ptr<Texture>& texture : textures){
-        texture->reset_width();
-    }
+    dst_rect.w = src_rect.w;
 }
 void Sprite::reset_height() noexcept{
-    for(std::unique_ptr<Texture>& texture : textures){
-        texture->reset_height();
-    }
+    dst_rect.h = src_rect.h;
 }
 
 void Sprite::iterate() const noexcept{
@@ -196,7 +149,7 @@ void Sprite::reset_animation() const noexcept{
 
 void Sprite::set_animation_range(unsigned int beg, unsigned int end){
     if(!is_valid_texture_selection(beg) || !is_valid_texture_selection(end)){
-        throw std::runtime_error("Tried to set the animation range to invalid values!");
+        throw std::invalid_argument("Tried to set the animation range to invalid values!");
     }
 
     animation_begin = beg;
@@ -204,14 +157,14 @@ void Sprite::set_animation_range(unsigned int beg, unsigned int end){
 }
 void Sprite::set_animation_begin(unsigned int beg){
     if(!is_valid_texture_selection(beg)){
-        throw std::runtime_error("Tried to set the beggining of the animation range to an invalid value!");
+        throw std::invalid_argument("Tried to set the beggining of the animation range to an invalid value!");
     }
 
     animation_begin = beg;
 }
 void Sprite::set_animation_end(unsigned int end){
     if(!is_valid_texture_selection(end)){
-        throw std::runtime_error("Tried to set the end of the animation range to an invalid value!");
+        throw std::invalid_argument("Tried to set the end of the animation range to an invalid value!");
     }
 
     animation_end = end;
@@ -225,8 +178,8 @@ bool Sprite::is_animating_once() const noexcept{
 }
 
 bool Sprite::good() const noexcept{
-    for(const std::unique_ptr<Texture>& texture : textures){
-        if(!texture->good()){
+    for(const std::shared_ptr<SDL_Texture>& image : textures){
+        if(!image){
             return false;
         }
     }

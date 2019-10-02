@@ -9,7 +9,7 @@ Drawable& Drawable::operator=(const Drawable& obj) noexcept = default;
 Drawable::Drawable(Drawable&& obj) noexcept = default;
 Drawable& Drawable::operator=(Drawable&& obj) noexcept = default;
 
-Drawable::~Drawable(){}
+Drawable::~Drawable() noexcept {}
 
 //*----------------------------------------------------
 

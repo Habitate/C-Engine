@@ -5,3 +5,8 @@
 * Cleanup includes (remove header includes from cpp files)
 
 * Split texture and sprite into texture -> image -> sprite
+
+* make destructors noexcept
+* Make copy/move constructor/assignment operator parameter names equal to the class
+* Add DISALLOW_MOVE/COPY/BOTH macros
+* Turn some exceptions into std::invalid_argument
