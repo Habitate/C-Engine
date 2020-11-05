@@ -92,7 +92,7 @@ void Texture::reset_height() noexcept{
     dstRect.h = srcRect.h;
 }
 
-void Texture::draw(const Camera& camera, const int x, const int y, const double angle, const SDL_Point* const center, const SDL_RendererFlip& flip) const{
+void Texture::draw(const Camera& camera, const SDL_Point& coords, const double angle, const SDL_Point* const center, const SDL_RendererFlip& flip) const{
 	if(!imageData){
         throw std::runtime_error(std::string("Attempted to draw an uninitialized texture! Object: ") + static_cast<const void*>(this) + '\n');
 	}
