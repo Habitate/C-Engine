@@ -8,16 +8,14 @@
 
 #include <iostream>
 
-Obj_player::Obj_player(Game* const game, SDL_Renderer* const renderer, Camera* const camera, SDL_Event* const event) : Object(game, camera), flip(SDL_FLIP_NONE), event(event), sound("../assets/sounds/test.wav"), pos{0,0}{
+Obj_player::Obj_player(Game* const game, SDL_Renderer* const renderer, Camera* const camera, SDL_Event* const event) : Object(game, camera), flip(SDL_FLIP_NONE), event(event), sound("../assets/sounds/test.wav"){
     sprite.load_multiple(renderer, "../assets/anim/test/test", ".png");
 
     sprite.set_index(35);
     sprite.set_animation_range(35, 34);
     sprite.stop_animating();
 
-    pos = {100, game_ptr->HREZ - 64 - 100};
-    sprite.set_width(100);
-    sprite.set_height(100);
+    body = {100, game_ptr->HREZ - 64 - 100, 100, 100};
 }
 
 Obj_player::Obj_player(Obj_player& obj) = default;
@@ -29,7 +27,7 @@ Obj_player& Obj_player::operator=(Obj_player&& obj) = default;
 Obj_player::~Obj_player() = default;
 
 void Obj_player::draw() const{
-    sprite.draw(*camera, coords, 0, nullptr, flip);
+    sprite.draw(*camera, body.x, body.y, 0, nullptr, flip);
 }
 
 void Obj_player::begin_step(){
@@ -37,11 +35,11 @@ void Obj_player::begin_step(){
 }
 void Obj_player::step(){
     if(InputHandler::held(SDL_SCANCODE_A)){
-        pos.x -= 3;
+        body.x -= 3;
         flip = SDL_FLIP_NONE;
     }
     if(InputHandler::held(SDL_SCANCODE_D)){
-        pos.x += 3;
+        body.x += 3;
         flip = SDL_FLIP_HORIZONTAL;
     }
     if(InputHandler::pressed(SDL_SCANCODE_W)){
@@ -59,23 +57,21 @@ void Obj_player::step(){
 
     //? Movement
     if(InputHandler::held(SDL_SCANCODE_P)){
-        sprite.set_width(sprite[0].get_dst_rect().w + 3);
-        pos.y -= 3;
+        body.h += 3;
+        body.y -= 3;
     }
     if(InputHandler::held(SDL_SCANCODE_O)){
-        sprite.set_width(sprite[0].get_dst_rect().w - 3);
-        pos.y += 3;
+        body.h -= 3;
+        body.y += 3;
     }
     if(InputHandler::held(SDL_SCANCODE_L)){
-        sprite.set_width(sprite[0].get_dst_rect().w + 3);
+        body.w += 3;
     }
     if(InputHandler::held(SDL_SCANCODE_K)){
-        sprite.set_width(sprite[0].get_dst_rect().w - 3);
+        body.w -= 3;
     }
     if(InputHandler::pressed(SDL_SCANCODE_R)){
-        pos = {100, 316};
-        sprite.set_width(100);
-        sprite.set_height(100);
+        body = {100, 316, 100, 100};
     }
 
     //? Camera

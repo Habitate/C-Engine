@@ -12,14 +12,14 @@ class Texture{
 
 		Texture() noexcept;
 		//* Only supports paths with full extensions. E.x.: "image.png"
-		explicit Texture(SDL_Renderer* const renderer, const std::string& path);
+		Texture(SDL_Renderer* const renderer, const std::string& path);
 
 		// Copyable
-		explicit Texture(const Texture& obj) noexcept;
+		Texture(const Texture& obj) noexcept;
 		Texture& operator=(const Texture& obj) noexcept;
 
 		// Moveable
-		explicit Texture(Texture&& obj) noexcept;
+		Texture(Texture&& obj) noexcept;
 		Texture& operator=(Texture&& obj) noexcept;
 
 		~Texture();
@@ -28,7 +28,7 @@ class Texture{
 
 		void load(SDL_Renderer* const renderer, const std::string& path);
 
-		[[nodiscard]] SDL_Renderer* get_renderer() const noexcept;
+		SDL_Renderer* get_renderer() const noexcept;
 
 		//* Set the dimensions
 		void set_width(const int width) noexcept;
@@ -40,14 +40,14 @@ class Texture{
 		void reset_height() noexcept;
 		void reset_dimensions() noexcept;
 
-		void draw(const Camera& camera, const SDL_Point& coords, const double angle = 0, const SDL_Point* const center = nullptr, const SDL_RendererFlip& flip = SDL_FLIP_NONE) const;
+		void draw(const Camera& camera, const int x, const int y, const double angle = 0, const SDL_Point* const center = nullptr, const SDL_RendererFlip& flip = SDL_FLIP_NONE) const;
 
-		[[nodiscard]] bool check_collision(const Texture& texture) const noexcept;
+		bool check_collision(const Texture& texture) const noexcept;
 
-		[[nodiscard]] const SDL_Rect& get_src_rect() const noexcept;
-		[[nodiscard]] const SDL_Rect& get_dst_rect() const noexcept;
+		const SDL_Rect& get_src_rect() const noexcept;
+		const SDL_Rect& get_dst_rect() const noexcept;
 
-		[[nodiscard]] bool good() const noexcept;
+		bool good() const noexcept;
 
 	private:
 		std::shared_ptr<SDL_Texture> imageData;

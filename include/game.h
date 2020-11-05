@@ -12,7 +12,7 @@
 
 class Game{
     public:
-        explicit Game(const std::string& name, const int x, const int y, const int w, const int h, const unsigned int flags);
+        Game(const std::string& name, const int x, const int y, const int w, const int h, const unsigned int flags) ;
 
         // Non-Copyable
         Game(const Game& game) = delete;
@@ -32,7 +32,7 @@ class Game{
         void Render();
         
         void changeIcon(const std::string& path);
-        [[nodiscard]] bool isRunning();
+        bool isRunning();
 
     //private:
         bool running;

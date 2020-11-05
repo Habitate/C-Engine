@@ -22,11 +22,11 @@ class C{
         C(const uint8_t color) noexcept;
 
         // Copyable
-        explicit C(const C& color) noexcept;
+        C(const C& color) noexcept;
         C& operator=(const C& color) noexcept;
 
         // Moveable
-        explicit C(C&& color) noexcept;
+        C(C&& color) noexcept;
         C& operator=(C&& color) noexcept;
 
         ~C() noexcept;

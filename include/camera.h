@@ -4,8 +4,8 @@
 
 class Camera{
     public:
-        Camera() noexcept;
-        Camera(const SDL_Rect& rect) noexcept;
+        explicit Camera() noexcept;
+        explicit Camera(const SDL_Rect& rect) noexcept;
         explicit Camera(const int x, const int y, const float amp) noexcept;
 
         // Copyable
@@ -26,11 +26,11 @@ class Camera{
         void zoom_in(const double amount = 1) noexcept;
         void zoom_out(const double amount = 1) noexcept;
 
-        [[nodiscard]] SDL_Rect get_dst_view(const SDL_Rect& current) const noexcept;
+        SDL_Rect get_dst_view(const SDL_Rect& current) const noexcept;
 
-        [[nodiscard]] int get_x() const noexcept;
-        [[nodiscard]] int get_y() const noexcept;
-        [[nodiscard]] double get_amp() const noexcept;
+        int get_x() const noexcept;
+        int get_y() const noexcept;
+        double get_amp() const noexcept;
 
     private:
         int x, y;

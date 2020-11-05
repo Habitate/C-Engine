@@ -7,14 +7,14 @@
 
 class Obj_player : public Object{
     public:
-        explicit Obj_player(Game* const game, SDL_Renderer* const renderer, Camera* const camera, SDL_Event* const event);
+        Obj_player(Game* const game, SDL_Renderer* const renderer, Camera* const camera, SDL_Event* const event);
 
         // Copyable
-		explicit Obj_player(Obj_player& obj);
+		Obj_player(Obj_player& obj);
 		Obj_player& operator=(Obj_player& obj);
 
 		// Moveable
-		explicit Obj_player(Obj_player&& obj);
+		Obj_player(Obj_player&& obj);
 		Obj_player& operator=(Obj_player&& obj);
 
         ~Obj_player();
@@ -30,6 +30,5 @@ class Obj_player : public Object{
         SDL_RendererFlip flip;
         SDL_Event* event;
 
-        SDL_Point pos;
         Sound sound;
 };

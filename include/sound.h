@@ -10,11 +10,11 @@ class Sound{
         Sound(const std::string& path) noexcept;
         
         // Copyable
-        explicit Sound(const Sound& object);
+        Sound(const Sound& object);
         Sound& operator=(const Sound& object);
 
         // Moveable
-        explicit Sound(Sound&& object) noexcept;
+        Sound(Sound&& object) noexcept;
         Sound& operator=(Sound&& object) noexcept;
 
         ~Sound() noexcept;
